@@ -22,4 +22,8 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
   }
+
+  public switchLanguage(lang: string): void {
+    this.translate.use(lang);
+  }
 }

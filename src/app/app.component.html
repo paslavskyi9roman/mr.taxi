@@ -1,6 +1,10 @@
 <h1>{{ 'HELLO' | translate }}</h1>
 
-<button (click)="themeService.toggleTheme()">
+<button class="theme-toggle-btn" (click)="themeService.toggleTheme()">
   Switch to {{ themeLabel }} Mode
 </button>
 
+<div class="language-switcher">
+  <button class="language-btn" (click)="switchLanguage('en')">English</button>
+  <button class="language-btn" (click)="switchLanguage('nl')">Dutch</button>
+</div>
