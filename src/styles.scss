@@ -69,3 +69,16 @@ table {
     scroll-behavior: auto;
   }
 }
+
+
+/* Light theme styles */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+  background-color: black;
+  color: white;
+}
