@@ -7,7 +7,7 @@ import {TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/c
   standalone: true,
   imports: [RouterOutlet, TranslatePipe, TranslateModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   private translate: TranslateService = inject(TranslateService);
