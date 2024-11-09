@@ -1,4 +1,6 @@
 <h1>{{ 'HELLO' | translate }}</h1>
 
-<button (click)="toggleTheme()">{{ (isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode') | translate }}</button>
+<button (click)="themeService.toggleTheme()">
+  Switch to {{ themeLabel }} Mode
+</button>
 

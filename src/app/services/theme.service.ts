@@ -1,16 +1,23 @@
 import {Injectable} from '@angular/core';
+import {ThemeEnum} from '../models/theme.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
-  private readonly DARK_THEME_CLASS = 'dark-theme';
+  private currentTheme: ThemeEnum = ThemeEnum.Light;
 
-  applyLightTheme() {
-    document.body.classList.remove(this.DARK_THEME_CLASS);
+  public get theme(): string {
+    return this.currentTheme;
   }
 
-  applyDarkTheme() {
-    document.body.classList.add(this.DARK_THEME_CLASS);
+  public toggleTheme(): void {
+    this.currentTheme = this.currentTheme === ThemeEnum.Light ? ThemeEnum.Dark : ThemeEnum.Light;
+
+    if (this.currentTheme === ThemeEnum.Dark) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
   }
 }

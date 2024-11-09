@@ -1,0 +1,45 @@
+// Light Theme Variables
+$light-background-color: #ffffff;
+$light-text-color: #000000;
+$light-primary-color: #007bff;
+$light-secondary-color: #f0f0f0;
+$light-border-color: #e0e0e0;
+$light-link-color: #007bff;
+$light-button-background: #007bff;
+$light-button-text: #ffffff;
+$light-shadow-color: rgba(0, 0, 0, 0.1);
+
+// Dark Theme Variables
+$dark-background-color: #1e1e1e;
+$dark-text-color: #ffffff;
+$dark-primary-color: #4a90e2;
+$dark-secondary-color: #2e2e2e;
+$dark-border-color: #3a3a3a;
+$dark-link-color: #4a90e2;
+$dark-button-background: #4a90e2;
+$dark-button-text: #ffffff;
+$dark-shadow-color: rgba(0, 0, 0, 0.5);
+
+:root {
+  --background-color: #{$light-background-color};
+  --text-color: #{$light-text-color};
+  --primary-color: #{$light-primary-color};
+  --secondary-color: #{$light-secondary-color};
+  --border-color: #{$light-border-color};
+  --link-color: #{$light-link-color};
+  --button-background: #{$light-button-background};
+  --button-text: #{$light-button-text};
+  --shadow-color: #{$light-shadow-color};
+}
+
+.dark-theme {
+  --background-color: #{$dark-background-color};
+  --text-color: #{$dark-text-color};
+  --primary-color: #{$dark-primary-color};
+  --secondary-color: #{$dark-secondary-color};
+  --border-color: #{$dark-border-color};
+  --link-color: #{$dark-link-color};
+  --button-background: #{$dark-button-background};
+  --button-text: #{$dark-button-text};
+  --shadow-color: #{$dark-shadow-color};
+}
