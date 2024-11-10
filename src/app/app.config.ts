@@ -10,14 +10,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true} ),
     provideRouter(routes),
     provideHttpClient(withFetch()),
     importProvidersFrom(
-
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
