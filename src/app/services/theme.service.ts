@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Theme} from '../models/theme';
+import { Injectable } from '@angular/core';
+import { Theme } from '../models/theme';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ThemeService {
   private currentTheme: Theme = Theme.Light;
