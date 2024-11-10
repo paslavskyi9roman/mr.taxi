@@ -10,7 +10,7 @@ import { Language } from './models/language';
   standalone: true,
   imports: [RouterOutlet, TranslatePipe, TranslateModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   private translate: TranslateService = inject(TranslateService);
@@ -29,5 +29,4 @@ export class AppComponent implements OnInit {
   public switchLanguage(lang: Language): void {
     this.translate.use(lang);
   }
-
 }
