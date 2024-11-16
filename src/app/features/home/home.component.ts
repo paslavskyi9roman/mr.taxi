@@ -40,4 +40,8 @@ export class HomeComponent {
   public handleConfirm(): void {
     this.isModalOpen = false;
   }
+  
+  public closeModal(): void {
+    this.isModalOpen = false;
+  }
 }
