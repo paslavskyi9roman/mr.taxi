@@ -1,9 +1,14 @@
-<h1>{{ 'HELLO' | translate }}</h1>
-<p>{{ 'WELCOME' | translate}}</p>
+<section class="home-container">
+  <h1>{{ 'HELLO' | translate }}</h1>
+  <p>{{ 'WELCOME' | translate }}</p>
 
-<mt-button [label]="'Switch to ' + themeLabel + ' Mode'" (click)="themeService.toggleTheme()"></mt-button>
-<div class="language-switcher">
-  <mt-button label="English" (click)="switchLanguage(Language.English)"></mt-button>
-  <mt-button label="Dutch" (click)="switchLanguage(Language.Dutch)"></mt-button>
-  <mt-button label="Українська" (click)="switchLanguage(Language.Ukrainian)"></mt-button>
-</div>
+  <mt-button label="Select Language" (click)="openLanguageModal()"></mt-button>
+
+  <mt-modal *ngIf="isModalOpen" (confirm)="handleConfirm()"  (close)="closeModal()">
+    <div class="language-switcher">
+      <mt-button label="English" (click)="switchLanguage(Language.English)"></mt-button>
+      <mt-button label="Dutch" (click)="switchLanguage(Language.Dutch)"></mt-button>
+      <mt-button label="Українська" (click)="switchLanguage(Language.Ukrainian)"></mt-button>
+    </div>
+  </mt-modal>
+</section>
