@@ -1,0 +1,17 @@
+@import '../../../../assets/styles/themes';
+
+.mt-link-button {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--disabled {
+    color: var(--disabled-text);
+    cursor: not-allowed;
+    text-decoration: none;
+  }
+}
