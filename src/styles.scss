@@ -1,4 +1,5 @@
 @import './assets/styles/themes';
+@import './assets/styles/typography';
 
 *,
 *::before,
@@ -9,14 +10,13 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'FixelText', Arial, sans-serif;
   background-color: #000;
 }
 
 html,
 body {
   height: 100%;
-  font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -50,7 +50,6 @@ a {
   text-decoration: none;
   color: inherit;
   text-decoration-skip-ink: auto;
-
 }
 
 ul,
@@ -76,4 +75,3 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
