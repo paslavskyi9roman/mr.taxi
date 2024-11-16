@@ -1,6 +1,17 @@
 import { Component, Input } from '@angular/core';
 import {NgClass} from '@angular/common';
-
+/**
+ *
+ * Basic usage:
+ * <mt-button label="Primary Button"></mt-button>
+ *
+ * Secondary variant:
+ * <mt-button label="Secondary Button" type="secondary"></mt-button>
+ *
+ * Disabled state:
+ * <mt-button label="Disabled Button" [disabled]="true"></mt-button>
+ *
+ */
 @Component({
   selector: 'mt-button',
   standalone: true,

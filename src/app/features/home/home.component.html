@@ -2,18 +2,8 @@
 <p>{{ 'WELCOME' | translate}}</p>
 
 <mt-button [label]="'Switch to ' + themeLabel + ' Mode'" (click)="themeService.toggleTheme()"></mt-button>
-
-
 <div class="language-switcher">
   <mt-button label="English" (click)="switchLanguage(Language.English)"></mt-button>
   <mt-button label="Dutch" (click)="switchLanguage(Language.Dutch)"></mt-button>
   <mt-button label="Українська" (click)="switchLanguage(Language.Ukrainian)"></mt-button>
-  
-  <mt-button label="Primary Button"></mt-button>
-  <mt-button label="Secondary Button" type="secondary"></mt-button>
-  <mt-button label="Disabled Button" [disabled]="true"></mt-button>
-
-  <mt-link-button label="Click me"></mt-link-button>
-  <mt-link-button label="Disabled" [disabled]="true"></mt-link-button>
-
 </div>

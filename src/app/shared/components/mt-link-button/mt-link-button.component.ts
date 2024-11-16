@@ -1,6 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
-
+/**
+* 
+* Basic usage:
+* <mt-link-button label="Click me"></mt-link-button>
+* 
+* Disabled state:
+* <mt-link-button label="Disabled" [disabled]="true"></mt-link-button>
+* 
+ */
 @Component({
   selector: 'mt-link-button',
   standalone: true,
