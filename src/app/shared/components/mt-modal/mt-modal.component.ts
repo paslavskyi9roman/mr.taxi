@@ -14,4 +14,5 @@ import { CommonModule } from '@angular/common';
 export class MtModalComponent {
   @Input() title: string = '';
   @Output() close = new EventEmitter<void>();
+  @Output() confirm = new EventEmitter<unknown>();
 }
