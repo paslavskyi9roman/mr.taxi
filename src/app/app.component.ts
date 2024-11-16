@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { ThemeService } from './services/theme.service';
-import { Theme } from './models/theme';
-import { Language } from './models/language';
+import { Theme } from './core/models/theme';
+import { Language } from './core/models/language';
+import {ThemeService} from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
