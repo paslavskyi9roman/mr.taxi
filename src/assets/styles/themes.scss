@@ -1,45 +1,74 @@
-// Light Theme Variables
-$light-background-color: #ffffff;
-$light-text-color: #000000;
-$light-primary-color: #007bff;
-$light-secondary-color: #f0f0f0;
-$light-border-color: #e0e0e0;
-$light-link-color: #007bff;
-$light-button-background: #007bff;
-$light-button-text: #ffffff;
-$light-shadow-color: rgba(0, 0, 0, 0.1);
-
-// Dark Theme Variables
-$dark-background-color: #1e1e1e;
-$dark-text-color: #ffffff;
-$dark-primary-color: #4a90e2;
-$dark-secondary-color: #2e2e2e;
-$dark-border-color: #3a3a3a;
-$dark-link-color: #4a90e2;
-$dark-button-background: #4a90e2;
-$dark-button-text: #ffffff;
-$dark-shadow-color: rgba(0, 0, 0, 0.5);
+@import 'light-theme';
+@import 'dark-theme';
 
 :root {
   --background-color: #{$light-background-color};
-  --text-color: #{$light-text-color};
+  --section-color: #{$light-section-color};
+  --navigation-color: #{$light-navigation-color};
+  --divider-color: #{$light-divider-color};
+  --card-color: #{$light-card-color};
   --primary-color: #{$light-primary-color};
   --secondary-color: #{$light-secondary-color};
-  --border-color: #{$light-border-color};
-  --link-color: #{$light-link-color};
-  --button-background: #{$light-button-background};
-  --button-text: #{$light-button-text};
-  --shadow-color: #{$light-shadow-color};
+  --disabled-button-color: #{$light-disabled-button-color};
+  --disabled-text: #{$light-disabled-text};
+  --additional-text: #{$light-additional-text};
+  --input: #{$light-input};
+  --input-hover: #{$light-input-hover};
+  --button: #{$light-button};
+  --button-hover: #{$light-button-hover};
+  --button-pressed: #{$light-button-pressed};
+  --grey: #{$light-grey};
+  --grey-hover: #{$light-grey-hover};
+  --grey-pressed: #{$light-grey-pressed};
+  --accent-color: #{$light-accent-color};
+  --accent-hover: #{$light-accent-hover};
+  --accent-pressed: #{$light-accent-pressed};
+  --orange: #{$light-orange};
+  --orange-hover: #{$light-orange-hover};
+  --orange-pressed: #{$light-orange-pressed};
+  // System theme variables
+  --system-blue: #{$light-system-blue};
+  --system-green: #{$light-system-green};
+  --system-red: #{$light-system-red};
+  --system-yellow: #{$light-system-yellow};
+  --system-light-blue: #{$light-system-light-blue};
+  --system-light-green: #{$light-system-light-green};
+  --system-light-red: #{$light-system-light-red};
+  --system-light-yellow: #{$light-system-light-yellow};
 }
 
 .dark-theme {
   --background-color: #{$dark-background-color};
-  --text-color: #{$dark-text-color};
+  --section-color: #{$dark-section-color};
+  --navigation-color: #{$dark-navigation-color};
+  --divider-color: #{$dark-divider-color};
+  --card-color: #{$dark-card-color};
   --primary-color: #{$dark-primary-color};
   --secondary-color: #{$dark-secondary-color};
-  --border-color: #{$dark-border-color};
-  --link-color: #{$dark-link-color};
-  --button-background: #{$dark-button-background};
-  --button-text: #{$dark-button-text};
-  --shadow-color: #{$dark-shadow-color};
+  --disabled-button-color: #{$dark-disabled-button-color};
+  --disabled-text: #{$dark-disabled-text};
+  --additional-text: #{$dark-additional-text};
+  --input: #{$dark-input};
+  --input-hover: #{$dark-input-hover};
+  --button: #{$dark-button};
+  --button-hover: #{$dark-button-hover};
+  --button-pressed: #{$dark-button-pressed};
+  --grey: #{$dark-grey};
+  --grey-hover: #{$dark-grey-hover};
+  --grey-pressed: #{$dark-grey-pressed};
+  --accent-color: #{$dark-accent-color};
+  --accent-hover: #{$dark-accent-hover};
+  --accent-pressed: #{$dark-accent-pressed};
+  --orange: #{$dark-orange};
+  --orange-hover: #{$dark-orange-hover};
+  --orange-pressed: #{$dark-orange-pressed};
+  // System theme variables
+  --system-blue: #{$dark-system-blue};
+  --system-green: #{$dark-system-green};
+  --system-red: #{$dark-system-red};
+  --system-yellow: #{$dark-system-yellow};
+  --system-light-blue: #{$dark-system-light-blue};
+  --system-light-green: #{$dark-system-light-green};
+  --system-light-red: #{$dark-system-light-red};
+  --system-light-yellow: #{$dark-system-light-yellow};
 }
