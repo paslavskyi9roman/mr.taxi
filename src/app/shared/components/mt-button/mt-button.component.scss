@@ -1,0 +1,46 @@
+@import '../../../../assets/styles/themes';
+
+.mt-button {
+  display: inline-block;
+  padding: 0 24px;
+  width: 225px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  &--primary {
+    background-color: var(--accent-color);
+    color: var(--button-text);
+    border: none;
+
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+
+    &:active {
+      background-color: var(--accent-pressed);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+
+    &:active {
+      border-color: var(--accent-pressed);
+      color: var(--accent-pressed);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

@@ -5,11 +5,13 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 import { ThemeService } from '../../core/services/theme.service';
 import { Theme } from '../../core/models/theme';
 import { Language } from '../../core/models/language';
+import {MtButtonComponent} from '../../shared/components/mt-button/mt-button.component';
+import {MtLinkButtonComponent} from '../../shared/components/mt-link-button/mt-link-button.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslatePipe, TranslateModule],
+  imports: [TranslatePipe, TranslateModule, MtButtonComponent, MtLinkButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
