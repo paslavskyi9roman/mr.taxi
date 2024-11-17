@@ -2,21 +2,33 @@
 
 .mt-button {
   display: inline-block;
-  padding: 0 24px;
-  width: 225px;
-  height: 48px;
-  line-height: 48px;
-  font-size: 16px;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
+  font-family: 'FixelText';
+  font-weight: 600;
+  &--large {
+    width: 230px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    padding: 0 24px;
+  }
+
+  &--medium {
+    width: 96px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    padding: 0 16px;
+  }
 
   &--primary {
     background-color: var(--accent-color);
-    color: var(--button-text);
+    color: var(--additional-text);
     border: none;
 
     &:hover {
@@ -36,6 +48,20 @@
     &:active {
       border-color: var(--accent-pressed);
       color: var(--accent-pressed);
+    }
+  }
+
+  &--add {
+    background-color: var(--add-button);
+    color: var(--additional-text);
+    border: none;
+
+    &:hover {
+      background-color: var(--add-button-hover);
+    }
+
+    &:active {
+      background-color: var(--add-button-pressed);
     }
   }
 

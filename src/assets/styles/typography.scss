@@ -7,9 +7,17 @@
 }
 
 @font-face {
-  font-family: 'FixelText-Bold';
+  font-family: 'FixelText-SemiBold';
   src:
     url('/assets/styles/fonts/FixelText-Bold.woff2') format('woff2');
   font-weight: bold;
-  font-style: normal;
+  font-style: 600;
+}
+
+@font-face {
+  font-family: 'FixelText-Light';
+  src:
+    url('/assets/styles/fonts/FixelText-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: 300;
 }

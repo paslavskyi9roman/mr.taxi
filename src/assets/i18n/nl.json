@@ -1,4 +1,6 @@
 {
-  "HELLO": "Hallo",
-  "WELCOME": "Welkom in mijn app"
+  "HOME":  {
+    "TITLE": "Comfortabele ritten, eerlijke tarieven",
+  "SUBTITLE": "Ontdek een ritervaring op maat met eerlijke prijzen en chauffeurs die u kunt vertrouwen."
+  }
 }

@@ -1,11 +1,10 @@
-<button
-  class="mt-button"
-  [disabled]="disabled"
-  [ngClass]="{
-    'mt-button--primary': type === 'primary',
-    'mt-button--secondary': type === 'secondary',
-    'mt-button--disabled': disabled
-  }"
->
-  {{ label }}
+<button 
+  class="mt-button" 
+  [ngClass]="[
+    'mt-button--' + type,
+    'mt-button--' + size,
+    disabled ? 'mt-button--disabled' : ''
+  ]"
+  [disabled]="disabled">
+  {{label}}
 </button>

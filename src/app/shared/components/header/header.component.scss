@@ -1,4 +1,27 @@
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  background-color: var(--navigation-color);
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+.flag-icon {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 8px;
+  border-radius: 50%
+}
+
+.language-select {
+  display: flex;
+  align-items: center;
 }

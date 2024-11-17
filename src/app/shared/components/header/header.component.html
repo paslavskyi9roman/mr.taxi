@@ -1,4 +1,15 @@
 <header>
   <h1>MR. Taxi</h1>
-  <app-theme-switcher></app-theme-switcher>
+  <div class="right">
+    <div class="language-select">
+      <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+      <app-dropdown-menu
+        [items]="languages"
+        [placeholder]="selectedLanguage"
+        (selectionChange)="onLanguageChange($event)"
+      ></app-dropdown-menu>
+    </div>
+    <app-theme-switcher></app-theme-switcher>
+    <mt-button label="Sign up" type="add" size="medium"></mt-button>
+  </div>
 </header>
