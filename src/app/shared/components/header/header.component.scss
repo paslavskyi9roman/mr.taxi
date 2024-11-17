@@ -8,6 +8,7 @@ header {
   .right {
     display: flex;
     align-items: center;
+    gap: 12px;
   }
 }
 
@@ -18,4 +19,9 @@ header {
   background-position: center;
   margin-right: 8px;
   border-radius: 50%
+}
+
+.language-select {
+  display: flex;
+  align-items: center;
 }

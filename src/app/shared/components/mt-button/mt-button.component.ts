@@ -10,6 +10,10 @@ import {NgClass} from '@angular/common';
  *
  * Disabled state:
  * <mt-button label="Disabled Button" [disabled]="true"></mt-button>
+ * 
+ * Size variants:
+ * <mt-button label="Large Button" size="large"></mt-button>
+ * <mt-button label="Medium Button" size="medium"></mt-button>
  *
  */
 @Component({
@@ -21,6 +25,7 @@ import {NgClass} from '@angular/common';
 })
 export class MtButtonComponent {
   @Input() label: string = '';
-  @Input() type: 'primary' | 'secondary' = 'primary';
+  @Input() type: 'primary' | 'secondary' | 'add' = 'primary';
   @Input() disabled: boolean = false;
+  @Input() size: 'large' | 'medium' = 'large';
 }
