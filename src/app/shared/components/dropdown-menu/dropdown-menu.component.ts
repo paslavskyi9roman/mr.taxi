@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 
 interface DropdownItem {
   label: string;
@@ -12,7 +13,7 @@ interface DropdownItem {
   selector: 'app-dropdown-menu',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule, ClickOutsideDirective
   ],
   templateUrl: './dropdown-menu.component.html',
   styleUrl: './dropdown-menu.component.scss',

@@ -1,4 +1,4 @@
-<div class="dropdown" [class.open]="isOpen">
+<div class="dropdown" [class.open]="isOpen" (clickOutside)="isOpen = false">
   <div class="dropdown-trigger" (click)="toggleDropdown()">
     <span class="trigger-label">{{ selectedItem?.label || placeholder }}</span>
     <i class="trigger-icon"></i>
