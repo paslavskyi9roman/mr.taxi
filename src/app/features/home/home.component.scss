@@ -1,43 +1,45 @@
 .home-container {
   display: flex;
-  flex-direction: column;
   gap: 20px;
-  background-color: var(--background-color);
-}
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 89vh;
+  padding: 20px;
+  z-index: 1;
 
-.theme-toggle-btn {
-  background-color: var(--button-background);
-  color: var(--button-text);
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: var(--primary-color);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(/assets/styles/img/taxi-bg.png) no-repeat center -180px;
+    background-size: cover;
+    filter: brightness(0.5);
+    z-index: -1;
   }
 }
 
+.welcome-text {
+  font-family: 'FixelText-SemiBold', Arial, sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
 .language-switcher {
+  position: relative;
+  z-index: 2;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  .language-btn {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-
-    &:hover {
-      background-color: var(--primary-color);
-      color: var(--button-text);
-    }
-  }
 }
 
+.taxi-form {
+  width: 555px;
+  height: 658px;
+  background-color: var(--navigation-color);
+  border-radius: 8px;
+}

@@ -1,4 +1,6 @@
 {
-  "HELLO": "Hello",
-  "WELCOME": "Welcome to my app"
+  "HOME":  {
+    "TITLE": "Comfortable rides, fair fares",
+  "SUBTITLE": "Discover a ride experience tailored to your needs with fair prices and drivers you can trust."
+  }
 }
