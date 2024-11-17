@@ -1,0 +1,16 @@
+<div class="dropdown" [class.open]="isOpen">
+  <div class="dropdown-trigger" (click)="toggleDropdown()">
+    <span class="trigger-label">{{ selectedItem?.label || placeholder }}</span>
+    <i class="trigger-icon"></i>
+  </div>
+  <div class="dropdown-content" *ngIf="isOpen">
+    <div 
+      *ngFor="let item of items"
+      class="dropdown-item"
+      [class.disabled]="item.disabled"
+      (click)="selectItem(item)"
+    >
+      <span>{{ item.value }}</span>
+    </div>
+  </div>
+</div>

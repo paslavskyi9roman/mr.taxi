@@ -1,4 +1,11 @@
 <header>
   <h1>MR. Taxi</h1>
-  <app-theme-switcher></app-theme-switcher>
+  <div class="right">
+    <app-dropdown-menu
+      [items]="languages"
+      [placeholder]="selectedLanguage"
+      (selectionChange)="onLanguageChange($event)"
+    ></app-dropdown-menu>
+    <app-theme-switcher></app-theme-switcher>
+  </div>
 </header>
