@@ -1,6 +1,7 @@
 <header>
   <h1>MR. Taxi</h1>
   <div class="right">
+    <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
     <app-dropdown-menu
       [items]="languages"
       [placeholder]="selectedLanguage"

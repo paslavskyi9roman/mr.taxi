@@ -15,18 +15,21 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  public selectedLanguage: string = Language.English;
+  public selectedLanguage: string = localStorage.getItem('selectedLanguage') || Language.English;
   private translate: TranslateService = inject(TranslateService);
 
   public languages = [
-    { value: 'English', label: Language.English, icon: 'assets/styles/icons/flags/en-flag.svg' },
+    { value: 'English', label: Language.English, icon: 'assets/styles/icons/flags/gb-flag.svg' },
     { value: 'Dutch', label: Language.Dutch, icon: 'assets/styles/icons/flags/nl-flag.svg' },
     { value: 'Ukrainian', label: Language.Ukrainian, icon: 'assets/styles/icons/flags/ua-flag.svg' }
   ];
 
+  public selectedFlag: string = this.languages.find(lang => lang.label === this.selectedLanguage)?.icon || 'assets/styles/icons/flags/gb-flag.svg';
+
   public onLanguageChange(language: Language): void {
     const selectedItem = this.languages.find(item => item.value === language);
     this.selectedLanguage = selectedItem?.value || Language.English;
+    this.selectedFlag = selectedItem?.icon || 'assets/styles/icons/flags/gb-flag.svg';
     this.translate.use(selectedItem!.label);
     localStorage.setItem('selectedLanguage', selectedItem!.label);
   }
