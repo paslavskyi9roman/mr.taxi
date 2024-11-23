@@ -1,6 +1,22 @@
 {
-  "HOME":  {
+  "HOME": {
     "TITLE": "Comfortable rides, fair fares",
-  "SUBTITLE": "Discover a ride experience tailored to your needs with fair prices and drivers you can trust."
+    "SUBTITLE": "Discover a ride experience tailored to your needs with fair prices and drivers you can trust."
+  },
+  "TAXI_ORDER_FORM": {
+    "TITLE": "Where you want to go?",
+    "FROM_PLACEHOLDER": "From",
+    "ADD_STOP": "Add a stop",
+    "ADDITIONAL_STOP_PLACEHOLDER": "Additional Stop",
+    "TO_PLACEHOLDER": "To",
+    "PASSENGER_NAME_LABEL": "Passenger Name:",
+    "PASSENGER_NAME_PLACEHOLDER": "Enter name",
+    "NUMBER_OF_PASSENGERS_LABEL": "Number of passengers",
+    "PASSENGER_PHONE_NUMBER_LABEL": "Passenger phone number",
+    "PASSENGER_PHONE_NUMBER_PLACEHOLDER": "+31 00-000-0000",
+    "COMMENT_LABEL": "Add comment (optional):",
+    "BOOK_RIDE_BUTTON": "Book a Ride",
+    "CANCEL_BUTTON": "Cancel",
+    "REMOVE_STOP": "Remove"
   }
 }

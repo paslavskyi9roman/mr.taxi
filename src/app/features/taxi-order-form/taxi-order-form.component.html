@@ -1,50 +1,88 @@
 <form [formGroup]="taxiOrderForm" (ngSubmit)="onSubmit()">
-  <h2>Where you want to go?</h2>
+  <h2>{{ 'TAXI_ORDER_FORM.TITLE' | translate }}</h2>
   <div>
-    <input type="text" id="from" formControlName="from" placeholder="From" required>
+    <input
+      type="text"
+      id="from"
+      formControlName="from"
+      placeholder="{{ 'TAXI_ORDER_FORM.FROM_PLACEHOLDER' | translate }}"
+      required
+    />
   </div>
 
   <div>
-    <button class="add-ride-btn" type="button" (click)="showAdditionalStops = !showAdditionalStops">
-      <img src="assets/styles/icons/add.svg" alt="Add">
-      <span>Add a stop </span>
+    <button class="add-ride-btn" type="button" (click)="addStop()">
+      <img src="assets/styles/icons/add.svg" alt="Add" />
+      <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
     </button>
-    @if (showAdditionalStops) {
-      <div>
-        <input type="text" id="additionalStops" formControlName="additionalStops">
+    @for (stop of additionalStops.controls; track $index) {
+      <div class="additional-stop">
+        <input
+          type="text"
+          [formControlName]="$index"
+          placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
+            $index + 1
+          }}"
+        />
+        <button type="button" (click)="removeStop($index)">
+          {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
+        </button>
       </div>
     }
-    
   </div>
 
   <div>
-    <input type="text" id="to" formControlName="to" placeholder="To" required>
+    <input
+      type="text"
+      id="to"
+      formControlName="to"
+      placeholder="{{ 'TAXI_ORDER_FORM.TO_PLACEHOLDER' | translate }}"
+      required
+    />
   </div>
 
   <div>
-    <label for="passengerName">Passenger Name:</label>
-    <input type="text" id="passengerName" formControlName="passengerName" placeholder="Enter name" required>
+    <label for="passengerName">{{ 'TAXI_ORDER_FORM.PASSENGER_NAME_LABEL' | translate }}</label>
+    <input
+      type="text"
+      id="passengerName"
+      formControlName="passengerName"
+      placeholder="{{ 'TAXI_ORDER_FORM.PASSENGER_NAME_PLACEHOLDER' | translate }}"
+      required
+    />
   </div>
 
   <div>
-    <label for="numberOfPassengers">Number of passengers</label>
+    <label for="numberOfPassengers">{{
+      'TAXI_ORDER_FORM.NUMBER_OF_PASSENGERS_LABEL' | translate
+    }}</label>
     <div class="passenger-buttons">
       <button type="button" (click)="decreasePassengers()" class="decrease">-</button>
-      <input type="number" id="numberOfPassengers" formControlName="numberOfPassengers" required>
+      <input type="number" id="numberOfPassengers" formControlName="numberOfPassengers" required />
       <button type="button" (click)="increasePassengers()" class="increase">+</button>
     </div>
   </div>
 
   <div>
-    <label for="passengerPhoneNumber">Passenger phone number</label>
-    <input type="tel" id="passengerPhoneNumber" formControlName="passengerPhoneNumber" placeholder="+31 00-000-0000" required>
+    <label for="passengerPhoneNumber">{{
+      'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_LABEL' | translate
+    }}</label>
+    <input
+      type="tel"
+      id="passengerPhoneNumber"
+      formControlName="passengerPhoneNumber"
+      placeholder="{{ 'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_PLACEHOLDER' | translate }}"
+      required
+    />
   </div>
 
   <div>
-    <label for="comment">Add comment (optional):</label>
+    <label for="comment">{{ 'TAXI_ORDER_FORM.COMMENT_LABEL' | translate }}</label>
     <textarea id="comment" formControlName="comment"></textarea>
   </div>
 
-  <mt-button label="Book a Ride" [disabled]="taxiOrderForm.invalid"></mt-button>
-  <mt-button label="Cancel" type="secondary"></mt-button>
+  <mt-button
+    label="{{ 'TAXI_ORDER_FORM.BOOK_RIDE_BUTTON' | translate }}"
+    [disabled]="taxiOrderForm.invalid"
+  ></mt-button>
 </form>

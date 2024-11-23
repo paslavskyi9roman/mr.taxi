@@ -1,6 +1,22 @@
 {
   "HOME":  {
     "TITLE":"Комфортні поїздки, справедливі тарифи",
-  "SUBTITLE": "Відкрийте для себе поїздки, пристосовані до ваших потреб, зі справедливими цінами та водіями, яким ви можете довіряти."
+    "SUBTITLE": "Відкрийте для себе поїздки, пристосовані до ваших потреб, зі справедливими цінами та водіями, яким ви можете довіряти."
+  },
+  "TAXI_ORDER_FORM": {
+    "TITLE": "Куди ви хочете поїхати?",
+    "FROM_PLACEHOLDER": "Звідки",
+    "ADD_STOP": "Додати зупинку",
+    "ADDITIONAL_STOP_PLACEHOLDER": "Додаткова зупинка",
+    "TO_PLACEHOLDER": "Куди",
+    "PASSENGER_NAME_LABEL": "Ім'я пасажира:",
+    "PASSENGER_NAME_PLACEHOLDER": "Введіть ім'я",
+    "NUMBER_OF_PASSENGERS_LABEL": "Кількість пасажирів",
+    "PASSENGER_PHONE_NUMBER_LABEL": "Номер телефону пасажира",
+    "PASSENGER_PHONE_NUMBER_PLACEHOLDER": "+31 00-000-0000",
+    "COMMENT_LABEL": "Додати коментар (необов'язково):",
+    "BOOK_RIDE_BUTTON": "Замовити поїздку",
+    "CANCEL_BUTTON": "Скасувати",
+    "REMOVE_STOP": "Видалити"
   }
 }

@@ -2,8 +2,24 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 40px;
   background-color: var(--section-color);
+  border-radius: 12px;
+  width: 555px;
+}
+
+.additional-stop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.additional-stop button {
+  color: var(--system-red);
+  border: none;
+  padding: 0.5rem;
   border-radius: 4px;
 }
 
