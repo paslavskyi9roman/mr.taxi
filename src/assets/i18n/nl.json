@@ -1,6 +1,22 @@
 {
   "HOME":  {
     "TITLE": "Comfortabele ritten, eerlijke tarieven",
-  "SUBTITLE": "Ontdek een ritervaring op maat met eerlijke prijzen en chauffeurs die u kunt vertrouwen."
+    "SUBTITLE": "Ontdek een ritervaring op maat met eerlijke prijzen en chauffeurs die u kunt vertrouwen."
+  },
+  "TAXI_ORDER_FORM": {
+    "TITLE": "Waar wil je heen?",
+    "FROM_PLACEHOLDER": "Van",
+    "ADD_STOP": "Voeg een stop toe",
+    "ADDITIONAL_STOP_PLACEHOLDER": "Extra stop",
+    "TO_PLACEHOLDER": "Naar",
+    "PASSENGER_NAME_LABEL": "Naam passagier:",
+    "PASSENGER_NAME_PLACEHOLDER": "Voer naam in",
+    "NUMBER_OF_PASSENGERS_LABEL": "Aantal passagiers",
+    "PASSENGER_PHONE_NUMBER_LABEL": "Telefoonnummer passagier",
+    "PASSENGER_PHONE_NUMBER_PLACEHOLDER": "+31 00-000-0000",
+    "COMMENT_LABEL": "Voeg een opmerking toe (optioneel):",
+    "BOOK_RIDE_BUTTON": "Boek een rit",
+    "CANCEL_BUTTON": "Annuleren",
+    "REMOVE_STOP": "Verwijderen"
   }
 }

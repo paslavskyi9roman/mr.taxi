@@ -10,11 +10,21 @@ import { MtLinkButtonComponent } from '../../shared/components/mt-link-button/mt
 import { MtModalComponent } from '../../shared/components/mt-modal/mt-modal.component';
 import { CommonModule } from '@angular/common';
 import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/theme-switcher.component';
+import {TaxiOrderFormComponent} from '../taxi-order-form/taxi-order-form.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslatePipe, TranslateModule, MtButtonComponent, MtLinkButtonComponent, CommonModule, MtModalComponent, ThemeSwitcherComponent],
+  imports: [
+    TranslatePipe,
+    TranslateModule,
+    MtButtonComponent,
+    MtLinkButtonComponent,
+    CommonModule,
+    MtModalComponent,
+    ThemeSwitcherComponent,
+    TaxiOrderFormComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
