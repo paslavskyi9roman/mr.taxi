@@ -1,1 +1,50 @@
-<p>taxi-order-form works!</p>
+<form [formGroup]="taxiOrderForm" (ngSubmit)="onSubmit()">
+  <h2>Where you want to go?</h2>
+  <div>
+    <input type="text" id="from" formControlName="from" placeholder="From" required>
+  </div>
+
+  <div>
+    <button class="add-ride-btn" type="button" (click)="showAdditionalStops = !showAdditionalStops">
+      <img src="assets/styles/icons/add.svg" alt="Add">
+      <span>Add a stop </span>
+    </button>
+    @if (showAdditionalStops) {
+      <div>
+        <input type="text" id="additionalStops" formControlName="additionalStops">
+      </div>
+    }
+    
+  </div>
+
+  <div>
+    <input type="text" id="to" formControlName="to" placeholder="To" required>
+  </div>
+
+  <div>
+    <label for="passengerName">Passenger Name:</label>
+    <input type="text" id="passengerName" formControlName="passengerName" placeholder="Enter name" required>
+  </div>
+
+  <div>
+    <label for="numberOfPassengers">Number of passengers</label>
+    <div class="passenger-buttons">
+      <button type="button" (click)="decreasePassengers()" class="decrease">-</button>
+      <input type="number" id="numberOfPassengers" formControlName="numberOfPassengers" required>
+      <button type="button" (click)="increasePassengers()" class="increase">+</button>
+    </div>
+  </div>
+
+  <div>
+    <label for="passengerPhoneNumber">Passenger phone number</label>
+    <input type="tel" id="passengerPhoneNumber" formControlName="passengerPhoneNumber" placeholder="+31 00-000-0000" required>
+  </div>
+
+  <div>
+    <label for="comment">Add comment (optional):</label>
+    <textarea id="comment" formControlName="comment"></textarea>
+  </div>
+
+  <mt-button label="Book a Ride" [disabled]="taxiOrderForm.invalid"></mt-button>
+  <mt-button label="Cancel" type="secondary"></mt-button>
+</form>

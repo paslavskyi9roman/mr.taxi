@@ -21,7 +21,7 @@ import {NgClass} from '@angular/common';
   standalone: true,
   imports: [NgClass],
   templateUrl: './mt-button.component.html',
-  styleUrl: './mt-button.component.scss'
+  styleUrls: ['./mt-button.component.scss']
 })
 export class MtButtonComponent {
   @Input() label: string = '';
