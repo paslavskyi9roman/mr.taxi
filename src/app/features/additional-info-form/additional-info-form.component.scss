@@ -1,0 +1,27 @@
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 4px;
+  background-color: var(--input);
+  color: var(--primary-color);
+
+  &:hover {
+    border-color: var(--input-hover);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input {
+  display: flex;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--input);
+}

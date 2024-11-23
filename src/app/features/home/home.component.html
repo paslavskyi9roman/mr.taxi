@@ -2,16 +2,8 @@
   <div class="welcome-text">
     <h1>{{ 'HOME.TITLE' | translate }}</h1>
     <p>{{ 'HOME.SUBTITLE' | translate }}</p>
-    <mt-button label="Select Language" (click)="openLanguageModal()"></mt-button>
   </div>
   <div class="taxi-form">
     <app-taxi-order-form></app-taxi-order-form>
   </div>
 </section>
-<mt-modal *ngIf="isModalOpen" (confirm)="handleConfirm()"  (close)="closeModal()">
-  <div class="language-switcher">
-    <mt-button label="English" (click)="switchLanguage(Language.English)"></mt-button>
-    <mt-button label="Dutch" (click)="switchLanguage(Language.Dutch)"></mt-button>
-    <mt-button label="Українська" (click)="switchLanguage(Language.Ukrainian)"></mt-button>
-  </div>
-</mt-modal>

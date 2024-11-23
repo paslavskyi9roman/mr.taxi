@@ -1,0 +1,23 @@
+<form [formGroup]="additionalInfoForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="luggage">I have luggage:</label>
+    <select id="luggage" formControlName="luggage">
+      <option value="">Select an option</option>
+      <option value="none">No luggage</option>
+      <option value="small">Small luggage</option>
+      <option value="large">Large luggage</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="scheduledRide">Schedule a ride:</label>
+    <input type="datetime-local" id="scheduledRide" formControlName="scheduledRide">
+  </div>
+
+  <div>
+    <label for="flightNumber">Add a flight number:</label>
+    <input type="text" id="flightNumber" formControlName="flightNumber">
+  </div>
+
+  <mt-button label="Submit" ></mt-button>
+</form>
