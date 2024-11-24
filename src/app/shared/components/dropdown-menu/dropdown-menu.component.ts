@@ -20,7 +20,7 @@ interface DropdownItem {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownMenuComponent {
-  @Input() items: DropdownItem[] = [];
+  @Input() items: DropdownItem[] = []
   @Input() placeholder: string = 'Select an option';
   @Output() selectionChange = new EventEmitter<any>();
 

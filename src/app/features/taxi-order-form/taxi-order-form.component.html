@@ -20,7 +20,9 @@
           <input
             type="text"
             [formControlName]="i"
-            placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{ i + 1 }}"
+            placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
+              i + 1
+            }}"
           />
           <button type="button" (click)="removeStop(i)">
             {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
@@ -92,7 +94,12 @@
     label="{{ 'TAXI_ORDER_FORM.BOOK_RIDE_BUTTON' | translate }}"
     [disabled]="taxiOrderForm.invalid"
   ></mt-button>
-    <mt-modal *ngIf="isModalOpen" (confirm)="handleConfirm($event)" (close)="closeModal()">
-        <app-additional-info-form (formSubmitted)="handleConfirm($event)"></app-additional-info-form>
-    </mt-modal>
+  <mt-modal
+    *ngIf="isModalOpen"
+    title="Additional info"
+    (confirm)="handleConfirm($event)"
+    (close)="closeModal()"
+  >
+    <app-additional-info-form (formSubmitted)="handleConfirm($event)"></app-additional-info-form>
+  </mt-modal>
 </form>

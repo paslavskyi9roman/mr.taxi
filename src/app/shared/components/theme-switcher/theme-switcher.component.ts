@@ -4,7 +4,7 @@ import { ThemeService } from '../../../core/services/theme.service';
 import { Theme } from '../../../core/models/theme';
 
 @Component({
-  selector: 'app-theme-switcher',
+  selector: 'mt-theme-switcher',
   standalone: true,
   imports: [
     CommonModule,
