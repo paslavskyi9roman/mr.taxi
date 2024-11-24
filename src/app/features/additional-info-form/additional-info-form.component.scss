@@ -61,6 +61,7 @@ input {
   align-self: stretch;
   border-radius: 8px;
   background: var(--input);
+  width: 100%;
 }
 .form-section {
   margin-bottom: 1rem;
@@ -79,4 +80,55 @@ mt-slide-toggle {
 
 mt-button {
   align-self: center;
+}
+
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-field {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    width: 156px;
+    text-align: center;
+  }
+}
+
+.time-separator {
+  font-size: 20px;
+  margin-top: 24px;
+  color: var(--primary-color);
+}
+
+.schedule-inputs {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.date-field,
+.time-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  input {
+    width: 156px;
+    text-align: center;
+  }
+}
+
+.time-field {
+  input[type='time']::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  input[type='time']::-webkit-inner-spin-button,
+  input[type='time']::-webkit-clear-button {
+    display: none;
+  }
 }

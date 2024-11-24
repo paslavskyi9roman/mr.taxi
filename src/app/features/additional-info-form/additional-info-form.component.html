@@ -22,7 +22,16 @@
       (checkedChange)="toggleScheduledRide($event)"
     ></mt-slide-toggle>
     <div class="toggle-content" *ngIf="showScheduledRide">
-      <input type="datetime-local" id="scheduledRide" formControlName="scheduledRide" />
+      <div class="schedule-inputs">
+        <div class="date-field">
+          <label for="rideDate">Date:</label>
+          <input type="date" id="rideDate" formControlName="rideDate" />
+        </div>
+        <div class="time-field">
+          <label for="rideTime">Time:</label>
+          <input type="time" id="rideTime" [value]="currentTime" formControlName="rideTime" />
+        </div>
+      </div>
     </div>
   </div>
 
