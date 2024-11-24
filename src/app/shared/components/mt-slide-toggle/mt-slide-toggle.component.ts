@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-mt-slide-toggle',
+  selector: 'mt-slide-toggle',
   standalone: true,
   imports: [],
   templateUrl: './mt-slide-toggle.component.html',
@@ -9,12 +9,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MtSlideToggleComponent {
-  @Input() checked = false;
-  @Input() label = '';
-  @Output() change = new EventEmitter<boolean>();
+  @Input() public checked = false;
+  @Input() public label = '';
+  @Output() public readonly checkedChange = new EventEmitter<boolean>();
 
-  onToggle(event: Event) {
-    const checked = (event.target as HTMLInputElement).checked;
-    this.change.emit(checked);
+  public onToggle(): void {
+    this.checked = !this.checked;
+    this.checkedChange.emit(this.checked);
   }
 }

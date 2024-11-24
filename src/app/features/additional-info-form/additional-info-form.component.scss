@@ -1,3 +1,11 @@
+form {
+  width: 392px;
+  width: 392px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 input,
 textarea {
   padding: 0.5rem;
@@ -13,6 +21,35 @@ textarea {
 
 textarea {
   resize: vertical;
+
+  .toggle-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: var(--input);
+    border: 1px solid var(--divider-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
+
+    &:hover {
+      background-color: var(--input-hover);
+    }
+
+    &.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+  }
+
+  .toggle-content {
+    margin-top: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: var(--input);
+  }
+
   min-height: 100px;
 }
 
@@ -24,4 +61,22 @@ input {
   align-self: stretch;
   border-radius: 8px;
   background: var(--input);
+}
+.form-section {
+  margin-bottom: 1rem;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+mt-slide-toggle {
+  margin: 1rem 0;
+}
+
+mt-button {
+  align-self: center;
 }

@@ -1,9 +1,5 @@
 <label class="switch">
-    <input 
-      type="checkbox" 
-      [checked]="checked" 
-      (change)="onToggle($event)"
-    >
-    <span class="slider"></span>
-    <span class="label">{{label}}</span>
-  </label>
+  <span class="label">{{ label }}</span>
+  <input type="checkbox" [checked]="checked" (click)="onToggle()" />
+  <span class="slider"></span>
+</label>
