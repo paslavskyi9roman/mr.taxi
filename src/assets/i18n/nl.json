@@ -17,6 +17,24 @@
     "COMMENT_LABEL": "Voeg een opmerking toe (optioneel):",
     "BOOK_RIDE_BUTTON": "Boek een rit",
     "CANCEL_BUTTON": "Annuleren",
-    "REMOVE_STOP": "Verwijderen"
+    "REMOVE_STOP": "Verwijderen",
+    "ADDITIONAL_INFO": "Extra informatie"
+  },
+  "ADDITIONAL_INFO_FORM": {
+    "LUGGAGE": {
+      "TITLE": "Ik heb bagage",
+      "SMALL_LUGGAGE": "Kleine bagage",
+      "MEDIUM_LUGGAGE": "Middelgrote bagage",
+      "LARGE_LUGGAGE": "Grote bagage"
+    },
+    "SCHEDULE_RIDE": {
+      "TITLE": "Rit plannen",
+      "DATE_LABEL": "Datum:",
+      "TIME_LABEL": "Tijd:"
+    },
+    "FLIGHT_NUMBER": {
+      "TITLE": "Vluchtnummer toevoegen"
+    },
+    "SAVE_BUTTON": "Opslaan"
   }
 }

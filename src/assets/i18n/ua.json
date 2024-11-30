@@ -17,6 +17,24 @@
     "COMMENT_LABEL": "Додати коментар (необов'язково):",
     "BOOK_RIDE_BUTTON": "Замовити поїздку",
     "CANCEL_BUTTON": "Скасувати",
-    "REMOVE_STOP": "Видалити"
+    "REMOVE_STOP": "Видалити",
+    "ADDITIONAL_INFO": "Додаткова інформація"
+  },
+  "ADDITIONAL_INFO_FORM": {
+    "LUGGAGE": {
+      "TITLE": "У мене є багаж",
+      "SMALL_LUGGAGE": "Малий багаж",
+      "MEDIUM_LUGGAGE": "Середній багаж",
+      "LARGE_LUGGAGE": "Великий багаж"
+    },
+    "SCHEDULE_RIDE": {
+      "TITLE": "Запланувати поїздку",
+      "DATE_LABEL": "Дата:",
+      "TIME_LABEL": "Час:"
+    },
+    "FLIGHT_NUMBER": {
+      "TITLE": "Додати номер рейсу"
+    },
+    "SAVE_BUTTON": "Зберегти"
   }
 }
