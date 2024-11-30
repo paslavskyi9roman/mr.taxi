@@ -17,6 +17,24 @@
     "COMMENT_LABEL": "Add comment (optional):",
     "BOOK_RIDE_BUTTON": "Book a Ride",
     "CANCEL_BUTTON": "Cancel",
-    "REMOVE_STOP": "Remove"
+    "REMOVE_STOP": "Remove",
+    "ADDITIONAL_INFO": "Additional info"
+  },
+  "ADDITIONAL_INFO_FORM": {
+    "LUGGAGE": {
+      "TITLE": "I have luggage",
+      "SMALL_LUGGAGE": "Small luggage",
+      "MEDIUM_LUGGAGE": "Medium luggage",
+      "LARGE_LUGGAGE": "Large luggage"
+    },
+    "SCHEDULE_RIDE": {
+      "TITLE": "Schedule Ride",
+      "DATE_LABEL": "Date:",
+      "TIME_LABEL": "Time:"
+    },
+    "FLIGHT_NUMBER": {
+      "TITLE": "Add Flight Number"
+    },
+    "SAVE_BUTTON": "Save"
   }
 }

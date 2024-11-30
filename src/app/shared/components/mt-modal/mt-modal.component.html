@@ -1,8 +1,10 @@
 <div class="modal-backdrop"></div>
 <div class="modal-container" (clickOutside)="close.emit()">
   <div class="modal-header">
-    <h2>{{title}}</h2>
-    <button class="close-button" (click)="close.emit()">×</button>
+    <h2>{{ title }}</h2>
+    <button class="close-button" (click)="close.emit()">
+      <img src="assets/styles/icons/close.svg" alt="Close" />
+    </button>
   </div>
   <div class="modal-content">
     <ng-content></ng-content>

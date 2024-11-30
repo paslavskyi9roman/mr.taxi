@@ -1,5 +1,5 @@
 <header>
-  <h1>MR. Taxi</h1>
+  <img src="assets/styles/icons/logo.svg" alt="Logo" class="logo">
   <div class="right">
     <div class="language-select">
       <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
@@ -9,7 +9,7 @@
         (selectionChange)="onLanguageChange($event)"
       ></app-dropdown-menu>
     </div>
-    <app-theme-switcher></app-theme-switcher>
+    <mt-theme-switcher></mt-theme-switcher>
     <mt-button label="Sign up" type="add" size="medium"></mt-button>
   </div>
 </header>

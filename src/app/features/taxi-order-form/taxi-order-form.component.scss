@@ -55,7 +55,9 @@ div {
   flex-direction: column;
 }
 
-label, input, textarea {
+label,
+input,
+textarea {
   width: 100%;
 }
 
@@ -68,10 +70,15 @@ label, input, textarea {
 }
 
 .passenger-buttons button {
+  width: 36px;
+  height: 36px;
   background-color: var(--grey);
   border: none;
-  padding: 0.5rem;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .passenger-buttons .decrease {
@@ -96,7 +103,7 @@ input:not(#numberOfPassengers) {
   gap: 8px;
   align-self: stretch;
   border-radius: 8px;
-  background: var(--input, #1E1F22);
+  background: var(--input, #1e1f22);
 }
 
 .add-ride-btn {
@@ -104,4 +111,24 @@ input:not(#numberOfPassengers) {
   justify-content: center;
   gap: 4px;
   color: var(--primary-color);
+}
+
+.additional-info {
+  display: flex;
+  flex-direction: row;
+  span {
+    color: var(--primary-color);
+  }
+  gap: 1rem;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.additional-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
