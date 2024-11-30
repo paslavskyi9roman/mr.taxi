@@ -2,33 +2,49 @@
   <div>
     <mt-slide-toggle
       [checked]="showLuggage"
-      label="I have luggage"
+      label="{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.TITLE' | translate }}"
       (checkedChange)="toggleLuggage($event)"
     ></mt-slide-toggle>
-    <div class="toggle-content" *ngIf="showLuggage">
-      <select id="luggage" formControlName="luggage">
-        <option value="">Select an option</option>
-        <option value="none">No luggage</option>
-        <option value="small">Small luggage</option>
-        <option value="large">Large luggage</option>
-      </select>
+    <div class="toggle-content luggage-options" *ngIf="showLuggage">
+      <div
+        class="luggage-option"
+        [class.active]="selectedLuggage === 'small'"
+        (click)="selectLuggage('small')">
+        <img ngSrc="assets/styles/icons/luggage/luggage-small.svg" alt="No luggage" height="64" width="64">
+        <span>{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.SMALL_LUGGAGE' | translate }}</span>
+      </div>
+      <div
+        class="luggage-option"
+        [class.active]="selectedLuggage === 'medium'"
+        (click)="selectLuggage('medium')">
+        <img ngSrc="assets/styles/icons/luggage/luggage-medium.svg" alt="Small luggage" height="64" width="64">
+        <span>{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.MEDIUM_LUGGAGE' | translate }}</span>
+      </div>
+      <div
+        class="luggage-option"
+        [class.active]="selectedLuggage === 'large'"
+        (click)="selectLuggage('large')">
+        <img ngSrc="assets/styles/icons/luggage/luggage-large.svg" alt="Large luggage" height="64" width="64">
+        <span>{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.LARGE_LUGGAGE' | translate }}</span>
+      </div>
     </div>
+
   </div>
 
   <div>
     <mt-slide-toggle
       [checked]="showScheduledRide"
-      label="Schedule Ride"
+      label="{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.TITLE' | translate }}"
       (checkedChange)="toggleScheduledRide($event)"
     ></mt-slide-toggle>
     <div class="toggle-content" *ngIf="showScheduledRide">
       <div class="schedule-inputs">
         <div class="date-field">
-          <label for="rideDate">Date:</label>
+          <label for="rideDate">{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.DATE_LABEL' | translate }}</label>
           <input type="date" id="rideDate" formControlName="rideDate" />
         </div>
         <div class="time-field">
-          <label for="rideTime">Time:</label>
+          <label for="rideTime">{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.TIME_LABEL' | translate }}</label>
           <input type="time" id="rideTime" [value]="currentTime" formControlName="rideTime" />
         </div>
       </div>
@@ -38,7 +54,7 @@
   <div>
     <mt-slide-toggle
       [checked]="showFlightNumber"
-      label="Add Flight Number"
+      label="{{ 'ADDITIONAL_INFO_FORM.FLIGHT_NUMBER.TITLE' | translate }}"
       (checkedChange)="toggleFlightNumber($event)"
     ></mt-slide-toggle>
     <div class="toggle-content" *ngIf="showFlightNumber">
@@ -46,5 +62,5 @@
     </div>
   </div>
 
-  <mt-button label="Save"></mt-button>
+  <mt-button label="{{ 'ADDITIONAL_INFO_FORM.SAVE_BUTTON' | translate }}"></mt-button>
 </form>

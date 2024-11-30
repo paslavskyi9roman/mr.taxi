@@ -1,6 +1,5 @@
 form {
   width: 392px;
-  width: 392px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -43,7 +42,7 @@ textarea {
     }
   }
 
-  .toggle-content {
+  .фtoggle-content {
     margin-top: 1rem;
     padding: 12px;
     border-radius: 8px;
@@ -75,11 +74,12 @@ input {
 }
 
 mt-slide-toggle {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 mt-button {
   align-self: center;
+  margin-top: 1rem;
 }
 
 .time-inputs {
@@ -130,5 +130,42 @@ mt-button {
   input[type='time']::-webkit-inner-spin-button,
   input[type='time']::-webkit-clear-button {
     display: none;
+  }
+}
+
+
+.luggage-options {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.luggage-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+
+  img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+  }
+
+  span {
+    font-size: 14px;
+    color: var(--primary-color);
+  }
+
+  &:hover {
+    background-color: var(--input-hover);
+  }
+
+  &.active {
+    border-color: #F5B70D;
   }
 }

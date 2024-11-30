@@ -40,11 +40,13 @@ export class TaxiOrderFormComponent {
       passengerPhoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}$/)]],
       comment: [''],
       luggage: [''],
-      scheduledRide: [''],
+      rideDate: [''],
+      rideTime: [''],
       flightNumber: ['']
     });
     this.additionalStops = this.taxiOrderForm.get('additionalStops') as FormArray;
   }
+
 
   public onSubmit(): void {
     if (this.taxiOrderForm.valid) {
@@ -65,8 +67,11 @@ export class TaxiOrderFormComponent {
   }
 
   public addStop(): void {
-    this.additionalStops.push(this.formBuilder.control(''));
+    if (this.additionalStops.length < 3) {
+      this.additionalStops.push(this.formBuilder.control(''));
+    }
   }
+
 
   public removeStop(index: number): void {
     this.additionalStops.removeAt(index);
@@ -79,7 +84,8 @@ export class TaxiOrderFormComponent {
   public handleConfirm(additionalInfoFormData: any): void {
     this.taxiOrderForm.patchValue({
       luggage: additionalInfoFormData.luggage,
-      scheduledRide: additionalInfoFormData.scheduledRide,
+      rideDate: additionalInfoFormData.rideDate,
+      rideTime: additionalInfoFormData.rideTime,
       flightNumber: additionalInfoFormData.flightNumber
     });
 

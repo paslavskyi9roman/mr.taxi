@@ -10,8 +10,8 @@
     />
   </div>
   <div>
-    <button class="add-ride-btn" type="button" (click)="addStop()">
-      <img src="assets/styles/icons/add.svg" alt="Add" />
+    <button *ngIf="additionalStops.length < 3" class="add-ride-btn" type="button" (click)="addStop()"  [disabled]="additionalStops.length >= 3">
+    <img src="assets/styles/icons/add.svg" alt="Add" />
       <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
     </button>
     <div formArrayName="additionalStops">
@@ -69,7 +69,7 @@
     </div>
     <div class="additional-info" (click)="openModal()">
       <img src="assets/styles/icons/additional-info.svg" alt="Additional Info" />
-      <span>Additional info</span>
+      <span>{{ 'TAXI_ORDER_FORM.ADDITIONAL_INFO' | translate }}</span>
     </div>
   </div>
   <div>
@@ -96,7 +96,7 @@
   ></mt-button>
   <mt-modal
     *ngIf="isModalOpen"
-    title="Additional info"
+    title="{{ 'TAXI_ORDER_FORM.ADDITIONAL_INFO' | translate }}"
     (confirm)="handleConfirm($event)"
     (close)="closeModal()"
   >

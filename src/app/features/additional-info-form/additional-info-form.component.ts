@@ -1,13 +1,15 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/mt-slide-toggle.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-additional-info-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MtButtonComponent, CommonModule, MtSlideToggleComponent],
+  imports: [ReactiveFormsModule, MtButtonComponent, CommonModule, MtSlideToggleComponent, NgOptimizedImage, TranslatePipe
+  ],
   templateUrl: './additional-info-form.component.html',
   styleUrls: ['./additional-info-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,14 +22,17 @@ export class AdditionalInfoFormComponent implements OnInit {
   public showScheduledRide = false;
   public showFlightNumber = false;
   public currentTime = '';
+  public selectedLuggage: string = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.additionalInfoForm = this.formBuilder.group({
       luggage: [''],
-      scheduledRide: [''],
+      rideDate: [''],
+      rideTime: [''],
       flightNumber: ['']
     });
   }
+
   ngOnInit(): void {
     this.getCurrentTime();
   }
@@ -64,5 +69,10 @@ export class AdditionalInfoFormComponent implements OnInit {
       hour: '2-digit',
       minute: '2-digit'
     });
+  }
+
+  public selectLuggage(type: string): void {
+    this.selectedLuggage = type;
+    this.additionalInfoForm.get('luggage')?.setValue(type);
   }
 }
