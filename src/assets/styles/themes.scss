@@ -39,6 +39,7 @@
   --system-light-red: #{$light-system-light-red};
   --system-light-yellow: #{$light-system-light-yellow};
   --icon-filter: invert(0%);
+  --icon-filter-inverted: invert(100%);
 }
 
 .dark-theme {
@@ -79,4 +80,5 @@
   --system-light-red: #{$dark-system-light-red};
   --system-light-yellow: #{$dark-system-light-yellow};
   --icon-filter: invert(100%);
+  --icon-filter-inverted: invert(0%);
 }
