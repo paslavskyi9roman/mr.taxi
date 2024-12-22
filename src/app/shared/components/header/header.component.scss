@@ -12,8 +12,15 @@ header {
   }
 
   .logo {
-    width: 122px;
-    height: 40px;
+    display: flex;
+    align-items: center;
+    img {
+      position: absolute;
+      width: 160px;
+    }
+    &-text {
+      filter: var(--icon-filter-inverted);
+    }
   }
 }
 
@@ -23,7 +30,7 @@ header {
   background-size: cover;
   background-position: center;
   margin-right: 8px;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .language-select {

@@ -6,6 +6,12 @@ form {
   background-color: var(--section-color);
   border-radius: 12px;
   width: 555px;
+  @media screen and (max-width: 640px) {
+    width: 85vw;
+    h2 {
+      font-size: 21px;
+    }
+  }
 }
 
 .additional-stop {
@@ -109,8 +115,11 @@ input:not(#numberOfPassengers) {
 .add-ride-btn {
   display: flex;
   justify-content: center;
-  gap: 4px;
+  gap: 1rem;
   color: var(--primary-color);
+  @media screen and (max-width: 540px) {
+    justify-content: start;
+  }
 }
 
 .additional-info {
@@ -131,4 +140,10 @@ input:not(#numberOfPassengers) {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    gap: 22px;
+    margin: 10px;
+    align-items: flex-start;
+  }
 }

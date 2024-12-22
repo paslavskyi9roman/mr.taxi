@@ -1,5 +1,8 @@
 <header>
-  <img src="assets/styles/icons/logo.svg" alt="Logo" class="logo">
+  <div class="logo">
+    <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
+    <img src="assets/styles/icons/text-logo.svg" alt="Logo" class="logo-text" />
+  </div>
   <div class="right">
     <div class="language-select">
       <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
@@ -10,6 +13,6 @@
       ></app-dropdown-menu>
     </div>
     <mt-theme-switcher></mt-theme-switcher>
-    <mt-button label="Sign up" type="add" size="medium"></mt-button>
+    <!-- <mt-button label="Sign up" type="add" size="medium"></mt-button> -->
   </div>
 </header>
