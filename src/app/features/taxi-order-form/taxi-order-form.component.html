@@ -10,25 +10,29 @@
     />
   </div>
   <div>
-    <button *ngIf="additionalStops.length < 3" class="add-ride-btn" type="button" (click)="addStop()"  [disabled]="additionalStops.length >= 3">
-    <img src="assets/styles/icons/add.svg" alt="Add" />
-      <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
-    </button>
+    @if (additionalStops.length < 3) {
+      <button class="add-ride-btn" type="button" (click)="addStop()"
+              [disabled]="additionalStops.length >= 3">
+        <img src="assets/styles/icons/add.svg" alt="Add" />
+        <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
+      </button>
+    }
     <div formArrayName="additionalStops">
-      <div *ngFor="let stop of additionalStops.controls; let i = index">
+      @for (stop of additionalStops.controls; track $index) {
         <div class="additional-stop">
           <input
             type="text"
-            [formControlName]="i"
+            [formControlName]="$index"
             placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
-              i + 1
+              $index + 1
             }}"
           />
-          <button type="button" (click)="removeStop(i)">
+          <button type="button" (click)="removeStop($index)">
             {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
           </button>
         </div>
-      </div>
+      }
+
     </div>
   </div>
   <div>
@@ -54,8 +58,8 @@
   <div class="additional-info-wrapper">
     <div>
       <label for="numberOfPassengers">{{
-        'TAXI_ORDER_FORM.NUMBER_OF_PASSENGERS_LABEL' | translate
-      }}</label>
+          'TAXI_ORDER_FORM.NUMBER_OF_PASSENGERS_LABEL' | translate
+        }}</label>
       <div class="passenger-buttons">
         <button type="button" (click)="decreasePassengers()" class="decrease">-</button>
         <input
@@ -74,8 +78,8 @@
   </div>
   <div>
     <label for="passengerPhoneNumber">{{
-      'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_LABEL' | translate
-    }}</label>
+        'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_LABEL' | translate
+      }}</label>
     <input
       type="tel"
       id="passengerPhoneNumber"
@@ -94,12 +98,13 @@
     label="{{ 'TAXI_ORDER_FORM.BOOK_RIDE_BUTTON' | translate }}"
     [disabled]="taxiOrderForm.invalid"
   ></mt-button>
-  <mt-modal
-    *ngIf="isModalOpen"
-    title="{{ 'TAXI_ORDER_FORM.ADDITIONAL_INFO' | translate }}"
-    (confirm)="handleConfirm($event)"
-    (close)="closeModal()"
-  >
-    <app-additional-info-form (formSubmitted)="handleConfirm($event)"></app-additional-info-form>
-  </mt-modal>
+  @if (isModalOpen) {
+    <mt-modal
+      title="{{ 'TAXI_ORDER_FORM.ADDITIONAL_INFO' | translate }}"
+      (confirm)="handleConfirm($event)"
+      (close)="closeModal()"
+    >
+      <app-additional-info-form (formSubmitted)="handleConfirm($event)"></app-additional-info-form>
+    </mt-modal>
+  }
 </form>

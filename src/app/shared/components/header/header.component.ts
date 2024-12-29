@@ -1,18 +1,15 @@
 import { Component, inject } from '@angular/core';
+
+import { TranslateService } from '@ngx-translate/core';
+
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { Language } from '../../../core/models/language';
-import { TranslateService } from '@ngx-translate/core';
-import { MtButtonComponent } from '../mt-button/mt-button.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    ThemeSwitcherComponent,
-    DropdownMenuComponent,
-    MtButtonComponent
-  ],
+  imports: [ThemeSwitcherComponent, DropdownMenuComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -26,10 +23,12 @@ export class HeaderComponent {
     { value: 'Ukrainian', label: Language.Ukrainian, icon: 'assets/styles/icons/flags/ua-flag.svg' }
   ];
 
-  public selectedFlag: string = this.languages.find(lang => lang.label === this.selectedLanguage)?.icon || 'assets/styles/icons/flags/gb-flag.svg';
+  public selectedFlag: string =
+    this.languages.find((lang) => lang.label === this.selectedLanguage)?.icon ||
+    'assets/styles/icons/flags/gb-flag.svg';
 
   public onLanguageChange(language: Language): void {
-    const selectedItem = this.languages.find(item => item.value === language);
+    const selectedItem = this.languages.find((item) => item.value === language);
     this.selectedLanguage = selectedItem?.value || Language.English;
     this.selectedFlag = selectedItem?.icon || 'assets/styles/icons/flags/gb-flag.svg';
     this.translate.use(selectedItem!.label);

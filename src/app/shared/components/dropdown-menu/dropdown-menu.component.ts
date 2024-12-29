@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 
 interface DropdownItem {
@@ -11,16 +12,13 @@ interface DropdownItem {
 
 @Component({
   selector: 'app-dropdown-menu',
-  standalone: true,
-  imports: [
-    CommonModule, ClickOutsideDirective
-  ],
+  imports: [CommonModule, ClickOutsideDirective],
   templateUrl: './dropdown-menu.component.html',
   styleUrl: './dropdown-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownMenuComponent {
-  @Input() items: DropdownItem[] = []
+  @Input() items: DropdownItem[] = [];
   @Input() placeholder: string = 'Select an option';
   @Output() selectionChange = new EventEmitter<any>();
 
@@ -28,7 +26,6 @@ export class DropdownMenuComponent {
   selectedItem: DropdownItem | null = null;
 
   public toggleDropdown(): void {
-    console.log(this.items);
     this.isOpen = !this.isOpen;
   }
 

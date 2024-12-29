@@ -7,7 +7,6 @@ import { TaxiOrderFormComponent } from '../taxi-order-form/taxi-order-form.compo
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [TranslatePipe, TranslateModule, CommonModule, TaxiOrderFormComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 @Component({
   selector: 'mt-slide-toggle',
-  standalone: true,
   imports: [],
   templateUrl: './mt-slide-toggle.component.html',
   styleUrl: './mt-slide-toggle.component.scss',
