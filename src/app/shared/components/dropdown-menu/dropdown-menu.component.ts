@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 
 interface DropdownItem {
@@ -10,14 +11,13 @@ interface DropdownItem {
 }
 
 @Component({
-  selector: 'app-dropdown-menu',
-  standalone: true,
-  imports: [
-    CommonModule, ClickOutsideDirective
-  ],
-  templateUrl: './dropdown-menu.component.html',
-  styleUrl: './dropdown-menu.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-dropdown-menu',
+    imports: [
+        CommonModule, ClickOutsideDirective
+    ],
+    templateUrl: './dropdown-menu.component.html',
+    styleUrl: './dropdown-menu.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownMenuComponent {
   @Input() items: DropdownItem[] = []

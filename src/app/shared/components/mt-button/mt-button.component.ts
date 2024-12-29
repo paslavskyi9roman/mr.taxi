@@ -17,11 +17,10 @@ import {NgClass} from '@angular/common';
  *
  */
 @Component({
-  selector: 'mt-button',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './mt-button.component.html',
-  styleUrls: ['./mt-button.component.scss']
+    selector: 'mt-button',
+    imports: [NgClass],
+    templateUrl: './mt-button.component.html',
+    styleUrls: ['./mt-button.component.scss']
 })
 export class MtButtonComponent {
   @Input() label: string = '';

@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/mt-slide-toggle.component';
+
 import { TranslatePipe } from '@ngx-translate/core';
+
+import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
+import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/mt-slide-toggle.component';
 
 @Component({
   selector: 'app-additional-info-form',
-  standalone: true,
   imports: [ReactiveFormsModule, MtButtonComponent, CommonModule, MtSlideToggleComponent, NgOptimizedImage, TranslatePipe
   ],
   templateUrl: './additional-info-form.component.html',

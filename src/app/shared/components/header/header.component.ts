@@ -1,20 +1,20 @@
 import { Component, inject } from '@angular/core';
+
+import { TranslateService } from '@ngx-translate/core';
+
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { Language } from '../../../core/models/language';
-import { TranslateService } from '@ngx-translate/core';
-import { MtButtonComponent } from '../mt-button/mt-button.component';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    ThemeSwitcherComponent,
-    DropdownMenuComponent,
-    MtButtonComponent
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    standalone: true,
+    imports: [
+        ThemeSwitcherComponent,
+        DropdownMenuComponent,
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   public selectedLanguage: string = localStorage.getItem('selectedLanguage') || Language.English;

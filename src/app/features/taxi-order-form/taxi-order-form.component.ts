@@ -1,23 +1,21 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
-import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
+
 import { TranslatePipe } from '@ngx-translate/core';
+
+import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { MtModalComponent } from '../../shared/components/mt-modal/mt-modal.component';
-import { NgForOf, NgIf } from '@angular/common';
 import { AdditionalInfoFormComponent } from '../additional-info-form/additional-info-form.component';
 import { TaxiOrderService } from '../../core/services/taxi-order.service';
 
 @Component({
   selector: 'app-taxi-order-form',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MtButtonComponent,
     TranslatePipe,
     MtModalComponent,
-    NgIf,
     AdditionalInfoFormComponent,
-    NgForOf
   ],
   templateUrl: './taxi-order-form.component.html',
   styleUrls: ['./taxi-order-form.component.scss']

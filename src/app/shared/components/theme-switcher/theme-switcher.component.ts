@@ -1,18 +1,17 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
 import { ThemeService } from '../../../core/services/theme.service';
 import { Theme } from '../../../core/models/theme';
 
 @Component({
   selector: 'mt-theme-switcher',
-  standalone: true,
   imports: [
-    CommonModule,
-    NgOptimizedImage
+    CommonModule
   ],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeSwitcherComponent {
   private themeService = inject(ThemeService);
@@ -30,4 +29,4 @@ export class ThemeSwitcherComponent {
   public toggleTheme(): void {
     this.themeService.toggleTheme();
   }
- }
+}
