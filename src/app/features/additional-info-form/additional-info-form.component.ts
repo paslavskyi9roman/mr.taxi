@@ -9,7 +9,13 @@ import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/
 
 @Component({
   selector: 'app-additional-info-form',
-  imports: [ReactiveFormsModule, MtButtonComponent, CommonModule, MtSlideToggleComponent, NgOptimizedImage, TranslatePipe
+  imports: [
+    ReactiveFormsModule,
+    MtButtonComponent,
+    CommonModule,
+    MtSlideToggleComponent,
+    NgOptimizedImage,
+    TranslatePipe
   ],
   templateUrl: './additional-info-form.component.html',
   styleUrls: ['./additional-info-form.component.scss'],

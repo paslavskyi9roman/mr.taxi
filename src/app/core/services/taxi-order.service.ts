@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { TaxiBookingData } from '../models/taxi-booking-data.model';
-import {environment} from '../../../environment/environemnt'
+import { environment } from '../../../environment/environemnt';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class TaxiOrderService {
 
   private createBookMessage(bookingData: TaxiBookingData): string {
     const luggageText = bookingData.luggage ? bookingData.luggage : 'None';
-    const additionalStopsText = bookingData.additionalStops.length > 0 ? bookingData.additionalStops.join(', ') : 'None';
+    const additionalStopsText =
+      bookingData.additionalStops.length > 0 ? bookingData.additionalStops.join(', ') : 'None';
     let message = `Booking Details:\n- Pick-up: ${bookingData.from}\n- Destination: ${bookingData.to}\n- Passenger Name: ${bookingData.passengerName}\n- Passenger Phone: ${bookingData.passengerPhoneNumber}\n- Passengers: ${bookingData.numberOfPassengers}\n- Comment: ${bookingData.comment}\n- Additional Stops: ${additionalStopsText}\n- Luggage: ${luggageText}`;
 
     if (bookingData.rideDate) {

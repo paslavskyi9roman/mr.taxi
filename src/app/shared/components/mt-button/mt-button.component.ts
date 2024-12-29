@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {NgClass} from '@angular/common';
+import { NgClass } from '@angular/common';
 /**
  *
  * Basic usage:
@@ -10,17 +10,17 @@ import {NgClass} from '@angular/common';
  *
  * Disabled state:
  * <mt-button label="Disabled Button" [disabled]="true"></mt-button>
- * 
+ *
  * Size variants:
  * <mt-button label="Large Button" size="large"></mt-button>
  * <mt-button label="Medium Button" size="medium"></mt-button>
  *
  */
 @Component({
-    selector: 'mt-button',
-    imports: [NgClass],
-    templateUrl: './mt-button.component.html',
-    styleUrls: ['./mt-button.component.scss']
+  selector: 'mt-button',
+  imports: [NgClass],
+  templateUrl: './mt-button.component.html',
+  styleUrls: ['./mt-button.component.scss']
 })
 export class MtButtonComponent {
   @Input() label: string = '';

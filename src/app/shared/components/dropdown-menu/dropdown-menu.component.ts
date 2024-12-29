@@ -11,16 +11,14 @@ interface DropdownItem {
 }
 
 @Component({
-    selector: 'app-dropdown-menu',
-    imports: [
-        CommonModule, ClickOutsideDirective
-    ],
-    templateUrl: './dropdown-menu.component.html',
-    styleUrl: './dropdown-menu.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dropdown-menu',
+  imports: [CommonModule, ClickOutsideDirective],
+  templateUrl: './dropdown-menu.component.html',
+  styleUrl: './dropdown-menu.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownMenuComponent {
-  @Input() items: DropdownItem[] = []
+  @Input() items: DropdownItem[] = [];
   @Input() placeholder: string = 'Select an option';
   @Output() selectionChange = new EventEmitter<any>();
 

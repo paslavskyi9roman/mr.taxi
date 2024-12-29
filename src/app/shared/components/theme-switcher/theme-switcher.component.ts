@@ -6,9 +6,7 @@ import { Theme } from '../../../core/models/theme';
 
 @Component({
   selector: 'mt-theme-switcher',
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

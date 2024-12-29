@@ -15,7 +15,7 @@ import { TaxiOrderService } from '../../core/services/taxi-order.service';
     MtButtonComponent,
     TranslatePipe,
     MtModalComponent,
-    AdditionalInfoFormComponent,
+    AdditionalInfoFormComponent
   ],
   templateUrl: './taxi-order-form.component.html',
   styleUrls: ['./taxi-order-form.component.scss']
