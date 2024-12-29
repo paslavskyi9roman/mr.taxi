@@ -3,6 +3,9 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @media screen and (max-width: 390px) {
+    width: 260px;
+  }
 }
 
 input,
@@ -133,7 +136,6 @@ mt-button {
   }
 }
 
-
 .luggage-options {
   display: flex;
   gap: 16px;
@@ -166,6 +168,6 @@ mt-button {
   }
 
   &.active {
-    border-color: #F5B70D;
+    border-color: #f5b70d;
   }
 }
