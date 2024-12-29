@@ -26,7 +26,6 @@ export class DropdownMenuComponent {
   selectedItem: DropdownItem | null = null;
 
   public toggleDropdown(): void {
-    console.log(this.items);
     this.isOpen = !this.isOpen;
   }
 
