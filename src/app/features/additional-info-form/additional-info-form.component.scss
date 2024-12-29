@@ -3,7 +3,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 550px) {
     width: 260px;
   }
 }
