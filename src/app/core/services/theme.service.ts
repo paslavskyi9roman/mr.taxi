@@ -12,7 +12,7 @@ export class ThemeService {
   }
 
   private getSavedTheme(): Theme {
-    return (localStorage.getItem('theme') as Theme) || Theme.Light;
+    return (localStorage.getItem('theme') as Theme) || Theme.Dark;
   }
 
   private applyTheme(theme: Theme): void {
