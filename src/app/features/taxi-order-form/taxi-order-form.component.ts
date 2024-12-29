@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { TranslatePipe } from '@ngx-translate/core';
-import {MtModalComponent} from "../../shared/components/mt-modal/mt-modal.component";
-import {NgForOf, NgIf} from "@angular/common";
-import {AdditionalInfoFormComponent} from "../additional-info-form/additional-info-form.component";
+import { MtModalComponent } from '../../shared/components/mt-modal/mt-modal.component';
+import { NgForOf, NgIf } from '@angular/common';
+import { AdditionalInfoFormComponent } from '../additional-info-form/additional-info-form.component';
+import { TaxiOrderService } from '../../core/services/taxi-order.service';
 
 @Component({
   selector: 'app-taxi-order-form',
@@ -23,10 +24,10 @@ import {AdditionalInfoFormComponent} from "../additional-info-form/additional-in
 })
 export class TaxiOrderFormComponent {
   public taxiOrderForm: FormGroup;
-  public showAdditionalStops: boolean = false;
   public additionalStops: FormArray;
   public isModalOpen = false;
 
+  private taxiOrderService = inject(TaxiOrderService);
   private readonly formBuilder: FormBuilder;
 
   constructor(formBuilder: FormBuilder) {
@@ -47,10 +48,9 @@ export class TaxiOrderFormComponent {
     this.additionalStops = this.taxiOrderForm.get('additionalStops') as FormArray;
   }
 
-
   public onSubmit(): void {
     if (this.taxiOrderForm.valid) {
-      console.log(this.taxiOrderForm.value);
+      this.taxiOrderService.bookATaxi(this.taxiOrderForm.value);
     }
   }
 
@@ -72,7 +72,6 @@ export class TaxiOrderFormComponent {
     }
   }
 
-
   public removeStop(index: number): void {
     this.additionalStops.removeAt(index);
   }
@@ -89,7 +88,6 @@ export class TaxiOrderFormComponent {
       flightNumber: additionalInfoFormData.flightNumber
     });
 
-    console.log(this.taxiOrderForm.value);
     this.isModalOpen = false;
   }
 

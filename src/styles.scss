@@ -107,3 +107,12 @@ button:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--input) inset;
+  -webkit-text-fill-color: var(--primary-color);
+}
