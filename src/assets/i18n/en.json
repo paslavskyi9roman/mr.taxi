@@ -18,7 +18,8 @@
     "BOOK_RIDE_BUTTON": "Book a Ride",
     "CANCEL_BUTTON": "Cancel",
     "REMOVE_STOP": "Remove",
-    "ADDITIONAL_INFO": "Additional info"
+    "ADDITIONAL_INFO": "Additional info",
+    "COMMENT_PLACEHOLDER": "Enter comment"
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -33,7 +34,8 @@
       "TIME_LABEL": "Time:"
     },
     "FLIGHT_NUMBER": {
-      "TITLE": "Add Flight Number"
+      "TITLE": "Add Flight Number",
+      "PLACEHOLDER": "Flight Number:"
     },
     "SAVE_BUTTON": "Save"
   }

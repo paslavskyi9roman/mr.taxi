@@ -109,6 +109,7 @@ mt-button {
 
 .schedule-inputs {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   align-items: flex-start;
 }
@@ -122,6 +123,10 @@ mt-button {
   input {
     width: 156px;
     text-align: center;
+    @media screen and (max-width: 550px) {
+      width: 120px;
+      padding: 12px 8px 12px;
+    }
   }
 }
 

@@ -18,7 +18,9 @@
     "BOOK_RIDE_BUTTON": "Замовити поїздку",
     "CANCEL_BUTTON": "Скасувати",
     "REMOVE_STOP": "Видалити",
-    "ADDITIONAL_INFO": "Додаткова інформація"
+    "ADDITIONAL_INFO": "Додаткова інформація",
+    "COMMENT_PLACEHOLDER": "Додайте коментар"
+
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -33,7 +35,8 @@
       "TIME_LABEL": "Час:"
     },
     "FLIGHT_NUMBER": {
-      "TITLE": "Додати номер рейсу"
+      "TITLE": "Додати номер рейсу",
+      "PLACEHOLDER": "Номер рейсу:"
     },
     "SAVE_BUTTON": "Зберегти"
   }

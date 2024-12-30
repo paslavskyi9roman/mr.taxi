@@ -18,7 +18,9 @@
     "BOOK_RIDE_BUTTON": "Boek een rit",
     "CANCEL_BUTTON": "Annuleren",
     "REMOVE_STOP": "Verwijderen",
-    "ADDITIONAL_INFO": "Extra informatie"
+    "ADDITIONAL_INFO": "Extra informatie",
+    "COMMENT_PLACEHOLDER": "Voer opmerking in"
+
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -33,7 +35,8 @@
       "TIME_LABEL": "Tijd:"
     },
     "FLIGHT_NUMBER": {
-      "TITLE": "Vluchtnummer toevoegen"
+      "TITLE": "Vluchtnummer toevoegen",
+      "PLACEHOLDER": "Vluchtnummer:"
     },
     "SAVE_BUTTON": "Opslaan"
   }

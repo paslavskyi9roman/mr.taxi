@@ -1,5 +1,5 @@
 <form [formGroup]="additionalInfoForm" (ngSubmit)="onSubmit()">
-  <div>
+  <ng-container>
     <mt-slide-toggle
       [checked]="showLuggage"
       label="{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.TITLE' | translate }}"
@@ -28,10 +28,9 @@
         <span>{{ 'ADDITIONAL_INFO_FORM.LUGGAGE.LARGE_LUGGAGE' | translate }}</span>
       </div>
     </div>
+  </ng-container>
 
-  </div>
-
-  <div>
+  <ng-container>
     <mt-slide-toggle
       [checked]="showScheduledRide"
       label="{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.TITLE' | translate }}"
@@ -40,27 +39,25 @@
     <div class="toggle-content" *ngIf="showScheduledRide">
       <div class="schedule-inputs">
         <div class="date-field">
-          <label for="rideDate">{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.DATE_LABEL' | translate }}</label>
           <input type="date" id="rideDate" formControlName="rideDate" />
         </div>
         <div class="time-field">
-          <label for="rideTime">{{ 'ADDITIONAL_INFO_FORM.SCHEDULE_RIDE.TIME_LABEL' | translate }}</label>
           <input type="time" id="rideTime" [value]="currentTime" formControlName="rideTime" />
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 
-  <div>
+  <ng-container>
     <mt-slide-toggle
       [checked]="showFlightNumber"
       label="{{ 'ADDITIONAL_INFO_FORM.FLIGHT_NUMBER.TITLE' | translate }}"
       (checkedChange)="toggleFlightNumber($event)"
     ></mt-slide-toggle>
     <div class="toggle-content" *ngIf="showFlightNumber">
-      <input type="text" id="flightNumber" formControlName="flightNumber" />
+      <input type="text" id="flightNumber" formControlName="flightNumber" placeholder="{{ 'ADDITIONAL_INFO_FORM.FLIGHT_NUMBER.PLACEHOLDER' | translate }}" />
     </div>
-  </div>
+  </ng-container>
 
   <mt-button label="{{ 'ADDITIONAL_INFO_FORM.SAVE_BUTTON' | translate }}"></mt-button>
 </form>
