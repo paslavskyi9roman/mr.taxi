@@ -22,6 +22,11 @@ export const routes: Routes = [
       import('./features/profile/profile.component').then((m) => m.ProfileComponent)
   },
   {
+    path: 'tariffs',
+    loadComponent: () =>
+      import('./features/tariffs/tariffs.component').then((m) => m.TariffsComponent)
+  },
+  {
     path: '**',
     component: HomeComponent
   }

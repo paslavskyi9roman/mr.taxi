@@ -5,11 +5,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { Language } from '../../../core/models/language';
+import {MtButtonComponent} from '../mt-button/mt-button.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ThemeSwitcherComponent, DropdownMenuComponent],
+  imports: [ThemeSwitcherComponent, DropdownMenuComponent, MtButtonComponent, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
