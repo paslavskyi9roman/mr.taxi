@@ -1,7 +1,50 @@
 .tariffs {
   padding: 16px;
-  border-top: 1px solid var(--divider-color);
+  border-top: 1px solid var(--border-color);
+
   h1 {
     color: var(--primary-color);
+  }
+
+  .tariffs-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .tariff-card {
+    padding: 16px;
+    border: 1px solid var(--divider-color);
+    border-radius: 8px;
+    background-color: var(--card-color);
+
+    h2 {
+      margin: 0 0 8px;
+      color: var(--primary-color);
+    }
+
+    p {
+      margin: 0 0 8px;
+      color: var(--secondary-color);
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      color: var(--accent-color);
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0 0 4px;
+        color: var(--additional-text);
+      }
+    }
   }
 }

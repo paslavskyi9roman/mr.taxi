@@ -1,3 +1,15 @@
 <div class="tariffs">
   <h1>Tariffs Page</h1>
+  <div class="tariffs-grid">
+    <div class="tariff-card" *ngFor="let tariff of mockTariffs">
+      <h2>{{ tariff.route.from }} to {{ tariff.route.to }}</h2>
+      <p>Price: {{ tariff.price }}</p>
+      <div *ngIf="tariff.additionalStops.length > 0">
+        <h3>Additional Stops:</h3>
+        <ul>
+          <li *ngFor="let stop of tariff.additionalStops">{{ stop.from }} to {{ stop.to }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
