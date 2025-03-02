@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add New Tariff</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div>
+      <label for="from">From</label>
+      <input id="from" formControlName="from" placeholder="Enter starting city">
+    </div>
+    <div>
+      <label for="to">To</label>
+      <input id="to" formControlName="to" placeholder="Enter destination city">
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" formControlName="price" placeholder="Enter price" type="number">
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <mt-button label="Cancel" (click)="close()"></mt-button>
+  <mt-button label="Save" type="primary" (click)="save()"></mt-button>
+</div>
