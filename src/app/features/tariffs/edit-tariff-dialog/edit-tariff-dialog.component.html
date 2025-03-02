@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="form">
+    <div>
+      <h1>Edit Tariff</h1>
+      <label for="from">From</label>
+      <input id="from" formControlName="from" placeholder="Enter starting city" />
+    </div>
+    <div>
+      <label for="to">To</label>
+      <input id="to" formControlName="to" placeholder="Enter destination city" />
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" formControlName="price" placeholder="Enter price" type="number" />
+    </div>
+    <div class="action-buttons">
+      <mt-button label="Cancel" type="secondary" size="medium" (click)="close()"></mt-button>
+      <mt-button label="Save" type="primary" size="medium" (click)="save()"></mt-button>
+    </div>
+  </form>
+</div>

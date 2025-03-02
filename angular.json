@@ -29,7 +29,10 @@
                 "input": "src"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "src/assets/styles/custom-material-theme.scss"
+            ],
             "scripts": []
           },
           "configurations": {
