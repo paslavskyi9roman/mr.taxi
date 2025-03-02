@@ -3,14 +3,14 @@
   <div class="search-container">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search cities</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Type to search...">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Type to search..." />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <mt-button label="Add new route" type="primary" (click)="addTariff()"></mt-button>
   </div>
 
   <div class="tariffs-grid">
-    <div class="tariff-card" *ngFor="let tariff of filteredTariffs">
+    <div class="tariff-card" *ngFor="let tariff of filteredTariffs" (click)="editTariff(tariff)">
       <div class="tariff-line">
         <div class="icon from-icon"></div>
         <div class="additional-stops" *ngIf="tariff.additionalStops.length > 0">

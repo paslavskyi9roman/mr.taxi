@@ -7,12 +7,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
+import { EditTariffDialogComponent } from './edit-tariff-dialog/edit-tariff-dialog.component';
 
 @Component({
   selector: 'app-tariffs',
   templateUrl: './tariffs.component.html',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule, MtButtonComponent],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MtButtonComponent,
+    EditTariffDialogComponent
+  ],
   styleUrls: ['./tariffs.component.scss']
 })
 export class TariffsComponent {
@@ -44,6 +52,23 @@ export class TariffsComponent {
       if (result) {
         this.tariffs.push(result);
         this.filteredTariffs = [...this.tariffs];
+      }
+    });
+  }
+
+  public editTariff(tariff: Tariff): void {
+    const dialogRef = this.dialog.open(EditTariffDialogComponent, {
+      width: '500px',
+      data: tariff
+    });
+
+    dialogRef.afterClosed().subscribe((result): void => {
+      if (result) {
+        const index = this.tariffs.findIndex((t) => t === tariff);
+        if (index !== -1) {
+          this.tariffs[index] = result;
+          this.filteredTariffs = [...this.tariffs];
+        }
       }
     });
   }
