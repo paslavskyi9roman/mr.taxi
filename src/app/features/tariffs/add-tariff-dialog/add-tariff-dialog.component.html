@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Add New Tariff</h1>
-<div mat-dialog-content>
+<div>
   <form [formGroup]="form">
     <div>
+      <h1>Add New Tariff</h1>
       <label for="from">From</label>
       <input id="from" formControlName="from" placeholder="Enter starting city">
     </div>
@@ -13,9 +13,9 @@
       <label for="price">Price</label>
       <input id="price" formControlName="price" placeholder="Enter price" type="number">
     </div>
+    <div class="action-buttons">
+      <mt-button label="Cancel" type="secondary" size="medium" (click)="close()"></mt-button>
+      <mt-button label="Save" type="primary" size="medium" (click)="save()"></mt-button>
+    </div>
   </form>
-</div>
-<div mat-dialog-actions>
-  <mt-button label="Cancel" (click)="close()"></mt-button>
-  <mt-button label="Save" type="primary" (click)="save()"></mt-button>
 </div>

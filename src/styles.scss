@@ -1,6 +1,13 @@
 @import './assets/styles/themes';
 @import './assets/styles/typography';
 
+:root {
+  --mdc-outlined-text-field-label-text-color: var(--secondary-color);
+  --mdc-outlined-text-field-focus-label-text-color: var(--primary-color);
+  --mdc-outlined-text-field-hover-label-text-color: var(--primary-color);
+  --mat-mdc-form-field-floating-label-color: var(--secondary-color);
+}
+
 *,
 *::before,
 *::after {
@@ -28,8 +35,12 @@ body {
   line-height: 1.5;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--primary-color);
   font-weight: 700;
 }
@@ -108,11 +119,22 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--input) inset;
   -webkit-text-fill-color: var(--primary-color);
+}
+
+.mdc-dialog__container {
+  .mat-mdc-dialog-surface {
+    background-color: var(--section-color);
+    color: var(--primary-color);
+  }
+}
+.mat-mdc-form-field .search-field .mat-mdc-form-field-type-mat-input {
+  .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+    color: var(--secondary-color);
+  }
 }

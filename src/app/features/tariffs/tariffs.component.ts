@@ -16,12 +16,12 @@ import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.
   styleUrls: ['./tariffs.component.scss']
 })
 export class TariffsComponent {
-  tariffs: Tariff[] = mockTariffs;
-  filteredTariffs: Tariff[] = mockTariffs;
+  public tariffs: Tariff[] = mockTariffs;
+  public filteredTariffs: Tariff[] = mockTariffs;
 
   constructor(private dialog: MatDialog) {}
 
-  applyFilter(event: Event) {
+  public applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     const filter = filterValue.toLowerCase();
     this.filteredTariffs = this.tariffs.filter(
@@ -35,18 +35,16 @@ export class TariffsComponent {
     );
   }
 
-  addTariff() {
+  public addTariff(): void {
     const dialogRef = this.dialog.open(AddTariffDialogComponent, {
-      width: '400px'
+      width: '500px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result): void => {
       if (result) {
         this.tariffs.push(result);
         this.filteredTariffs = [...this.tariffs];
       }
     });
   }
-
-  protected readonly mockTariffs = mockTariffs;
 }

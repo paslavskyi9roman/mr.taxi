@@ -53,6 +53,7 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+
       .additional-stops {
         z-index: 1;
       }
@@ -66,11 +67,11 @@
         width: 2px;
         background: var(--divider-color);
         background: repeating-linear-gradient(
-          to bottom,
-          var(--divider-color),
-          var(--divider-color) 4px,
-          transparent 4px,
-          transparent 8px
+            to bottom,
+            var(--divider-color),
+            var(--divider-color) 4px,
+            transparent 4px,
+            transparent 8px
         );
       }
 
@@ -145,10 +146,11 @@
 }
 
 .search-container {
-  padding: 16px;
+  padding: 24px 16px;
   display: flex;
   align-items: center;
   gap: 16px;
+  justify-content: space-between;
 
   .search-field {
     width: 328px;
@@ -160,8 +162,20 @@
         background-color: var(--card-color);
       }
 
+      input.mat-mdc-input-element {
+        padding-left: 1rem;
+      }
+
+      .mdc-text-field:hover .mdc-floating-label {
+        color: var(--secondary-color);
+      }
+
       .mat-mdc-text-field-wrapper {
         background-color: var(--card-color);
+      }
+
+      .mdc-text-field--focused .mdc-floating-label {
+        color: var(--secondary-color);
       }
 
       .mdc-text-field--outlined {
