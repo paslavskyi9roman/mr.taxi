@@ -1,5 +1,5 @@
 export interface Tariff {
-  id?: string;
+  id: string;
   route: Route;
   additionalStops: Route[];
   price: number;

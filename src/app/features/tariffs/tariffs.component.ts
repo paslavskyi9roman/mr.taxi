@@ -13,6 +13,7 @@ import { Tariff } from './tariff.model';
 import { Observable, startWith, map } from 'rxjs';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-tariffs',
@@ -26,7 +27,10 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MtButtonComponent,
-    TranslatePipe
+    TranslatePipe,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem
   ],
   styleUrls: ['./tariffs.component.scss']
 })
@@ -38,6 +42,7 @@ export class TariffsComponent implements OnInit {
   public filteredTariffs: Tariff[] = [];
   public cityControl = new FormControl();
   public filteredCities: string[] = [];
+  public selectedTariff: Tariff;
 
   ngOnInit(): void {
     this.initializeTariffs();
@@ -96,6 +101,10 @@ export class TariffsComponent implements OnInit {
     });
   }
 
+  public setSelectedTariff(tariff: Tariff): void {
+    this.selectedTariff = tariff;
+  }
+
   public editTariff(tariff: Tariff): void {
     const dialogRef = this.dialog.open(EditTariffDialogComponent, {
       width: '500px',
@@ -106,6 +115,12 @@ export class TariffsComponent implements OnInit {
       if (result) {
         this.tariffService.updateTariff(result);
       }
+    });
+  }
+
+  public deleteTariff(tariff: Tariff): void {
+    this.tariffService.deleteTariff(tariff.id).subscribe(() => {
+      this.initializeTariffs();
     });
   }
 }

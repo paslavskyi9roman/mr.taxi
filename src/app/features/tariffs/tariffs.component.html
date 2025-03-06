@@ -27,7 +27,7 @@
   @if (tariffs$ | async) {
     <div class="tariffs-grid">
       @for (tariff of filteredTariffs; track tariff) {
-        <div class="tariff-card" (click)="editTariff(tariff)">
+        <div class="tariff-card">
           <div class="tariff-line">
             <div class="icon from-icon"></div>
             @if (tariff.additionalStops.length > 0) {
@@ -43,7 +43,13 @@
             <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
             {{ tariff.route.from }}
           </div>
-          <div class="tariff-options">⋮</div>
+          <div
+            class="tariff-options"
+            [matMenuTriggerFor]="optionsMenu"
+            (click)="setSelectedTariff(tariff)"
+          >
+            ⋮
+          </div>
           <div class="tariff-to">
             <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
             {{ tariff.route.to }}
@@ -58,4 +64,16 @@
   } @else {
     <p>{{ 'TARIFFS_PAGE.NO_TARIFFS' | translate }}</p>
   }
+
+  <mat-menu #optionsMenu="matMenu" class="custom-menu">
+    <button mat-menu-item (click)="editTariff(selectedTariff)">
+      Edit Tariff
+    </button>
+    <button
+      mat-menu-item
+      (click)=" deleteTariff(selectedTariff)"
+    >
+      Delete Tariff
+    </button>
+  </mat-menu>
 </div>
