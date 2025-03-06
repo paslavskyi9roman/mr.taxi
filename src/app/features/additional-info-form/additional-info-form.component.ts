@@ -6,6 +6,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/mt-slide-toggle.component';
+import { AdditionalInfo } from '../../core/models/additional-info.model';
 
 @Component({
   selector: 'app-additional-info-form',
@@ -23,11 +24,11 @@ import { MtSlideToggleComponent } from '../../shared/components/mt-slide-toggle/
 })
 export class AdditionalInfoFormComponent implements OnInit {
   public additionalInfoForm: FormGroup;
-  @Output() public formSubmitted = new EventEmitter<any>();
+  @Output() public formSubmitted = new EventEmitter<AdditionalInfo>();
 
-  public showLuggage = false;
-  public showScheduledRide = false;
-  public showFlightNumber = false;
+  public showLuggage = true;
+  public showScheduledRide = true;
+  public showFlightNumber = true;
   public currentTime = '';
   public selectedLuggage: string = '';
 

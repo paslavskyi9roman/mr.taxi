@@ -12,9 +12,9 @@
       />
       <mat-icon matSuffix>search</mat-icon>
       <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel">
-        <mat-option *ngFor="let city of filteredCities | slice: 0 : 5" [value]="city">
-          {{ city }}
-        </mat-option>
+        @for (city of filteredCities | slice: 0 : 5; track city) {
+          <mat-option [value]="city">{{ city }}</mat-option>
+        }
       </mat-autocomplete>
     </mat-form-field>
     <mt-button
@@ -24,32 +24,35 @@
     ></mt-button>
   </div>
 
-  <div *ngIf="tariffs$ | async; else noTariffs">
+  @if (tariffs$ | async) {
     <div class="tariffs-grid">
-      <div class="tariff-card" *ngFor="let tariff of filteredTariffs" (click)="editTariff(tariff)">
-        <div class="tariff-line">
-          <div class="icon from-icon"></div>
-          <div class="additional-stops" *ngIf="tariff.additionalStops.length > 0">
-            <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+      @for (tariff of filteredTariffs; track tariff) {
+        <div class="tariff-card" (click)="editTariff(tariff)">
+          <div class="tariff-line">
+            <div class="icon from-icon"></div>
+            @if (tariff.additionalStops.length > 0) {
+              <div class="additional-stops">
+                <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+              </div>
+            }
+            <div class="icon to-icon">
+              <img src="assets/styles/icons/destination.svg" alt="Destination" />
+            </div>
           </div>
-          <div class="icon to-icon">
-            <img src="assets/styles/icons/destination.svg" alt="Destination" />
+          <div class="tariff-from">
+            <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
+            {{ tariff.route.from }}
           </div>
+          <div class="tariff-options">⋮</div>
+          <div class="tariff-to">
+            <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
+            {{ tariff.route.to }}
+          </div>
+          <div class="tariff-price">{{ tariff.price | currency }}</div>
         </div>
-        <div class="tariff-from">
-          <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
-          {{ tariff.route.from }}
-        </div>
-        <div class="tariff-options">⋮</div>
-        <div class="tariff-to">
-          <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
-          {{ tariff.route.to }}
-        </div>
-        <div class="tariff-price">{{ tariff.price | currency }}</div>
-      </div>
+      }
     </div>
-  </div>
-  <ng-template #noTariffs>
+  } @else {
     <p>{{ 'TARIFFS_PAGE.NO_TARIFFS' | translate }}</p>
-  </ng-template>
+  }
 </div>

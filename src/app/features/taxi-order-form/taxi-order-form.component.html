@@ -108,7 +108,6 @@
   @if (isModalOpen) {
     <mt-modal
       title="{{ 'TAXI_ORDER_FORM.ADDITIONAL_INFO' | translate }}"
-      (confirm)="handleConfirm($event)"
       (close)="closeModal()"
     >
       <app-additional-info-form (formSubmitted)="handleConfirm($event)"></app-additional-info-form>

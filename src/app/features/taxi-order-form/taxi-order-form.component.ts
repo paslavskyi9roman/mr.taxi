@@ -19,6 +19,7 @@ import { TaxiOrderService } from '../../core/services/taxi-order.service';
 import { TariffService } from '../tariffs/tariff.service';
 import { startWith, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { AdditionalInfo } from '../../core/models/additional-info.model';
 
 @Component({
   selector: 'app-taxi-order-form',
@@ -119,7 +120,7 @@ export class TaxiOrderFormComponent implements OnInit {
     this.isModalOpen = true;
   }
 
-  public handleConfirm(additionalInfoFormData: any): void {
+  public handleConfirm(additionalInfoFormData: AdditionalInfo): void {
     this.taxiOrderForm.patchValue({
       luggage: additionalInfoFormData.luggage,
       rideDate: additionalInfoFormData.rideDate,
