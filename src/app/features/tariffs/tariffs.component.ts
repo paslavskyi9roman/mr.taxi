@@ -4,29 +4,78 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
 import { EditTariffDialogComponent } from './edit-tariff-dialog/edit-tariff-dialog.component';
 import { TariffService } from './tariff.service';
 import { Tariff } from './tariff.model';
-import { Observable } from 'rxjs';
+import { Observable, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'app-tariffs',
   templateUrl: './tariffs.component.html',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule, MtButtonComponent],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MtButtonComponent
+  ],
   styleUrls: ['./tariffs.component.scss']
 })
 export class TariffsComponent implements OnInit {
   private tariffService: TariffService = inject(TariffService);
   private dialog: MatDialog = inject(MatDialog);
+  private listOfCities: Set<string> = new Set();
+
   public tariffs$: Observable<Tariff[]> = this.tariffService.getTariffs();
   public filteredTariffs: Tariff[] = [];
+  public cityControl = new FormControl();
+  public filteredCities: string[] = [];
 
   ngOnInit(): void {
+    this.initializeTariffs();
+    this.initializeCityFilter();
+  }
+
+  private initializeTariffs(): void {
     this.tariffs$ = this.tariffService.getTariffs();
-    this.tariffs$.subscribe((tariffs) => (this.filteredTariffs = tariffs));
+    this.tariffs$.subscribe((tariffs) => {
+      this.filteredTariffs = tariffs;
+      this.updateCitiesList(tariffs);
+    });
+  }
+
+  private initializeCityFilter(): void {
+    this.cityControl.valueChanges
+      .pipe(
+        startWith(''),
+        map((value) => this.filterCities(value))
+      )
+      .subscribe((filtered) => (this.filteredCities = filtered));
+  }
+
+  private updateCitiesList(tariffs: Tariff[]): void {
+    this.listOfCities.clear();
+    tariffs.forEach((tariff) => {
+      this.listOfCities.add(tariff.route.from);
+      this.listOfCities.add(tariff.route.to);
+      tariff.additionalStops.forEach((stop) => {
+        this.listOfCities.add(stop.from);
+        this.listOfCities.add(stop.to);
+      });
+    });
+    this.filteredCities = Array.from(this.listOfCities);
+  }
+
+  private filterCities(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return Array.from(this.listOfCities).filter((city) => city.toLowerCase().includes(filterValue));
   }
 
   public applyFilter(event: Event): void {

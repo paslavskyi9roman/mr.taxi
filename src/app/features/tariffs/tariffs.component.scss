@@ -216,3 +216,11 @@
     height: 48px;
   }
 }
+
+.mat-mdc-option.mdc-list-item {
+  background-color: var(--card-color);
+  color: var(--primary-color);
+  &:hover {
+    background-color: var(--divider-color);
+  }
+}
