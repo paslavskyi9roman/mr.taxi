@@ -1,6 +1,6 @@
 {
-  "HOME":  {
-    "TITLE":"Комфортні поїздки, справедливі тарифи",
+  "HOME": {
+    "TITLE": "Комфортні поїздки, справедливі тарифи",
     "SUBTITLE": "Відкрийте для себе поїздки, пристосовані до ваших потреб, зі справедливими цінами та водіями, яким ви можете довіряти."
   },
   "TAXI_ORDER_FORM": {
@@ -20,7 +20,6 @@
     "REMOVE_STOP": "Видалити",
     "ADDITIONAL_INFO": "Додаткова інформація",
     "COMMENT_PLACEHOLDER": "Додайте коментар"
-
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -39,5 +38,13 @@
       "PLACEHOLDER": "Номер рейсу:"
     },
     "SAVE_BUTTON": "Зберегти"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Увійти",
+    "LOG_IN_TITLE": "Вхід",
+    "EMAIL_LABEL": "Електронна пошта",
+    "PASSWORD_LABEL": "Пароль",
+    "SIGN_IN_BUTTON": "Увійти",
+    "LOG_IN_BUTTON": "Вхід"
   }
 }

@@ -38,5 +38,13 @@
       "PLACEHOLDER": "Flight Number:"
     },
     "SAVE_BUTTON": "Save"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Sign In",
+    "LOG_IN_TITLE": "Log In",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "SIGN_IN_BUTTON": "Sign In",
+    "LOG_IN_BUTTON": "Log In"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "HOME":  {
+  "HOME": {
     "TITLE": "Comfortabele ritten, eerlijke tarieven",
     "SUBTITLE": "Ontdek een ritervaring op maat met eerlijke prijzen en chauffeurs die u kunt vertrouwen."
   },
@@ -20,7 +20,6 @@
     "REMOVE_STOP": "Verwijderen",
     "ADDITIONAL_INFO": "Extra informatie",
     "COMMENT_PLACEHOLDER": "Voer opmerking in"
-
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -39,5 +38,13 @@
       "PLACEHOLDER": "Vluchtnummer:"
     },
     "SAVE_BUTTON": "Opslaan"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Aanmelden",
+    "LOG_IN_TITLE": "Inloggen",
+    "EMAIL_LABEL": "E-mail",
+    "PASSWORD_LABEL": "Wachtwoord",
+    "SIGN_IN_BUTTON": "Aanmelden",
+    "LOG_IN_BUTTON": "Inloggen"
   }
 }
