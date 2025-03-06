@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { Tariff } from '../tariff.model';
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-tariff-dialog',
   templateUrl: './add-tariff-dialog.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, MtButtonComponent],
+  imports: [ReactiveFormsModule, MtButtonComponent, TranslatePipe],
   styleUrls: ['./add-tariff-dialog.component.scss']
 })
 export class AddTariffDialogComponent {

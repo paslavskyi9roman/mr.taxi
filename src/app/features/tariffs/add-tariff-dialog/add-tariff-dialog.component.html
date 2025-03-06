@@ -1,21 +1,44 @@
 <div>
   <form [formGroup]="form">
     <div>
-      <h1>Add New Tariff</h1>
-      <label for="from">From</label>
-      <input id="from" formControlName="from" placeholder="Enter starting city">
+      <h1>{{ 'TARIFFS_PAGE.ADD_NEW_TARIFF' | translate }}</h1>
+      <label for="from">{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</label>
+      <input
+        id="from"
+        formControlName="from"
+        [placeholder]="'TARIFFS_PAGE.FROM_PLACEHOLDER' | translate"
+      />
     </div>
     <div>
-      <label for="to">To</label>
-      <input id="to" formControlName="to" placeholder="Enter destination city">
+      <label for="to">{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</label>
+      <input
+        id="to"
+        formControlName="to"
+        [placeholder]="'TARIFFS_PAGE.TO_PLACEHOLDER' | translate"
+      />
     </div>
     <div>
-      <label for="price">Price</label>
-      <input id="price" formControlName="price" placeholder="Enter price" type="number">
+      <label for="price">{{ 'TARIFFS_PAGE.PRICE_LABEL' | translate }}</label>
+      <input
+        id="price"
+        formControlName="price"
+        [placeholder]="'TARIFFS_PAGE.PRICE_PLACEHOLDER' | translate"
+        type="number"
+      />
     </div>
     <div class="action-buttons">
-      <mt-button label="Cancel" type="secondary" size="medium" (click)="close()"></mt-button>
-      <mt-button label="Save" type="primary" size="medium" (click)="save()"></mt-button>
+      <mt-button
+        [label]="'TARIFFS_PAGE.CANCEL_BUTTON' | translate"
+        type="secondary"
+        size="medium"
+        (click)="close()"
+      ></mt-button>
+      <mt-button
+        [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
+        type="primary"
+        size="medium"
+        (click)="save()"
+      ></mt-button>
     </div>
   </form>
 </div>

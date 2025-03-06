@@ -1,13 +1,13 @@
 <div class="tariffs">
-  <h1>Tariffs Page</h1>
+  <h1>{{ 'TARIFFS_PAGE.TITLE' | translate }}</h1>
   <div class="search-container">
     <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search cities</mat-label>
+      <mat-label>{{ 'TARIFFS_PAGE.SEARCH_LABEL' | translate }}</mat-label>
       <input
         matInput
         [matAutocomplete]="auto"
         (keyup)="applyFilter($event)"
-        placeholder="Type to search..."
+        placeholder="{{ 'TARIFFS_PAGE.SEARCH_PLACEHOLDER' | translate }}"
         [formControl]="cityControl"
       />
       <mat-icon matSuffix>search</mat-icon>
@@ -17,7 +17,11 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mt-button label="Add new route" type="primary" (click)="addTariff()"></mt-button>
+    <mt-button
+      label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
+      type="primary"
+      (click)="addTariff()"
+    ></mt-button>
   </div>
 
   <div *ngIf="tariffs$ | async; else noTariffs">
@@ -33,12 +37,12 @@
           </div>
         </div>
         <div class="tariff-from">
-          <p>From</p>
+          <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
           {{ tariff.route.from }}
         </div>
         <div class="tariff-options">⋮</div>
         <div class="tariff-to">
-          <p>To</p>
+          <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
           {{ tariff.route.to }}
         </div>
         <div class="tariff-price">{{ tariff.price | currency }}</div>
@@ -46,6 +50,6 @@
     </div>
   </div>
   <ng-template #noTariffs>
-    <p>No tariffs available.</p>
+    <p>{{ 'TARIFFS_PAGE.NO_TARIFFS' | translate }}</p>
   </ng-template>
 </div>

@@ -12,6 +12,7 @@ import { TariffService } from './tariff.service';
 import { Tariff } from './tariff.model';
 import { Observable, startWith, map } from 'rxjs';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tariffs',
@@ -24,7 +25,8 @@ import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.
     MatIconModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MtButtonComponent
+    MtButtonComponent,
+    TranslatePipe
   ],
   styleUrls: ['./tariffs.component.scss']
 })

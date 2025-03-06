@@ -46,5 +46,22 @@
     "PASSWORD_LABEL": "Password",
     "SIGN_IN_BUTTON": "Sign In",
     "LOG_IN_BUTTON": "Log In"
+  },
+  "TARIFFS_PAGE": {
+    "TITLE": "Tariffs Page",
+    "SEARCH_LABEL": "Search cities",
+    "SEARCH_PLACEHOLDER": "Type to search...",
+    "ADD_ROUTE_BUTTON": "Add new route",
+    "FROM_LABEL": "From",
+    "TO_LABEL": "To",
+    "PRICE_LABEL": "Price",
+    "FROM_PLACEHOLDER": "Enter starting city",
+    "TO_PLACEHOLDER": "Enter destination city",
+    "PRICE_PLACEHOLDER": "Enter price",
+    "CANCEL_BUTTON": "Cancel",
+    "SAVE_BUTTON": "Save",
+    "NO_TARIFFS": "No tariffs available.",
+    "ADD_NEW_TARIFF": "Add New Tariff",
+    "EDIT_TARIFF": "Edit Tariff"
   }
 }

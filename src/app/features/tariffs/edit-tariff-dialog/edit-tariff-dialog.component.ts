@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
 import { Tariff } from '../tariff.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-tariff-dialog',
@@ -19,7 +20,8 @@ import { Tariff } from '../tariff.model';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MtButtonComponent
+    MtButtonComponent,
+    TranslatePipe
   ],
   styleUrls: ['./edit-tariff-dialog.component.scss']
 })

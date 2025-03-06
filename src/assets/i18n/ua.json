@@ -39,6 +39,23 @@
     },
     "SAVE_BUTTON": "Зберегти"
   },
+  "TARIFFS_PAGE": {
+    "TITLE": "Сторінка тарифів",
+    "SEARCH_LABEL": "Пошук міст",
+    "SEARCH_PLACEHOLDER": "Введіть для пошуку...",
+    "ADD_ROUTE_BUTTON": "Додати новий маршрут",
+    "FROM_LABEL": "З",
+    "TO_LABEL": "До",
+    "PRICE_LABEL": "Ціна",
+    "FROM_PLACEHOLDER": "Введіть місто відправлення",
+    "TO_PLACEHOLDER": "Введіть місто призначення",
+    "PRICE_PLACEHOLDER": "Введіть ціну",
+    "CANCEL_BUTTON": "Скасувати",
+    "SAVE_BUTTON": "Зберегти",
+    "NO_TARIFFS": "Тарифи відсутні.",
+    "ADD_NEW_TARIFF": "Додати новий тариф",
+    "EDIT_TARIFF": "Редагувати тариф"
+  },
   "AUTH": {
     "SIGN_IN_TITLE": "Увійти",
     "LOG_IN_TITLE": "Вхід",

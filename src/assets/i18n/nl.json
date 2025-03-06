@@ -46,5 +46,22 @@
     "PASSWORD_LABEL": "Wachtwoord",
     "SIGN_IN_BUTTON": "Aanmelden",
     "LOG_IN_BUTTON": "Inloggen"
+  },
+  "TARIFFS_PAGE": {
+    "TITLE": "Tarievenpagina",
+    "SEARCH_LABEL": "Zoek steden",
+    "SEARCH_PLACEHOLDER": "Typ om te zoeken...",
+    "ADD_ROUTE_BUTTON": "Voeg nieuwe route toe",
+    "FROM_LABEL": "Van",
+    "TO_LABEL": "Naar",
+    "PRICE_LABEL": "Prijs",
+    "FROM_PLACEHOLDER": "Voer vertrekstad in",
+    "TO_PLACEHOLDER": "Voer bestemmingstad in",
+    "PRICE_PLACEHOLDER": "Voer prijs in",
+    "CANCEL_BUTTON": "Annuleren",
+    "SAVE_BUTTON": "Opslaan",
+    "NO_TARIFFS": "Geen tarieven beschikbaar.",
+    "ADD_NEW_TARIFF": "Nieuwe tarief toevoegen",
+    "EDIT_TARIFF": "Tarief bewerken"
   }
 }
