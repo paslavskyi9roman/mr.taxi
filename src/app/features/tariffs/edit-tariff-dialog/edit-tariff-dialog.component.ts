@@ -5,8 +5,9 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
-import { Tariff } from '../mock-tariffs';
+import { Tariff } from '../tariff.model';
 
 @Component({
   selector: 'app-edit-tariff-dialog',
@@ -43,10 +44,7 @@ export class EditTariffDialogComponent {
       const updatedTariff: Tariff = {
         ...this.data,
         price: formValue.price,
-        route: {
-          from: formValue.from,
-          to: formValue.to
-        }
+        route: { from: formValue.from, to: formValue.to }
       };
       this.dialogRef.close(updatedTariff);
     }

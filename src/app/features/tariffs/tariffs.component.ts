@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { mockTariffs, Tariff } from './mock-tariffs';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,39 +7,42 @@ import { MatIconModule } from '@angular/material/icon';
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
 import { EditTariffDialogComponent } from './edit-tariff-dialog/edit-tariff-dialog.component';
+import { TariffService } from './tariff.service';
+import { Tariff } from './tariff.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tariffs',
   templateUrl: './tariffs.component.html',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MtButtonComponent,
-    EditTariffDialogComponent
-  ],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule, MtButtonComponent],
   styleUrls: ['./tariffs.component.scss']
 })
-export class TariffsComponent {
-  public tariffs: Tariff[] = mockTariffs;
-  public filteredTariffs: Tariff[] = mockTariffs;
+export class TariffsComponent implements OnInit {
+  private tariffService: TariffService = inject(TariffService);
+  private dialog: MatDialog = inject(MatDialog);
+  public tariffs$: Observable<Tariff[]> = this.tariffService.getTariffs();
+  public filteredTariffs: Tariff[] = [];
 
-  constructor(private dialog: MatDialog) {}
+  ngOnInit(): void {
+    this.tariffs$ = this.tariffService.getTariffs();
+    this.tariffs$.subscribe((tariffs) => (this.filteredTariffs = tariffs));
+  }
 
   public applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     const filter = filterValue.toLowerCase();
-    this.filteredTariffs = this.tariffs.filter(
-      (tariff) =>
-        tariff.route.from.toLowerCase().includes(filter) ||
-        tariff.route.to.toLowerCase().includes(filter) ||
-        tariff.additionalStops.some(
-          (stop) =>
-            stop.from.toLowerCase().includes(filter) || stop.to.toLowerCase().includes(filter)
-        )
-    );
+    this.tariffs$.subscribe((tariffs) => {
+      this.filteredTariffs = tariffs.filter(
+        (tariff) =>
+          tariff.route.from.toLowerCase().includes(filter) ||
+          tariff.route.to.toLowerCase().includes(filter) ||
+          tariff.additionalStops.some(
+            (stop) =>
+              stop.from.toLowerCase().includes(filter) || stop.to.toLowerCase().includes(filter)
+          )
+      );
+    });
   }
 
   public addTariff(): void {
@@ -50,8 +52,7 @@ export class TariffsComponent {
 
     dialogRef.afterClosed().subscribe((result): void => {
       if (result) {
-        this.tariffs.push(result);
-        this.filteredTariffs = [...this.tariffs];
+        this.tariffService.addTariff(result);
       }
     });
   }
@@ -64,11 +65,7 @@ export class TariffsComponent {
 
     dialogRef.afterClosed().subscribe((result): void => {
       if (result) {
-        const index = this.tariffs.findIndex((t) => t === tariff);
-        if (index !== -1) {
-          this.tariffs[index] = result;
-          this.filteredTariffs = [...this.tariffs];
-        }
+        this.tariffService.updateTariff(result);
       }
     });
   }

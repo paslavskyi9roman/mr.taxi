@@ -9,27 +9,32 @@
     <mt-button label="Add new route" type="primary" (click)="addTariff()"></mt-button>
   </div>
 
-  <div class="tariffs-grid">
-    <div class="tariff-card" *ngFor="let tariff of filteredTariffs" (click)="editTariff(tariff)">
-      <div class="tariff-line">
-        <div class="icon from-icon"></div>
-        <div class="additional-stops" *ngIf="tariff.additionalStops.length > 0">
-          <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+  <div *ngIf="tariffs$ | async; else noTariffs">
+    <div class="tariffs-grid">
+      <div class="tariff-card" *ngFor="let tariff of filteredTariffs" (click)="editTariff(tariff)">
+        <div class="tariff-line">
+          <div class="icon from-icon"></div>
+          <div class="additional-stops" *ngIf="tariff.additionalStops.length > 0">
+            <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+          </div>
+          <div class="icon to-icon">
+            <img src="assets/styles/icons/destination.svg" alt="Destination" />
+          </div>
         </div>
-        <div class="icon to-icon">
-          <img src="assets/styles/icons/destination.svg" alt="Destination" />
+        <div class="tariff-from">
+          <p>From</p>
+          {{ tariff.route.from }}
         </div>
+        <div class="tariff-options">⋮</div>
+        <div class="tariff-to">
+          <p>To</p>
+          {{ tariff.route.to }}
+        </div>
+        <div class="tariff-price">{{ tariff.price | currency }}</div>
       </div>
-      <div class="tariff-from">
-        <p>From</p>
-        {{ tariff.route.from }}
-      </div>
-      <div class="tariff-options">⋮</div>
-      <div class="tariff-to">
-        <p>To</p>
-        {{ tariff.route.to }}
-      </div>
-      <div class="tariff-price">{{ tariff.price | currency }}</div>
     </div>
   </div>
+  <ng-template #noTariffs>
+    <p>No tariffs available.</p>
+  </ng-template>
 </div>

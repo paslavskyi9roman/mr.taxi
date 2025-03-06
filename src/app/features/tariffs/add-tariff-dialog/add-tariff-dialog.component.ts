@@ -1,25 +1,15 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { Tariff } from '../tariff.model';
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
-import { Tariff } from '../mock-tariffs';
 
 @Component({
   selector: 'app-add-tariff-dialog',
   templateUrl: './add-tariff-dialog.component.html',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MtButtonComponent
-  ],
+  imports: [ReactiveFormsModule, MtButtonComponent],
   styleUrls: ['./add-tariff-dialog.component.scss']
 })
 export class AddTariffDialogComponent {
@@ -41,10 +31,7 @@ export class AddTariffDialogComponent {
       const formValue = this.form.value;
       const tariff: Tariff = {
         price: formValue.price,
-        route: {
-          from: formValue.from,
-          to: formValue.to
-        },
+        route: { from: formValue.from, to: formValue.to },
         additionalStops: []
       };
       this.dialogRef.close(tariff);
