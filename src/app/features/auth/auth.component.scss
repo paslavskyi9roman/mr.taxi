@@ -1,0 +1,70 @@
+.auth-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.auth-form {
+  background: var(--card-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--primary-color);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: var(--secondary-color);
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid var(--divider-color);
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: var(--input);
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        align-self: stretch;
+
+        &:hover {
+          border-color: var(--input-hover);
+        }
+      }
+    }
+
+    button {
+      padding: 10px;
+      background: var(--button);
+      color: var(--button-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:disabled {
+        background: var(--disabled-button-color);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
