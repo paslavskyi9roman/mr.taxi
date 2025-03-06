@@ -25,9 +25,5 @@ export const routes: Routes = [
     path: 'tariffs',
     loadComponent: () =>
       import('./features/tariffs/tariffs.component').then((m) => m.TariffsComponent)
-  },
-  {
-    path: '**',
-    component: HomeComponent
   }
 ];

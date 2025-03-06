@@ -54,7 +54,8 @@
     "SAVE_BUTTON": "Зберегти",
     "NO_TARIFFS": "Тарифи відсутні.",
     "ADD_NEW_TARIFF": "Додати новий тариф",
-    "EDIT_TARIFF": "Редагувати тариф"
+    "EDIT_TARIFF": "Редагувати тариф",
+    "NO_SEARCH_RESULTS": "Немає результатів за критеріями пошуку."
   },
   "AUTH": {
     "SIGN_IN_TITLE": "Увійти",
