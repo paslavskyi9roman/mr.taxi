@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { Language } from '../../../core/models/language';
-import {MtButtonComponent} from '../mt-button/mt-button.component';
-import {RouterLink} from '@angular/router';
+import { MtButtonComponent } from '../mt-button/mt-button.component';
 
 @Component({
   selector: 'app-header',

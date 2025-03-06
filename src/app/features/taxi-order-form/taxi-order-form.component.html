@@ -11,8 +11,12 @@
   </div>
   <div>
     @if (additionalStops.length < 3) {
-      <button class="add-ride-btn" type="button" (click)="addStop()"
-              [disabled]="additionalStops.length >= 3">
+      <button
+        class="add-ride-btn"
+        type="button"
+        (click)="addStop()"
+        [disabled]="additionalStops.length >= 3"
+      >
         <img src="assets/styles/icons/add.svg" alt="Add" />
         <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
       </button>
@@ -32,7 +36,6 @@
           </button>
         </div>
       }
-
     </div>
   </div>
   <div>
@@ -58,8 +61,8 @@
   <div class="additional-info-wrapper">
     <div>
       <label for="numberOfPassengers">{{
-          'TAXI_ORDER_FORM.NUMBER_OF_PASSENGERS_LABEL' | translate
-        }}</label>
+        'TAXI_ORDER_FORM.NUMBER_OF_PASSENGERS_LABEL' | translate
+      }}</label>
       <div class="passenger-buttons">
         <button type="button" (click)="decreasePassengers()" class="decrease">-</button>
         <input
@@ -78,8 +81,8 @@
   </div>
   <div>
     <label for="passengerPhoneNumber">{{
-        'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_LABEL' | translate
-      }}</label>
+      'TAXI_ORDER_FORM.PASSENGER_PHONE_NUMBER_LABEL' | translate
+    }}</label>
     <input
       type="tel"
       id="passengerPhoneNumber"
@@ -91,7 +94,11 @@
 
   <div>
     <label for="comment">{{ 'TAXI_ORDER_FORM.COMMENT_LABEL' | translate }}</label>
-    <textarea id="comment" formControlName="comment" placeholder="{{ 'TAXI_ORDER_FORM.COMMENT_PLACEHOLDER' | translate }}"></textarea>
+    <textarea
+      id="comment"
+      formControlName="comment"
+      placeholder="{{ 'TAXI_ORDER_FORM.COMMENT_PLACEHOLDER' | translate }}"
+    ></textarea>
   </div>
 
   <mt-button

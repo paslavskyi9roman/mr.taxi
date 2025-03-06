@@ -17,6 +17,7 @@ import { Tariff } from './tariff.model';
 export class TariffService {
   private firestore: Firestore = inject(Firestore);
   private tariffsCollection = collection(this.firestore, 'tariffs');
+  private listOfCities: Set<string> = new Set();
 
   public getTariffs(): Observable<Tariff[]> {
     return collectionData(this.tariffsCollection, { idField: 'id' }) as Observable<Tariff[]>;
@@ -41,5 +42,23 @@ export class TariffService {
   public deleteTariff(id: string): Observable<void> {
     const docRef = doc(this.firestore, 'tariffs', id);
     return from(deleteDoc(docRef));
+  }
+
+  public getCities(): Observable<string[]> {
+    return new Observable((observer) => {
+      this.getTariffs().subscribe((tariffs) => {
+        this.listOfCities.clear();
+        tariffs.forEach((tariff) => {
+          this.listOfCities.add(tariff.route.from);
+          this.listOfCities.add(tariff.route.to);
+          tariff.additionalStops.forEach((stop) => {
+            this.listOfCities.add(stop.from);
+            this.listOfCities.add(stop.to);
+          });
+        });
+        observer.next(Array.from(this.listOfCities));
+        observer.complete();
+      });
+    });
   }
 }
