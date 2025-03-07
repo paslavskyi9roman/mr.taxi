@@ -69,13 +69,6 @@ mat-dialog-actions {
   padding: 1rem 0 0;
 }
 
-.action-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-direction: row;
-  justify-content: end;
-}
-
 .additional-stop {
   display: flex;
   flex-direction: row;
@@ -89,4 +82,64 @@ mat-dialog-actions {
   border: none;
   padding: 0.5rem;
   border-radius: 4px;
+}
+
+.price-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price-button button {
+  width: 36px;
+  height: 36px;
+  background-color: var(--grey);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.price-button .decrease {
+  color: var(--system-red);
+}
+
+.price-button .increase {
+  color: var(--system-green);
+}
+
+.price-button input {
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  margin: 0 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
+}
+
+.save-button {
+  margin-top: 12px;
+  align-self: flex-end;
 }

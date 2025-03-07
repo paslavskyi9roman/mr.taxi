@@ -1,14 +1,13 @@
 <div>
   <form [formGroup]="form">
-    <div>
-      <h1>{{ 'TARIFFS_PAGE.ADD_NEW_TARIFF' | translate }}</h1>
-      <label for="from">{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</label>
-      <input
-        id="from"
-        formControlName="from"
-        [placeholder]="'TARIFFS_PAGE.FROM_PLACEHOLDER' | translate"
-      />
+    <div class="header">
+      <h2>{{ 'TARIFFS_PAGE.ADD_NEW_TARIFF' | translate }}</h2>
+      <button mat-icon-button class="close-button" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
+    <input id="from" formControlName="from" [placeholder]="'TARIFFS_PAGE.FROM_LABEL' | translate" />
+
     <div formArrayName="additionalStops">
       @for (stop of additionalStops.controls; track $index) {
         <div class="additional-stop">
@@ -35,35 +34,27 @@
       </button>
     </div>
     <div>
-      <label for="to">{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</label>
-      <input
-        id="to"
-        formControlName="to"
-        [placeholder]="'TARIFFS_PAGE.TO_PLACEHOLDER' | translate"
-      />
+      <input id="to" formControlName="to" [placeholder]="'TARIFFS_PAGE.TO_LABEL' | translate" />
     </div>
     <div>
       <label for="price">{{ 'TARIFFS_PAGE.PRICE_LABEL' | translate }}</label>
-      <input
-        id="price"
-        formControlName="price"
-        [placeholder]="'TARIFFS_PAGE.PRICE_PLACEHOLDER' | translate"
-        type="number"
-      />
+      <div class="price-button">
+        <button type="button" (click)="decreasePrice()" class="decrease">-</button>
+        <input
+          type="number"
+          id="price"
+          formControlName="price"
+          [placeholder]="'TARIFFS_PAGE.PRICE_PLACEHOLDER' | translate"
+        />
+        <button type="button" (click)="increasePrice()" class="increase">+</button>
+      </div>
     </div>
-    <div class="action-buttons">
-      <mt-button
-        [label]="'TARIFFS_PAGE.CANCEL_BUTTON' | translate"
-        type="secondary"
-        size="medium"
-        (click)="close()"
-      ></mt-button>
-      <mt-button
-        [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
-        type="primary"
-        size="medium"
-        (click)="save()"
-      ></mt-button>
-    </div>
+    <mt-button
+      class="save-button"
+      [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
+      type="primary"
+      size="medium"
+      (click)="save()"
+    ></mt-button>
   </form>
 </div>

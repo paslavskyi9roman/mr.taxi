@@ -5,12 +5,14 @@ import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } fr
 import { Tariff } from '../tariff.model';
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-tariff-dialog',
   templateUrl: './add-tariff-dialog.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, MtButtonComponent, TranslatePipe],
+  imports: [ReactiveFormsModule, MtButtonComponent, TranslatePipe, MatIcon, MatIconButton],
   styleUrls: ['./add-tariff-dialog.component.scss']
 })
 export class AddTariffDialogComponent {
@@ -24,7 +26,7 @@ export class AddTariffDialogComponent {
     this.form = this.fb.group({
       from: ['', Validators.required],
       to: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [10, Validators.required],
       additionalStops: this.fb.array([])
     });
     this.additionalStops = this.form.get('additionalStops') as FormArray;
@@ -48,6 +50,18 @@ export class AddTariffDialogComponent {
 
   public removeStop(index: number): void {
     this.additionalStops.removeAt(index);
+  }
+
+  public increasePrice(): void {
+    const currentValue = this.form.get('price')?.value;
+    this.form.get('price')?.setValue(currentValue + 1);
+  }
+
+  public decreasePrice(): void {
+    const currentValue = this.form.get('price')?.value;
+    if (currentValue > 0) {
+      this.form.get('price')?.setValue(currentValue - 1);
+    }
   }
 
   public close(): void {

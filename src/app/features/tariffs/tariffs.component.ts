@@ -95,7 +95,7 @@ export class TariffsComponent implements OnInit {
 
   public addTariff(): void {
     const dialogRef = this.dialog.open(AddTariffDialogComponent, {
-      width: '500px'
+      width: '353px'
     });
 
     dialogRef.afterClosed().subscribe((result): void => {
@@ -121,7 +121,7 @@ export class TariffsComponent implements OnInit {
       return;
     }
     const dialogRef = this.dialog.open(EditTariffDialogComponent, {
-      width: '500px',
+      width: '353px',
       data: this.selectedTariff
     });
 
