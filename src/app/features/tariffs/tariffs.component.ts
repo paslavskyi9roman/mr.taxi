@@ -14,6 +14,7 @@ import { Observable, startWith, map } from 'rxjs';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tariffs',
@@ -32,11 +33,13 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
     MatMenu,
     MatMenuItem
   ],
-  styleUrls: ['./tariffs.component.scss']
+  styleUrls: ['./tariffs.component.scss'],
+  providers: [TariffService]
 })
 export class TariffsComponent implements OnInit {
   private tariffService: TariffService = inject(TariffService);
   private dialog: MatDialog = inject(MatDialog);
+  private snackBar: MatSnackBar = inject(MatSnackBar);
 
   public tariffs$: Observable<Tariff[]> = this.tariffService.getTariffs();
   public filteredTariffs: Tariff[] = [];
@@ -96,7 +99,13 @@ export class TariffsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result): void => {
       if (result) {
-        this.tariffService.addTariff(result);
+        this.tariffService.addTariff(result).subscribe(() => {
+          this.initializeTariffs();
+          this.snackBar.open('Tariff added successfully', '', {
+            duration: 3000,
+            panelClass: ['centered-snackbar']
+          });
+        });
       }
     });
   }
@@ -127,8 +136,16 @@ export class TariffsComponent implements OnInit {
       console.error('No tariff selected');
       return;
     }
-    this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
-      this.initializeTariffs();
-    });
+
+    const confirmed = confirm('Are you sure you want to delete this tariff?');
+    if (confirmed) {
+      this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
+        this.initializeTariffs();
+        this.snackBar.open('Tariff deleted successfully', '', {
+          duration: 3000,
+          panelClass: ['centered-snackbar']
+        });
+      });
+    }
   }
 }
