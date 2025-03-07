@@ -76,4 +76,17 @@ mat-dialog-actions {
   justify-content: end;
 }
 
+.additional-stop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 
+.additional-stop button {
+  color: var(--system-red);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

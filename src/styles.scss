@@ -151,3 +151,15 @@ input:-webkit-autofill:active {
     text-align: center;
   }
 }
+
+.add-ride-btn {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary-color);
+  @media screen and (max-width: 540px) {
+    justify-content: start;
+  }
+}
+
+

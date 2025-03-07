@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Tariff } from '../tariff.model';
 import { MtButtonComponent } from '../../../shared/components/mt-button/mt-button.component';
@@ -15,6 +15,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class AddTariffDialogComponent {
   public form: FormGroup;
+  public additionalStops: FormArray;
 
   constructor(
     private fb: FormBuilder,
@@ -23,8 +24,10 @@ export class AddTariffDialogComponent {
     this.form = this.fb.group({
       from: ['', Validators.required],
       to: ['', Validators.required],
-      price: ['', Validators.required]
+      price: ['', Validators.required],
+      additionalStops: this.fb.array([])
     });
+    this.additionalStops = this.form.get('additionalStops') as FormArray;
   }
 
   public save(): void {
@@ -33,10 +36,18 @@ export class AddTariffDialogComponent {
       const tariff: Partial<Tariff> = {
         price: formValue.price,
         route: { from: formValue.from, to: formValue.to },
-        additionalStops: []
+        additionalStops: formValue.additionalStops.map((stop: string) => ({ from: stop, to: stop }))
       };
       this.dialogRef.close(tariff);
     }
+  }
+
+  public addStop(): void {
+    this.additionalStops.push(this.fb.control(''));
+  }
+
+  public removeStop(index: number): void {
+    this.additionalStops.removeAt(index);
   }
 
   public close(): void {

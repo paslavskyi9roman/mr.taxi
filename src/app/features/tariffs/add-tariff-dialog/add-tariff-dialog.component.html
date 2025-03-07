@@ -9,6 +9,31 @@
         [placeholder]="'TARIFFS_PAGE.FROM_PLACEHOLDER' | translate"
       />
     </div>
+    <div formArrayName="additionalStops">
+      @for (stop of additionalStops.controls; track $index) {
+        <div class="additional-stop">
+          <input
+            type="text"
+            [formControlName]="$index"
+            placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
+              $index + 1
+            }}"
+          />
+          <button type="button" (click)="removeStop($index)">
+            {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
+          </button>
+        </div>
+      }
+      <button
+        class="add-ride-btn"
+        type="button"
+        (click)="addStop()"
+        [disabled]="additionalStops.length >= 3"
+      >
+        <img src="assets/styles/icons/add.svg" alt="Add" />
+        <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
+      </button>
+    </div>
     <div>
       <label for="to">{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</label>
       <input

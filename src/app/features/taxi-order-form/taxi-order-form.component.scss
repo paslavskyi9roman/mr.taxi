@@ -112,16 +112,6 @@ input:not(#numberOfPassengers) {
   background: var(--input, #1e1f22);
 }
 
-.add-ride-btn {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--primary-color);
-  @media screen and (max-width: 540px) {
-    justify-content: start;
-  }
-}
-
 .additional-info {
   display: flex;
   flex-direction: row;
