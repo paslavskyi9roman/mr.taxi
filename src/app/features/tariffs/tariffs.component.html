@@ -48,7 +48,7 @@
             [matMenuTriggerFor]="optionsMenu"
             (click)="setSelectedTariff(tariff)"
           >
-            ⋮
+            <mat-icon>more_vert</mat-icon>
           </div>
           <div class="tariff-to">
             <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
@@ -66,14 +66,7 @@
   }
 
   <mat-menu #optionsMenu="matMenu" class="custom-menu">
-    <button mat-menu-item (click)="editTariff()">
-      Edit Tariff
-    </button>
-    <button
-      mat-menu-item
-      (click)=" deleteTariff()"
-    >
-      Delete Tariff
-    </button>
+    <button mat-menu-item (click)="editTariff()">Edit Tariff</button>
+    <button mat-menu-item (click)="deleteTariff()">Delete Tariff</button>
   </mat-menu>
 </div>
