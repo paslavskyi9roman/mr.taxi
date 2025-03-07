@@ -15,6 +15,8 @@ import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormatAdditionalStopsPipe } from '../../shared/pipes/format-additional-stops.pipe';
 
 @Component({
   selector: 'app-tariffs',
@@ -31,7 +33,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     TranslatePipe,
     MatMenuTrigger,
     MatMenu,
-    MatMenuItem
+    MatMenuItem,
+    MatTooltipModule,
+    FormatAdditionalStopsPipe
   ],
   styleUrls: ['./tariffs.component.scss'],
   providers: [TariffService]

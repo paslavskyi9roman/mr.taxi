@@ -31,7 +31,10 @@
           <div class="tariff-line">
             <div class="icon from-icon"></div>
             @if (tariff.additionalStops.length > 0) {
-              <div class="additional-stops">
+              <div
+                class="additional-stops"
+                matTooltip="{{ tariff.additionalStops | formatAdditionalStops }}"
+              >
                 <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
               </div>
             }

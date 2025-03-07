@@ -67,11 +67,11 @@
         width: 2px;
         background: var(--divider-color);
         background: repeating-linear-gradient(
-            to bottom,
-            var(--divider-color),
-            var(--divider-color) 4px,
-            transparent 4px,
-            transparent 8px
+          to bottom,
+          var(--divider-color),
+          var(--divider-color) 4px,
+          transparent 4px,
+          transparent 8px
         );
       }
 
@@ -209,22 +209,31 @@
 ::ng-deep {
   .custom-menu {
     .mat-mdc-menu-content {
-      background-color: var(--background-color);
       padding: 8px;
+      background-color: var(--background-color);
       border-radius: 8px;
       border: 1px solid var(--divider-color);
-
     }
 
     .mat-mdc-menu-item {
       width: 150px;
       color: var(--primary-color);
-
     }
 
     .mat-mdc-menu-item:not([disabled]):hover {
       border-radius: 6px;
       background-color: var(--grey-hover);
     }
+  }
+
+  .mat-mdc-tooltip {
+    background-color: var(--card-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    border: 1px solid var(--divider-color);
+    padding: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-line;
   }
 }
