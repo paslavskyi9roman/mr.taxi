@@ -14,6 +14,16 @@
         label="{{ 'AUTH.SIGN_IN_BUTTON' | translate }}"
         [disabled]="signInForm.invalid"
       ></mt-button>
+      <div class="or-text">{{ 'or' | translate }}</div>
+      <mt-button
+        label="{{ 'AUTH.SIGN_IN_GOOGLE' | translate }}"
+        (click)="onSignInWithGoogle()"
+      ></mt-button>
+      <mt-button
+        label="{{ 'AUTH.SIGN_IN_APPLE' | translate }}"
+        (click)="onSignInWithApple()"
+      ></mt-button>
+      <p>Already have an account? <span> Log in </span></p>
     </form>
   </div>
   <div class="auth-form">
@@ -31,6 +41,16 @@
         label="{{ 'AUTH.LOG_IN_BUTTON' | translate }}"
         [disabled]="logInForm.invalid"
       ></mt-button>
+      <div class="or-text">{{ 'or' | translate }}</div>
+      <mt-button
+        label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
+        (click)="onLogInWithGoogle()"
+      ></mt-button>
+      <mt-button
+        label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
+        (click)="onLogInWithApple()"
+      ></mt-button>
+      <p>Don’t have account yet? <span>Sign up</span></p>
     </form>
   </div>
 </div>
