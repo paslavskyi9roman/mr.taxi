@@ -1,21 +1,45 @@
 <div>
   <form [formGroup]="form">
-    <div>
+    <div class="header">
       <h1>{{ 'TARIFFS_PAGE.EDIT_TARIFF' | translate }}</h1>
-      <label for="from">{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</label>
+      <button mat-icon-button class="close-button" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div>
       <input
         id="from"
         formControlName="from"
-        [placeholder]="'TARIFFS_PAGE.FROM_PLACEHOLDER' | translate"
+        [placeholder]="'TARIFFS_PAGE.FROM_LABEL' | translate"
       />
     </div>
+    <div formArrayName="additionalStops">
+      @for (stop of additionalStops.controls; track $index) {
+        <div class="additional-stop">
+          <input
+            type="text"
+            [formControlName]="$index"
+            placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
+              $index + 1
+            }}"
+          />
+          <button type="button" (click)="removeStop($index)">
+            {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
+          </button>
+        </div>
+      }
+      <button
+        class="add-ride-btn"
+        type="button"
+        (click)="addStop()"
+        [disabled]="additionalStops.length >= 3"
+      >
+        <img src="assets/styles/icons/add.svg" alt="Add" />
+        <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
+      </button>
+    </div>
     <div>
-      <label for="to">{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</label>
-      <input
-        id="to"
-        formControlName="to"
-        [placeholder]="'TARIFFS_PAGE.TO_PLACEHOLDER' | translate"
-      />
+      <input id="to" formControlName="to" [placeholder]="'TARIFFS_PAGE.TO_LABEL' | translate" />
     </div>
     <div>
       <label for="price">{{ 'TARIFFS_PAGE.PRICE_LABEL' | translate }}</label>
@@ -26,19 +50,12 @@
         type="number"
       />
     </div>
-    <div class="action-buttons">
-      <mt-button
-        [label]="'TARIFFS_PAGE.CANCEL_BUTTON' | translate"
-        type="secondary"
-        size="medium"
-        (click)="close()"
-      ></mt-button>
-      <mt-button
-        [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
-        type="primary"
-        size="medium"
-        (click)="save()"
-      ></mt-button>
-    </div>
+    <mt-button
+      class="save-button"
+      [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
+      type="primary"
+      size="medium"
+      (click)="save()"
+    ></mt-button>
   </form>
 </div>
