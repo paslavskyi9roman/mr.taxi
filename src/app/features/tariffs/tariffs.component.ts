@@ -12,7 +12,7 @@ import { TariffService } from './tariff.service';
 import { Tariff } from './tariff.model';
 import { Observable, startWith, map } from 'rxjs';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -40,6 +40,7 @@ export class TariffsComponent implements OnInit {
   private tariffService: TariffService = inject(TariffService);
   private dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
+  private translate: TranslateService = inject(TranslateService);
 
   public tariffs$: Observable<Tariff[]> = this.tariffService.getTariffs();
   public filteredTariffs: Tariff[] = [];
@@ -101,7 +102,7 @@ export class TariffsComponent implements OnInit {
       if (result) {
         this.tariffService.addTariff(result).subscribe(() => {
           this.initializeTariffs();
-          this.snackBar.open('Tariff added successfully', '', {
+          this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_ADDED'), '', {
             duration: 3000,
             panelClass: ['centered-snackbar']
           });
@@ -137,11 +138,11 @@ export class TariffsComponent implements OnInit {
       return;
     }
 
-    const confirmed = confirm('Are you sure you want to delete this tariff?');
+    const confirmed = confirm(this.translate.instant('TARIFFS_PAGE.DELETE_CONFIRMATION'));
     if (confirmed) {
       this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
         this.initializeTariffs();
-        this.snackBar.open('Tariff deleted successfully', '', {
+        this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_DELETED'), '', {
           duration: 3000,
           panelClass: ['centered-snackbar']
         });

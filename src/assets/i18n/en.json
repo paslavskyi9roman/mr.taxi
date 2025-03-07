@@ -63,6 +63,9 @@
     "NO_TARIFFS": "No tariffs available.",
     "ADD_NEW_TARIFF": "Add New Tariff",
     "EDIT_TARIFF": "Edit Tariff",
-    "NO_SEARCH_RESULTS": "No results for search criteria."
+    "NO_SEARCH_RESULTS": "No results for search criteria.",
+    "TARIFF_ADDED": "Tariff added successfully",
+    "TARIFF_DELETED": "Tariff deleted successfully",
+    "DELETE_CONFIRMATION": "Are you sure you want to delete this tariff?"
   }
 }

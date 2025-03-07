@@ -63,6 +63,9 @@
     "NO_TARIFFS": "Geen tarieven beschikbaar.",
     "ADD_NEW_TARIFF": "Nieuwe tarief toevoegen",
     "EDIT_TARIFF": "Tarief bewerken",
-    "NO_SEARCH_RESULTS": "Geen resultaten voor zoekcriteria."
+    "NO_SEARCH_RESULTS": "Geen resultaten voor zoekcriteria.",
+    "TARIFF_ADDED": "Tarief succesvol toegevoegd",
+    "TARIFF_DELETED": "Tarief succesvol verwijderd",
+    "DELETE_CONFIRMATION": "Weet u zeker dat u dit tarief wilt verwijderen?"
   }
 }
