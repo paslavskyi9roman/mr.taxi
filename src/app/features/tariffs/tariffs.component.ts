@@ -42,7 +42,7 @@ export class TariffsComponent implements OnInit {
   public filteredTariffs: Tariff[] = [];
   public cityControl = new FormControl();
   public filteredCities: string[] = [];
-  public selectedTariff: Tariff;
+  public selectedTariff: Tariff | null = null;
 
   ngOnInit(): void {
     this.initializeTariffs();
@@ -105,10 +105,14 @@ export class TariffsComponent implements OnInit {
     this.selectedTariff = tariff;
   }
 
-  public editTariff(tariff: Tariff): void {
+  public editTariff(): void {
+    if (!this.selectedTariff) {
+      console.error('No tariff selected');
+      return;
+    }
     const dialogRef = this.dialog.open(EditTariffDialogComponent, {
       width: '500px',
-      data: tariff
+      data: this.selectedTariff
     });
 
     dialogRef.afterClosed().subscribe((result): void => {
@@ -118,8 +122,12 @@ export class TariffsComponent implements OnInit {
     });
   }
 
-  public deleteTariff(tariff: Tariff): void {
-    this.tariffService.deleteTariff(tariff.id).subscribe(() => {
+  public deleteTariff(): void {
+    if (!this.selectedTariff?.id) {
+      console.error('No tariff selected');
+      return;
+    }
+    this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
       this.initializeTariffs();
     });
   }

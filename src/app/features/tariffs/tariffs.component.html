@@ -66,12 +66,12 @@
   }
 
   <mat-menu #optionsMenu="matMenu" class="custom-menu">
-    <button mat-menu-item (click)="editTariff(selectedTariff)">
+    <button mat-menu-item (click)="editTariff()">
       Edit Tariff
     </button>
     <button
       mat-menu-item
-      (click)=" deleteTariff(selectedTariff)"
+      (click)=" deleteTariff()"
     >
       Delete Tariff
     </button>

@@ -33,8 +33,7 @@ export class TariffService {
     }
 
     const docRef = doc(this.firestore, 'tariffs', tariff.id);
-    const tariffData = { ...tariff };
-    delete tariffData.id;
+    const { id, ...tariffData } = tariff;
 
     return from(updateDoc(docRef, tariffData));
   }
@@ -43,7 +42,6 @@ export class TariffService {
     const docRef = doc(this.firestore, 'tariffs', id);
     return from(deleteDoc(docRef));
   }
-
   public getCities(): Observable<string[]> {
     return new Observable((observer) => {
       this.getTariffs().subscribe((tariffs) => {

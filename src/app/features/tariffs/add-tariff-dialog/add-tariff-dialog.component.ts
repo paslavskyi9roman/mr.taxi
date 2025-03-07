@@ -30,7 +30,7 @@ export class AddTariffDialogComponent {
   public save(): void {
     if (this.form.valid) {
       const formValue = this.form.value;
-      const tariff: Tariff = {
+      const tariff: Partial<Tariff> = {
         price: formValue.price,
         route: { from: formValue.from, to: formValue.to },
         additionalStops: []
