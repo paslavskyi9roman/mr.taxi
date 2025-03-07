@@ -13,7 +13,12 @@
       ></app-dropdown-menu>
     </div>
     <mt-theme-switcher></mt-theme-switcher>
-    <mt-button routerLink="/auth" label="Sign up" type="add" size="medium"></mt-button>
+    <ng-container *ngIf="isLoggedIn; else loggedOut">
+      <mt-button (click)="onLogOut()" label="Log out" type="add" size="medium"></mt-button>
+    </ng-container>
+    <ng-template #loggedOut>
+      <mt-button routerLink="/auth" label="Sign up" type="add" size="medium"></mt-button>
+    </ng-template>
     <mt-button routerLink="/tariffs" label="Tariffs" type="add" size="medium"></mt-button>
   </div>
 </header>
