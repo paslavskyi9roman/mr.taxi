@@ -67,8 +67,12 @@
       color: var(--secondary-color);
     }
 
-    span {
-      color: var(--accent-color);
+    .info-text {
+      text-align: center;
+
+      span {
+        color: var(--accent-color);
+      }
     }
   }
 }

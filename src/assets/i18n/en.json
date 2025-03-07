@@ -45,7 +45,13 @@
     "EMAIL_LABEL": "Email",
     "PASSWORD_LABEL": "Password",
     "SIGN_IN_BUTTON": "Sign In",
-    "LOG_IN_BUTTON": "Log In"
+    "LOG_IN_BUTTON": "Log In",
+    "NO_ACCOUNT": "Don’t have an account yet?",
+    "SIGN_UP": "Sign up",
+    "ALREADY_HAVE_ACCOUNT": "Already have an account?",
+    "LOG_IN": "Log in",
+    "LOG_IN_GOOGLE": "Log in with Google",
+    "LOG_IN_APPLE": "Log in with Apple"
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tariffs Page",

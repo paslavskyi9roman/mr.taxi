@@ -30,15 +30,17 @@
       <div class="or-text">{{ 'or' | translate }}</div>
       <mt-button
         type="add"
-        label="{{ 'AUTH.SIGN_IN_GOOGLE' | translate }}"
+        label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
         (click)="onSignInWithGoogle()"
       ></mt-button>
       <mt-button
         type="add"
-        label="{{ 'AUTH.SIGN_IN_APPLE' | translate }}"
+        label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
         (click)="onSignInWithApple()"
       ></mt-button>
-      <p>Already have an account? <span> Log in </span></p>
+      <p class="info-text">
+        {{ 'AUTH.ALREADY_HAVE_ACCOUNT' | translate }} <span>{{ 'AUTH.LOG_IN' | translate }}</span>
+      </p>
     </form>
   </div>
   <div class="auth-form">
@@ -80,7 +82,9 @@
         label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
         (click)="onLogInWithApple()"
       ></mt-button>
-      <p>Don’t have account yet? <span>Sign up</span></p>
+      <p class="info-text">
+        {{ 'AUTH.NO_ACCOUNT' | translate }} <span>{{ 'AUTH.SIGN_UP' | translate }}</span>
+      </p>
     </form>
   </div>
 </div>

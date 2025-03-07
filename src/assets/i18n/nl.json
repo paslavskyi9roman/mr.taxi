@@ -45,7 +45,13 @@
     "EMAIL_LABEL": "E-mail",
     "PASSWORD_LABEL": "Wachtwoord",
     "SIGN_IN_BUTTON": "Aanmelden",
-    "LOG_IN_BUTTON": "Inloggen"
+    "LOG_IN_BUTTON": "Inloggen",
+    "NO_ACCOUNT": "Heb je nog geen account?",
+    "SIGN_UP": "Aanmelden",
+    "ALREADY_HAVE_ACCOUNT": "Heb je al een account?",
+    "LOG_IN": "Inloggen",
+    "LOG_IN_GOOGLE": "Inloggen met Google",
+    "LOG_IN_APPLE": "Inloggen met Apple"
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarievenpagina",

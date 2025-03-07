@@ -66,6 +66,12 @@
     "EMAIL_LABEL": "Електронна пошта",
     "PASSWORD_LABEL": "Пароль",
     "SIGN_IN_BUTTON": "Увійти",
-    "LOG_IN_BUTTON": "Вхід"
+    "LOG_IN_BUTTON": "Вхід",
+    "NO_ACCOUNT": "Ще не маєте облікового запису?",
+    "SIGN_UP": "Зареєструватися",
+    "ALREADY_HAVE_ACCOUNT": "Вже маєте обліковий запис?",
+    "LOG_IN": "Увійти",
+    "LOG_IN_GOOGLE": "Увійти через Google",
+    "LOG_IN_APPLE": "Увійти через Apple"
   }
 }
