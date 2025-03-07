@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
-import { Language } from '../../../core/models/language';
+import { LanguageEnum } from '../../../core/models/language.enum';
 import { MtButtonComponent } from '../mt-button/mt-button.component';
 import { NgIf } from '@angular/common';
 
@@ -19,7 +19,8 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public selectedLanguage: string = localStorage.getItem('selectedLanguage') || Language.English;
+  public selectedLanguage: string =
+    localStorage.getItem('selectedLanguage') || LanguageEnum.English;
   private translate: TranslateService = inject(TranslateService);
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
@@ -27,9 +28,18 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   public languages = [
-    { value: 'English', label: Language.English, icon: 'assets/styles/icons/flags/gb-flag.svg' },
-    { value: 'Dutch', label: Language.Dutch, icon: 'assets/styles/icons/flags/nl-flag.svg' },
-    { value: 'Ukrainian', label: Language.Ukrainian, icon: 'assets/styles/icons/flags/ua-flag.svg' }
+    {
+      value: 'English',
+      label: LanguageEnum.English,
+      icon: 'assets/styles/icons/flags/gb-flag.svg'
+    },
+    { value: 'Dutch', label: LanguageEnum.Dutch, 
+      icon: 'assets/styles/icons/flags/nl-flag.svg' },
+    {
+      value: 'Ukrainian',
+      label: LanguageEnum.Ukrainian,
+      icon: 'assets/styles/icons/flags/ua-flag.svg'
+    }
   ];
 
   public selectedFlag: string =
@@ -42,9 +52,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public onLanguageChange(language: Language): void {
+  public onLanguageChange(language: LanguageEnum): void {
     const selectedItem = this.languages.find((item) => item.value === language);
-    this.selectedLanguage = selectedItem?.value || Language.English;
+    this.selectedLanguage = selectedItem?.value || LanguageEnum.English;
     this.selectedFlag = selectedItem?.icon || 'assets/styles/icons/flags/gb-flag.svg';
     this.translate.use(selectedItem!.label);
     localStorage.setItem('selectedLanguage', selectedItem!.label);

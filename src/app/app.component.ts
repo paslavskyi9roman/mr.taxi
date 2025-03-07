@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { Language } from './core/models/language';
+import { LanguageEnum } from './core/models/language.enum';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 
 @Component({
@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   private translate: TranslateService = inject(TranslateService);
 
   public ngOnInit(): void {
-    const savedLanguage = localStorage.getItem('selectedLanguage') || Language.Dutch;
-    this.translate.setDefaultLang(Language.Dutch);
+    const savedLanguage = localStorage.getItem('selectedLanguage') || LanguageEnum.Dutch;
+    this.translate.setDefaultLang(LanguageEnum.Dutch);
     this.translate.use(savedLanguage);
   }
 }

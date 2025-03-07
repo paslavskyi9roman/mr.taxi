@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ThemeService } from '../../../core/services/theme.service';
-import { Theme } from '../../../core/models/theme';
+import { ThemeEnum } from '../../../core/models/theme.enum';
 
 @Component({
   selector: 'mt-theme-switcher',
@@ -15,13 +15,13 @@ export class ThemeSwitcherComponent {
   private themeService = inject(ThemeService);
 
   public get themeIconPath(): string {
-    return this.themeService.theme === Theme.Light
+    return this.themeService.theme === ThemeEnum.Light
       ? 'assets/styles/icons/dark-theme.svg'
       : 'assets/styles/icons/light-theme.svg';
   }
 
   public get themeIcon(): string {
-    return this.themeService.theme === Theme.Light ? 'dark_mode' : 'light_mode';
+    return this.themeService.theme === ThemeEnum.Light ? 'dark_mode' : 'light_mode';
   }
 
   public toggleTheme(): void {
