@@ -19,6 +19,7 @@ export class AuthComponent implements OnInit {
   public logInForm: FormGroup;
   public signInError: string | null = null;
   public logInError: string | null = null;
+  public isLoginMode = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -138,5 +139,9 @@ export class AuthComponent implements OnInit {
 
   public clearLogInError(): void {
     this.logInError = null;
+  }
+
+  public toggleAuthMode(): void {
+    this.isLoginMode = !this.isLoginMode;
   }
 }

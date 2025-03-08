@@ -58,6 +58,10 @@
 
       ::ng-deep .mt-button--large {
         width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
       }
     }
 
@@ -72,6 +76,7 @@
 
       span {
         color: var(--accent-color);
+        cursor: pointer;
       }
     }
   }
@@ -81,4 +86,15 @@
   color: var(--system-red);
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.mat-mdc-raised-button {
+  margin-bottom: 10px;
+  width: 333px;
 }

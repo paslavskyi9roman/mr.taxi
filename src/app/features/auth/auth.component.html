@@ -1,90 +1,105 @@
 <div class="auth-container">
-  <div class="auth-form">
-    <h2>{{ 'AUTH.SIGN_IN_TITLE' | translate }}</h2>
-    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
-      <div>
-        <label for="signInEmail">{{ 'AUTH.EMAIL_LABEL' | translate }}</label>
-        <input
-          type="email"
-          id="signInEmail"
-          formControlName="email"
-          required
-          (input)="clearSignInError()"
-        />
-      </div>
-      <div>
-        <label for="signInPassword">{{ 'AUTH.PASSWORD_LABEL' | translate }}</label>
-        <input
-          type="password"
-          id="signInPassword"
-          formControlName="password"
-          required
-          (input)="clearSignInError()"
-        />
-      </div>
-      <div *ngIf="signInError" class="error-message">{{ signInError }}</div>
-      <mt-button
-        label="{{ 'AUTH.SIGN_IN_BUTTON' | translate }}"
-        [disabled]="signInForm.invalid"
-      ></mt-button>
-      <div class="or-text">{{ 'or' | translate }}</div>
-      <mt-button
-        type="add"
-        label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
-        (click)="onSignInWithGoogle()"
-      ></mt-button>
-      <mt-button
-        type="add"
-        label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
-        (click)="onSignInWithApple()"
-      ></mt-button>
-      <p class="info-text">
-        {{ 'AUTH.ALREADY_HAVE_ACCOUNT' | translate }} <span>{{ 'AUTH.LOG_IN' | translate }}</span>
-      </p>
-    </form>
-  </div>
-  <div class="auth-form">
-    <h2>{{ 'AUTH.LOG_IN_TITLE' | translate }}</h2>
-    <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
-      <div>
-        <label for="logInEmail">{{ 'AUTH.EMAIL_LABEL' | translate }}</label>
-        <input
-          type="email"
-          id="logInEmail"
-          formControlName="email"
-          required
-          (input)="clearLogInError()"
-        />
-      </div>
-      <div>
-        <label for="logInPassword">{{ 'AUTH.PASSWORD_LABEL' | translate }}</label>
-        <input
-          type="password"
-          id="logInPassword"
-          formControlName="password"
-          required
-          (input)="clearLogInError()"
-        />
-      </div>
-      <div *ngIf="logInError" class="error-message">{{ logInError }}</div>
-      <mt-button
-        label="{{ 'AUTH.LOG_IN_BUTTON' | translate }}"
-        [disabled]="logInForm.invalid"
-      ></mt-button>
-      <div class="or-text">{{ 'or' | translate }}</div>
-      <mt-button
-        type="add"
-        label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
-        (click)="onLogInWithGoogle()"
-      ></mt-button>
-      <mt-button
-        type="add"
-        label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
-        (click)="onLogInWithApple()"
-      ></mt-button>
-      <p class="info-text">
-        {{ 'AUTH.NO_ACCOUNT' | translate }} <span>{{ 'AUTH.SIGN_UP' | translate }}</span>
-      </p>
-    </form>
-  </div>
+  <ng-container *ngIf="isLoginMode; else signUpTemplate">
+    <div class="auth-form">
+      <h2>{{ 'AUTH.LOG_IN_TITLE' | translate }}</h2>
+      <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
+        <div>
+          <label for="logInEmail">{{ 'AUTH.EMAIL_LABEL' | translate }}</label>
+          <input
+            type="email"
+            id="logInEmail"
+            formControlName="email"
+            required
+            (input)="clearLogInError()"
+          />
+        </div>
+        <div>
+          <label for="logInPassword">{{ 'AUTH.PASSWORD_LABEL' | translate }}</label>
+          <input
+            type="password"
+            id="logInPassword"
+            formControlName="password"
+            required
+            (input)="clearLogInError()"
+          />
+        </div>
+        <div *ngIf="logInError" class="error-message">{{ logInError }}</div>
+        <mt-button
+          label="{{ 'AUTH.LOG_IN_BUTTON' | translate }}"
+          [disabled]="logInForm.invalid"
+        ></mt-button>
+        <div class="or-text">{{ 'or' | translate }}</div>
+        <mt-button
+          type="add"
+          label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
+          (click)="onLogInWithGoogle()"
+        >
+          <img src="assets/styles/icons/socials/google.svg" alt="Google" /> 
+        </mt-button>
+        <mt-button
+          type="add"
+          label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
+          (click)="onLogInWithApple()"
+        >
+          <img src="assets/styles/icons/socials/apple.svg" alt="Apple" />
+        </mt-button>
+        <p class="info-text">
+          {{ 'AUTH.NO_ACCOUNT' | translate }}
+          <span (click)="toggleAuthMode()">{{ 'AUTH.SIGN_UP' | translate }}</span>
+        </p>
+      </form>
+    </div>
+  </ng-container>
+
+  <ng-template #signUpTemplate>
+    <div class="auth-form">
+      <h2>{{ 'AUTH.SIGN_IN_TITLE' | translate }}</h2>
+      <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+        <div>
+          <label for="signInEmail">{{ 'AUTH.EMAIL_LABEL' | translate }}</label>
+          <input
+            type="email"
+            id="signInEmail"
+            formControlName="email"
+            required
+            (input)="clearSignInError()"
+          />
+        </div>
+        <div>
+          <label for="signInPassword">{{ 'AUTH.PASSWORD_LABEL' | translate }}</label>
+          <input
+            type="password"
+            id="signInPassword"
+            formControlName="password"
+            required
+            (input)="clearSignInError()"
+          />
+        </div>
+        <div *ngIf="signInError" class="error-message">{{ signInError }}</div>
+        <mt-button
+          label="{{ 'AUTH.SIGN_IN_BUTTON' | translate }}"
+          [disabled]="signInForm.invalid"
+        ></mt-button>
+        <div class="or-text">{{ 'or' | translate }}</div>
+        <mt-button
+          type="add"
+          label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
+          (click)="onSignInWithGoogle()"
+        >
+          <img src="assets/styles/icons/socials/google.svg" alt="Google" />
+        </mt-button>
+        <mt-button
+          type="add"
+          label="{{ 'AUTH.LOG_IN_APPLE' | translate }}"
+          (click)="onSignInWithApple()"
+        >
+          <img src="assets/styles/icons/socials/apple.svg" alt="Apple" />
+        </mt-button>
+        <p class="info-text">
+          {{ 'AUTH.ALREADY_HAVE_ACCOUNT' | translate }}
+          <span (click)="toggleAuthMode()">{{ 'AUTH.LOG_IN' | translate }}</span>
+        </p>
+      </form>
+    </div>
+  </ng-template>
 </div>
