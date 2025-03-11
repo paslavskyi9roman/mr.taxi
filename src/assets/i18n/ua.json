@@ -72,6 +72,9 @@
     "ALREADY_HAVE_ACCOUNT": "Вже маєте обліковий запис?",
     "LOG_IN": "Увійти",
     "LOG_IN_GOOGLE": "Увійти через Google",
-    "LOG_IN_APPLE": "Увійти через Apple"
+    "LOG_IN_APPLE": "Увійти через Apple",
+    "NAME_LABEL": "Ім'я",
+    "PHONE_NUMBER_LABEL": "Номер телефону",
+    "LOGOUT_SUCCESS": "Вихід успішний"
   }
 }

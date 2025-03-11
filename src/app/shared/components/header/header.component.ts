@@ -33,12 +33,16 @@ export class HeaderComponent implements OnInit {
       label: LanguageEnum.English,
       icon: 'assets/styles/icons/flags/gb-flag.svg'
     },
-    { value: 'Dutch', label: LanguageEnum.Dutch, 
-      icon: 'assets/styles/icons/flags/nl-flag.svg' },
+    { value: 'Dutch', label: LanguageEnum.Dutch, icon: 'assets/styles/icons/flags/nl-flag.svg' },
     {
       value: 'Ukrainian',
       label: LanguageEnum.Ukrainian,
       icon: 'assets/styles/icons/flags/ua-flag.svg'
+    },
+    {
+      value: 'German',
+      label: LanguageEnum.German,
+      icon: 'assets/styles/icons/flags/de-flag.svg'
     }
   ];
 

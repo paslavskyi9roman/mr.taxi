@@ -51,7 +51,10 @@
     "ALREADY_HAVE_ACCOUNT": "Heb je al een account?",
     "LOG_IN": "Inloggen",
     "LOG_IN_GOOGLE": "Inloggen met Google",
-    "LOG_IN_APPLE": "Inloggen met Apple"
+    "LOG_IN_APPLE": "Inloggen met Apple",
+    "NAME_LABEL": "Naam",
+    "PHONE_NUMBER_LABEL": "Telefoonnummer",
+    "LOGOUT_SUCCESS": "Uitloggen succesvol"
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarievenpagina",
