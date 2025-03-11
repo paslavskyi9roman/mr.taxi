@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -27,6 +28,8 @@ export class AuthComponent {
     private router: Router
   ) {
     this.signInForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -40,9 +43,14 @@ export class AuthComponent {
   public onSignUp(): void {
     if (this.signInForm.valid) {
       this.authService
-        .signUp(this.signInForm.value.email, this.signInForm.value.password)
+        .signUp(
+          this.signInForm.value.email,
+          this.signInForm.value.password,
+          this.signInForm.value.name,
+          this.signInForm.value.phoneNumber
+        )
         .subscribe({
-          next: () => {
+          next: (userCredential) => {
             this.router.navigate(['/']);
           },
           error: (error) => {

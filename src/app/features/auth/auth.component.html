@@ -75,6 +75,26 @@
             (input)="clearSignInError()"
           />
         </div>
+        <div>
+          <label for="signInName">{{ 'AUTH.NAME_LABEL' | translate }}</label>
+          <input
+            type="text"
+            id="signInName"
+            formControlName="name"
+            required
+            (input)="clearSignInError()"
+          />
+        </div>
+        <div>
+          <label for="signInPhoneNumber">{{ 'AUTH.PHONE_NUMBER_LABEL' | translate }}</label>
+          <input
+            type="text"
+            id="signInPhoneNumber"
+            formControlName="phoneNumber"
+            required
+            (input)="clearSignInError()"
+          />
+        </div>
         <div *ngIf="signInError" class="error-message">{{ signInError }}</div>
         <mt-button
           label="{{ 'AUTH.SIGN_IN_BUTTON' | translate }}"

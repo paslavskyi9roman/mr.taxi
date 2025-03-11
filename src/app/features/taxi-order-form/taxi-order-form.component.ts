@@ -73,7 +73,7 @@ export class TaxiOrderFormComponent implements OnInit {
 
   private initializeCityFilter(): void {
     this.tariffService.getCities().subscribe((cities) => {
-      this.filteredCities = cities;
+      this.filteredCities = cities || [];
       this.cityControl.valueChanges
         .pipe(
           startWith(''),

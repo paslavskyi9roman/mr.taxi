@@ -8,9 +8,11 @@ import {
   OAuthProvider,
   signOut,
   onAuthStateChanged,
-  UserCredential
+  UserCredential,
+  updateProfile
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +24,19 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  public signUp(email: string, password: string): Observable<UserCredential> {
-    return from(createUserWithEmailAndPassword(this.auth, email, password));
+  public signUp(
+    email: string,
+    password: string,
+    name: string,
+    phoneNumber: string
+  ): Observable<UserCredential> {
+    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+      switchMap((userCredential) => {
+        return from(updateProfile(userCredential.user, { displayName: name })).pipe(
+          map(() => userCredential)
+        );
+      })
+    );
   }
 
   public signInWithGoogle(): Observable<UserCredential> {
@@ -43,7 +56,7 @@ export class AuthService {
   public authState(): Observable<any> {
     return new Observable((observer) => {
       onAuthStateChanged(this.auth, (user) => {
-        observer.next();
+        observer.next(user);
       });
     });
   }
