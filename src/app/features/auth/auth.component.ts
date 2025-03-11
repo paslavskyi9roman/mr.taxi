@@ -51,7 +51,7 @@ export class AuthComponent {
         )
         .subscribe({
           next: (userCredential) => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/home']);
           },
           error: (error) => {
             console.error('Sign-In Error', error);
@@ -65,7 +65,7 @@ export class AuthComponent {
     if (this.logInForm.valid) {
       this.authService.logIn(this.logInForm.value.email, this.logInForm.value.password).subscribe({
         next: (result) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           this.logInError = this.getErrorMessage(error.code);
@@ -94,7 +94,7 @@ export class AuthComponent {
   public onSignInWithGoogle(): void {
     this.authService.signInWithGoogle().subscribe({
       next: (result) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Sign-In with Google Error', error);
@@ -106,7 +106,7 @@ export class AuthComponent {
   public onSignInWithApple(): void {
     this.authService.signInWithApple().subscribe({
       next: (result) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Sign-In with Apple Error', error);
@@ -118,7 +118,7 @@ export class AuthComponent {
   public onLogInWithGoogle(): void {
     this.authService.signInWithGoogle().subscribe({
       next: (result) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Log-In with Google Error', error);
@@ -130,7 +130,7 @@ export class AuthComponent {
   public onLogInWithApple(): void {
     this.authService.signInWithApple().subscribe({
       next: (result) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Log-In with Apple Error', error);
