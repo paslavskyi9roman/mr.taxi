@@ -34,7 +34,7 @@
           label="{{ 'AUTH.LOG_IN_GOOGLE' | translate }}"
           (click)="onLogInWithGoogle()"
         >
-          <img src="assets/styles/icons/socials/google.svg" alt="Google" /> 
+          <img src="assets/styles/icons/socials/google.svg" alt="Google" />
         </mt-button>
         <mt-button
           type="add"
@@ -54,7 +54,7 @@
   <ng-template #signUpTemplate>
     <div class="auth-form">
       <h2>{{ 'AUTH.SIGN_IN_TITLE' | translate }}</h2>
-      <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+      <form [formGroup]="signInForm" (ngSubmit)="onSignUp()">
         <div>
           <label for="signInEmail">{{ 'AUTH.EMAIL_LABEL' | translate }}</label>
           <input

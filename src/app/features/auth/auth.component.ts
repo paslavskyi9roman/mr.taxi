@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [ReactiveFormsModule, CommonModule, TranslatePipe, MtButtonComponent],
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
   public signInForm: FormGroup;
   public logInForm: FormGroup;
   public signInError: string | null = null;
@@ -37,14 +37,12 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  public onSignIn(): void {
+  public onSignUp(): void {
     if (this.signInForm.valid) {
       this.authService
-        .signIn(this.signInForm.value.email, this.signInForm.value.password)
+        .signUp(this.signInForm.value.email, this.signInForm.value.password)
         .subscribe({
-          next: (result) => {
+          next: () => {
             this.router.navigate(['/']);
           },
           error: (error) => {
@@ -57,7 +55,7 @@ export class AuthComponent implements OnInit {
 
   public onLogIn(): void {
     if (this.logInForm.valid) {
-      this.authService.signIn(this.logInForm.value.email, this.logInForm.value.password).subscribe({
+      this.authService.logIn(this.logInForm.value.email, this.logInForm.value.password).subscribe({
         next: (result) => {
           this.router.navigate(['/']);
         },

@@ -54,7 +54,7 @@ export class TariffService {
             this.listOfCities.add(stop.to);
           });
         });
-        observer.next(Array.from(this.listOfCities));
+        observer.next();
         observer.complete();
       });
     });
