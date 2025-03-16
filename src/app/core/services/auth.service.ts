@@ -14,14 +14,19 @@ import {
   browserSessionPersistence,
   sendPasswordResetEmail
 } from '@angular/fire/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { UserRole } from '../enums/user-role.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private auth: Auth) {}
+  constructor(
+    private auth: Auth,
+    private firestore: Firestore
+  ) {}
 
   public logIn(email: string, password: string, rememberMe: boolean): Observable<UserCredential> {
     return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
@@ -45,7 +50,17 @@ export class AuthService {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
       switchMap((userCredential) => {
         return from(updateProfile(userCredential.user, { displayName: name })).pipe(
-          map(() => userCredential)
+          switchMap(() => {
+            const userDocRef = doc(this.firestore, `users/${userCredential.user.uid}`);
+            return from(
+              setDoc(userDocRef, {
+                role: UserRole.User,
+                name: name,
+                phoneNumber: phoneNumber,
+                email: email
+              })
+            ).pipe(map(() => userCredential));
+          })
         );
       })
     );
@@ -53,12 +68,44 @@ export class AuthService {
 
   public signInWithGoogle(): Observable<UserCredential> {
     const provider = new GoogleAuthProvider();
-    return from(signInWithPopup(this.auth, provider));
+    return from(signInWithPopup(this.auth, provider)).pipe(
+      switchMap((userCredential) => {
+        const userDocRef = doc(this.firestore, `users/${userCredential.user.uid}`);
+        return from(
+          setDoc(
+            userDocRef,
+            {
+              role: UserRole.User,
+              name: userCredential.user.displayName,
+              email: userCredential.user.email,
+              phoneNumber: userCredential.user.phoneNumber
+            },
+            { merge: true }
+          )
+        ).pipe(map(() => userCredential));
+      })
+    );
   }
 
   public signInWithApple(): Observable<UserCredential> {
     const provider = new OAuthProvider('apple.com');
-    return from(signInWithPopup(this.auth, provider));
+    return from(signInWithPopup(this.auth, provider)).pipe(
+      switchMap((userCredential) => {
+        const userDocRef = doc(this.firestore, `users/${userCredential.user.uid}`);
+        return from(
+          setDoc(
+            userDocRef,
+            {
+              role: UserRole.User,
+              name: userCredential.user.displayName,
+              email: userCredential.user.email,
+              phoneNumber: userCredential.user.phoneNumber
+            },
+            { merge: true }
+          )
+        ).pipe(map(() => userCredential));
+      })
+    );
   }
 
   public logOut(): Observable<void> {
