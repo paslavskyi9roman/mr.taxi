@@ -69,7 +69,17 @@
   }
 
   <mat-menu #optionsMenu="matMenu" class="custom-menu">
-    <button mat-menu-item (click)="editTariff()">Edit Tariff</button>
-    <button mat-menu-item (click)="deleteTariff()">Delete Tariff</button>
+    <button mat-menu-item (click)="editTariff()">
+      <mat-icon>
+        <img src="assets/styles/icons/edit-grey.svg" alt="Edit" />
+      </mat-icon>
+      <span>Edit Tariff</span>
+    </button>
+    <button mat-menu-item (click)="deleteTariff()">
+      <mat-icon>
+        <img src="assets/styles/icons/trash.svg" alt="Delete" />
+      </mat-icon>
+      <span>Delete Tariff</span>
+    </button>
   </mat-menu>
 </div>
