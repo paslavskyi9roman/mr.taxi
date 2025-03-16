@@ -116,7 +116,11 @@ export class AuthService {
   }
 
   public logOut(): Observable<void> {
-    return from(signOut(this.auth));
+    return from(signOut(this.auth)).pipe(
+      map(() => {
+        this.userRole = null;
+      })
+    );
   }
 
   public authState(): Observable<any> {

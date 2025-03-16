@@ -102,6 +102,10 @@ export class TariffsComponent implements OnInit {
   }
 
   public addTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
+
     const dialogRef = this.dialog.open(AddTariffDialogComponent, {
       width: '353px'
     });
@@ -124,6 +128,10 @@ export class TariffsComponent implements OnInit {
   }
 
   public editTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
+
     if (!this.selectedTariff) {
       console.error('No tariff selected');
       return;
@@ -141,6 +149,9 @@ export class TariffsComponent implements OnInit {
   }
 
   public deleteTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
     if (!this.selectedTariff?.id) {
       console.error('No tariff selected');
       return;
