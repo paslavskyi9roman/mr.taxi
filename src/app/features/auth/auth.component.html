@@ -29,8 +29,10 @@
             <input type="checkbox" formControlName="rememberMe" />
             {{ 'AUTH.REMEMBER_ME' | translate }}
           </label>
-          <mt-link-button  label="{{ 'AUTH.FORGOT_PASSWORD' | translate }}" (click)="onForgotPassword()"></mt-link-button>
-
+          <mt-link-button
+            label="{{ 'AUTH.FORGOT_PASSWORD' | translate }}"
+            (click)="onForgotPassword()"
+          ></mt-link-button>
         </div>
 
         <div *ngIf="logInError" class="error-message">{{ logInError }}</div>

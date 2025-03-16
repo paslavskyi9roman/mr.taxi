@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AuthService } from '../../core/services/auth.service';
-import { MatRadioButton } from '@angular/material/radio';
 import { MtLinkButtonComponent } from '../../shared/components/mt-link-button/mt-link-button.component';
 
 @Component({
@@ -19,15 +17,11 @@ import { MtLinkButtonComponent } from '../../shared/components/mt-link-button/mt
     CommonModule,
     TranslatePipe,
     MtButtonComponent,
-    MatRadioButton,
     MtLinkButtonComponent
   ],
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  onForgotPassword() {
-    throw new Error('Method not implemented.');
-  }
   public signInForm: FormGroup;
   public logInForm: FormGroup;
   public signInError: string | null = null;
@@ -163,5 +157,22 @@ export class AuthComponent {
 
   public toggleAuthMode(): void {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  public onForgotPassword(): void {
+    const email = this.logInForm.value.email;
+    if (email) {
+      this.authService.forgotPassword(email).subscribe({
+        next: () => {
+          alert('Password reset email sent. Please check your inbox.');
+        },
+        error: (error) => {
+          console.error('Forgot Password Error', error);
+          alert('An error occurred while sending the password reset email. Please try again.');
+        }
+      });
+    } else {
+      alert('Please enter your email address.');
+    }
   }
 }

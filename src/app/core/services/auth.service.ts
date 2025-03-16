@@ -11,7 +11,8 @@ import {
   UserCredential,
   updateProfile,
   browserLocalPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
+  sendPasswordResetEmail
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
@@ -70,5 +71,9 @@ export class AuthService {
         observer.next(user);
       });
     });
+  }
+
+  public forgotPassword(email: string): Observable<void> {
+    return from(sendPasswordResetEmail(this.auth, email));
   }
 }
