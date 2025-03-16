@@ -14,14 +14,16 @@
       <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel">
         @for (city of filteredCities | slice: 0 : 5; track city) {
           <mat-option [value]="city">{{ city }}</mat-option>
-        }
+        }UserRole
       </mat-autocomplete>
     </mat-form-field>
-    <mt-button
-      label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
-      type="primary"
-      (click)="addTariff()"
-    ></mt-button>
+    <ng-container *ngIf="authService.userRole === UserRole.Admin">
+      <mt-button
+        label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
+        type="primary"
+        (click)="addTariff()"
+      ></mt-button>
+    </ng-container>
   </div>
 
   @if (tariffs$ | async) {

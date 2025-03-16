@@ -14,19 +14,32 @@ import {
   browserSessionPersistence,
   sendPasswordResetEmail
 } from '@angular/fire/auth';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { UserRole } from '../enums/user-role.enum';
+import { UserRole } from '../models/user.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public userRole: UserRole | null = null;
+
   constructor(
     private auth: Auth,
     private firestore: Firestore
-  ) {}
+  ) {
+    this.authState().subscribe((user) => {
+      if (user) {
+        const userDocRef = doc(this.firestore, `users/${user.uid}`);
+        getDoc(userDocRef).then((docSnapshot) => {
+          if (docSnapshot.exists()) {
+            this.userRole = docSnapshot.data().role as UserRole;
+          }
+        });
+      }
+    });
+  }
 
   public logIn(email: string, password: string, rememberMe: boolean): Observable<UserCredential> {
     return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
