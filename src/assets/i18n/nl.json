@@ -1,5 +1,5 @@
 {
-  "HOME":  {
+  "HOME": {
     "TITLE": "Comfortabele ritten, eerlijke tarieven",
     "SUBTITLE": "Ontdek een ritervaring op maat met eerlijke prijzen en chauffeurs die u kunt vertrouwen."
   },
@@ -20,7 +20,6 @@
     "REMOVE_STOP": "Verwijderen",
     "ADDITIONAL_INFO": "Extra informatie",
     "COMMENT_PLACEHOLDER": "Voer opmerking in"
-
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -39,5 +38,43 @@
       "PLACEHOLDER": "Vluchtnummer:"
     },
     "SAVE_BUTTON": "Opslaan"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Aanmelden",
+    "LOG_IN_TITLE": "Inloggen",
+    "EMAIL_LABEL": "E-mail",
+    "PASSWORD_LABEL": "Wachtwoord",
+    "SIGN_IN_BUTTON": "Aanmelden",
+    "LOG_IN_BUTTON": "Inloggen",
+    "NO_ACCOUNT": "Heb je nog geen account?",
+    "SIGN_UP": "Aanmelden",
+    "ALREADY_HAVE_ACCOUNT": "Heb je al een account?",
+    "LOG_IN": "Inloggen",
+    "LOG_IN_GOOGLE": "Inloggen met Google",
+    "LOG_IN_APPLE": "Inloggen met Apple",
+    "NAME_LABEL": "Naam",
+    "PHONE_NUMBER_LABEL": "Telefoonnummer",
+    "LOGOUT_SUCCESS": "Uitloggen succesvol"
+  },
+  "TARIFFS_PAGE": {
+    "TITLE": "Tarievenpagina",
+    "SEARCH_LABEL": "Zoek steden",
+    "SEARCH_PLACEHOLDER": "Typ om te zoeken...",
+    "ADD_ROUTE_BUTTON": "Voeg nieuwe route toe",
+    "FROM_LABEL": "Van",
+    "TO_LABEL": "Naar",
+    "PRICE_LABEL": "Prijs",
+    "FROM_PLACEHOLDER": "Voer vertrekstad in",
+    "TO_PLACEHOLDER": "Voer bestemmingstad in",
+    "PRICE_PLACEHOLDER": "Voer prijs in",
+    "CANCEL_BUTTON": "Annuleren",
+    "SAVE_BUTTON": "Opslaan",
+    "NO_TARIFFS": "Geen tarieven beschikbaar.",
+    "ADD_NEW_TARIFF": "Nieuwe tarief toevoegen",
+    "EDIT_TARIFF": "Tarief bewerken",
+    "NO_SEARCH_RESULTS": "Geen resultaten voor zoekcriteria.",
+    "TARIFF_ADDED": "Tarief succesvol toegevoegd",
+    "TARIFF_DELETED": "Tarief succesvol verwijderd",
+    "DELETE_CONFIRMATION": "Weet u zeker dat u dit tarief wilt verwijderen?"
   }
 }

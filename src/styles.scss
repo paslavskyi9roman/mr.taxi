@@ -138,3 +138,26 @@ input:-webkit-autofill:active {
     color: var(--secondary-color);
   }
 }
+
+.mat-mdc-simple-snack-bar {
+  color: var(--primary-color);
+  background-color: var(--card-color);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+}
+
+.centered-snackbar {
+  .mat-mdc-snack-bar-label {
+    text-align: center;
+  }
+}
+
+.add-ride-btn {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary-color);
+  @media screen and (max-width: 540px) {
+    justify-content: start;
+  }
+}

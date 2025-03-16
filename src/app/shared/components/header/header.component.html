@@ -1,7 +1,10 @@
 <header>
-  <div class="logo"  routerLink="/">
-    <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
-    <img src="assets/styles/icons/text-logo.svg" alt="Logo" class="logo-text" />
+  <div class="logo" routerLink="/home">
+    <div class="icon">
+      <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
+        <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
+        <p>Haaglanden</p>
+    </div>
   </div>
   <div class="right">
     <div class="language-select">
@@ -13,7 +16,12 @@
       ></app-dropdown-menu>
     </div>
     <mt-theme-switcher></mt-theme-switcher>
-    <!-- <mt-button label="Sign up" type="add" size="medium"></mt-button> -->
     <mt-button routerLink="/tariffs" label="Tariffs" type="add" size="medium"></mt-button>
+    <ng-container *ngIf="isLoggedIn; else loggedOut">
+      <mt-button (click)="onLogOut()" label="Log out" type="add" size="medium"></mt-button>
+    </ng-container>
+    <ng-template #loggedOut>
+      <mt-button routerLink="/auth" label="Sign up" type="add" size="medium"></mt-button>
+    </ng-template>
   </div>
 </header>

@@ -1,21 +1,61 @@
 <div>
   <form [formGroup]="form">
-    <div>
-      <h1>Edit Tariff</h1>
-      <label for="from">From</label>
-      <input id="from" formControlName="from" placeholder="Enter starting city" />
+    <div class="header">
+      <h1>{{ 'TARIFFS_PAGE.EDIT_TARIFF' | translate }}</h1>
+      <button mat-icon-button class="close-button" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
     <div>
-      <label for="to">To</label>
-      <input id="to" formControlName="to" placeholder="Enter destination city" />
+      <input
+        id="from"
+        formControlName="from"
+        [placeholder]="'TARIFFS_PAGE.FROM_LABEL' | translate"
+      />
+    </div>
+    <div formArrayName="additionalStops">
+      @for (stop of additionalStops.controls; track $index) {
+        <div class="additional-stop">
+          <input
+            type="text"
+            [formControlName]="$index"
+            placeholder="{{ 'TAXI_ORDER_FORM.ADDITIONAL_STOP_PLACEHOLDER' | translate }} {{
+              $index + 1
+            }}"
+          />
+          <button type="button" (click)="removeStop($index)">
+            {{ 'TAXI_ORDER_FORM.REMOVE_STOP' | translate }}
+          </button>
+        </div>
+      }
+      <button
+        class="add-ride-btn"
+        type="button"
+        (click)="addStop()"
+        [disabled]="additionalStops.length >= 3"
+      >
+        <img src="assets/styles/icons/add.svg" alt="Add" />
+        <span>{{ 'TAXI_ORDER_FORM.ADD_STOP' | translate }}</span>
+      </button>
     </div>
     <div>
-      <label for="price">Price</label>
-      <input id="price" formControlName="price" placeholder="Enter price" type="number" />
+      <input id="to" formControlName="to" [placeholder]="'TARIFFS_PAGE.TO_LABEL' | translate" />
     </div>
-    <div class="action-buttons">
-      <mt-button label="Cancel" type="secondary" size="medium" (click)="close()"></mt-button>
-      <mt-button label="Save" type="primary" size="medium" (click)="save()"></mt-button>
+    <div>
+      <label for="price">{{ 'TARIFFS_PAGE.PRICE_LABEL' | translate }}</label>
+      <input
+        id="price"
+        formControlName="price"
+        [placeholder]="'TARIFFS_PAGE.PRICE_PLACEHOLDER' | translate"
+        type="number"
+      />
     </div>
+    <mt-button
+      class="save-button"
+      [label]="'TARIFFS_PAGE.SAVE_BUTTON' | translate"
+      type="primary"
+      size="medium"
+      (click)="save()"
+    ></mt-button>
   </form>
 </div>

@@ -14,12 +14,12 @@ header {
   .logo {
     display: flex;
     align-items: center;
-    img {
-      position: absolute;
-      width: 160px;
-    }
+    height: 100%;
+    width: 100%;
+
     &-text {
       filter: var(--icon-filter-inverted);
+      width: 160px;
     }
   }
 }
@@ -34,6 +34,11 @@ header {
 }
 
 .language-select {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
   display: flex;
   align-items: center;
 }

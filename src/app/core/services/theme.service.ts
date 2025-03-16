@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Theme } from '../models/theme';
+import { ThemeEnum } from '../models/theme.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private currentTheme: Theme = this.getSavedTheme();
+  private currentTheme: ThemeEnum = this.getSavedTheme();
 
   constructor() {
     this.applyTheme(this.currentTheme);
   }
 
-  private getSavedTheme(): Theme {
-    return (localStorage.getItem('theme') as Theme) || Theme.Dark;
+  private getSavedTheme(): ThemeEnum {
+    return (localStorage.getItem('theme') as ThemeEnum) || ThemeEnum.Dark;
   }
 
-  private applyTheme(theme: Theme): void {
-    if (theme === Theme.Dark) {
+  private applyTheme(theme: ThemeEnum): void {
+    if (theme === ThemeEnum.Dark) {
       document.body.classList.add('dark-theme');
     } else {
       document.body.classList.remove('dark-theme');
@@ -28,7 +28,7 @@ export class ThemeService {
   }
 
   public toggleTheme(): void {
-    this.currentTheme = this.currentTheme === Theme.Light ? Theme.Dark : Theme.Light;
+    this.currentTheme = this.currentTheme === ThemeEnum.Light ? ThemeEnum.Dark : ThemeEnum.Light;
     localStorage.setItem('theme', this.currentTheme);
     this.applyTheme(this.currentTheme);
   }

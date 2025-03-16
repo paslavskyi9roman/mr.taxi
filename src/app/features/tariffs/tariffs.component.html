@@ -1,35 +1,85 @@
 <div class="tariffs">
-  <h1>Tariffs Page</h1>
+  <h1>{{ 'TARIFFS_PAGE.TITLE' | translate }}</h1>
   <div class="search-container">
     <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search cities</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Type to search..." />
+      <mat-label>{{ 'TARIFFS_PAGE.SEARCH_LABEL' | translate }}</mat-label>
+      <input
+        matInput
+        [matAutocomplete]="auto"
+        (keyup)="applyFilter($event)"
+        placeholder="{{ 'TARIFFS_PAGE.SEARCH_PLACEHOLDER' | translate }}"
+        [formControl]="cityControl"
+      />
       <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel">
+        @for (city of filteredCities | slice: 0 : 5; track city) {
+          <mat-option [value]="city">{{ city }}</mat-option>
+        }
+      </mat-autocomplete>
     </mat-form-field>
-    <mt-button label="Add new route" type="primary" (click)="addTariff()"></mt-button>
+    <mt-button
+      label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
+      type="primary"
+      (click)="addTariff()"
+    ></mt-button>
   </div>
 
-  <div class="tariffs-grid">
-    <div class="tariff-card" *ngFor="let tariff of filteredTariffs" (click)="editTariff(tariff)">
-      <div class="tariff-line">
-        <div class="icon from-icon"></div>
-        <div class="additional-stops" *ngIf="tariff.additionalStops.length > 0">
-          <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+  @if (tariffs$ | async) {
+    <div class="tariffs-grid">
+      @for (tariff of filteredTariffs; track tariff) {
+        <div class="tariff-card">
+          <div class="tariff-line">
+            <div class="icon from-icon"></div>
+            @if (tariff.additionalStops.length > 0) {
+              <div
+                class="additional-stops"
+                matTooltip="{{ tariff.additionalStops | formatAdditionalStops }}"
+              >
+                <div class="icon additional-stops-icon">{{ tariff.additionalStops.length }}</div>
+              </div>
+            }
+            <div class="icon to-icon">
+              <img src="assets/styles/icons/destination.svg" alt="Destination" />
+            </div>
+          </div>
+          <div class="tariff-from">
+            <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
+            {{ tariff.route.from }}
+          </div>
+          <div
+            class="tariff-options"
+            [matMenuTriggerFor]="optionsMenu"
+            (click)="setSelectedTariff(tariff)"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </div>
+          <div class="tariff-to">
+            <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
+            {{ tariff.route.to }}
+          </div>
+          <div class="tariff-price">{{ tariff.price | currency }}</div>
         </div>
-        <div class="icon to-icon">
-          <img src="assets/styles/icons/destination.svg" alt="Destination" />
-        </div>
-      </div>
-      <div class="tariff-from">
-        <p>From</p>
-        {{ tariff.route.from }}
-      </div>
-      <div class="tariff-options">⋮</div>
-      <div class="tariff-to">
-        <p>To</p>
-        {{ tariff.route.to }}
-      </div>
-      <div class="tariff-price">{{ tariff.price | currency }}</div>
+      }
+      @if (!filteredTariffs.length) {
+        <p>{{ 'TARIFFS_PAGE.NO_SEARCH_RESULTS' | translate }}</p>
+      }
     </div>
-  </div>
+  } @else {
+    <p>{{ 'TARIFFS_PAGE.NO_TARIFFS' | translate }}</p>
+  }
+
+  <mat-menu #optionsMenu="matMenu" class="custom-menu">
+    <button mat-menu-item (click)="editTariff()">
+      <mat-icon>
+        <img src="assets/styles/icons/edit-grey.svg" alt="Edit" />
+      </mat-icon>
+      <span>Edit Tariff</span>
+    </button>
+    <button mat-menu-item (click)="deleteTariff()">
+      <mat-icon>
+        <img src="assets/styles/icons/trash.svg" alt="Delete" />
+      </mat-icon>
+      <span>Delete Tariff</span>
+    </button>
+  </mat-menu>
 </div>

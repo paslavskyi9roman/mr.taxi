@@ -5,6 +5,8 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { environment } from '../environment/environemnt';
 import { routes } from './app.routes';
@@ -27,6 +29,8 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
         }
       })
-    )
+    ),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ]
 };

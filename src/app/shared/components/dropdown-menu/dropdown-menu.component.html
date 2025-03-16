@@ -3,14 +3,13 @@
     <span class="trigger-label">{{ selectedItem?.label || placeholder }}</span>
     <i class="trigger-icon"></i>
   </div>
-  <div class="dropdown-content" *ngIf="isOpen">
-    <div 
-      *ngFor="let item of items"
-      class="dropdown-item"
-      [class.disabled]="item.disabled"
-      (click)="selectItem(item)"
-    >
-      <span>{{ item.value }}</span>
+  @if (isOpen) {
+    <div class="dropdown-content">
+      @for (item of items; track item) {
+        <div class="dropdown-item" [class.disabled]="item.disabled" (click)="selectItem(item)">
+          <span>{{ item.value }}</span>
+        </div>
+      }
     </div>
-  </div>
+  }
 </div>

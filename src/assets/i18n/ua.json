@@ -1,6 +1,6 @@
 {
-  "HOME":  {
-    "TITLE":"Комфортні поїздки, справедливі тарифи",
+  "HOME": {
+    "TITLE": "Комфортні поїздки, справедливі тарифи",
     "SUBTITLE": "Відкрийте для себе поїздки, пристосовані до ваших потреб, зі справедливими цінами та водіями, яким ви можете довіряти."
   },
   "TAXI_ORDER_FORM": {
@@ -20,7 +20,6 @@
     "REMOVE_STOP": "Видалити",
     "ADDITIONAL_INFO": "Додаткова інформація",
     "COMMENT_PLACEHOLDER": "Додайте коментар"
-
   },
   "ADDITIONAL_INFO_FORM": {
     "LUGGAGE": {
@@ -39,5 +38,43 @@
       "PLACEHOLDER": "Номер рейсу:"
     },
     "SAVE_BUTTON": "Зберегти"
+  },
+  "TARIFFS_PAGE": {
+    "TITLE": "Сторінка тарифів",
+    "SEARCH_LABEL": "Пошук міст",
+    "SEARCH_PLACEHOLDER": "Введіть для пошуку...",
+    "ADD_ROUTE_BUTTON": "Додати новий маршрут",
+    "FROM_LABEL": "З",
+    "TO_LABEL": "До",
+    "PRICE_LABEL": "Ціна",
+    "FROM_PLACEHOLDER": "Введіть місто відправлення",
+    "TO_PLACEHOLDER": "Введіть місто призначення",
+    "PRICE_PLACEHOLDER": "Введіть ціну",
+    "CANCEL_BUTTON": "Скасувати",
+    "SAVE_BUTTON": "Зберегти",
+    "NO_TARIFFS": "Тарифи відсутні.",
+    "ADD_NEW_TARIFF": "Додати новий тариф",
+    "EDIT_TARIFF": "Редагувати тариф",
+    "NO_SEARCH_RESULTS": "Немає результатів за критеріями пошуку.",
+    "TARIFF_ADDED": "Тариф успішно додано",
+    "TARIFF_DELETED": "Тариф успішно видалено",
+    "DELETE_CONFIRMATION": "Ви впевнені, що хочете видалити цей тариф?"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Увійти",
+    "LOG_IN_TITLE": "Вхід",
+    "EMAIL_LABEL": "Електронна пошта",
+    "PASSWORD_LABEL": "Пароль",
+    "SIGN_IN_BUTTON": "Увійти",
+    "LOG_IN_BUTTON": "Вхід",
+    "NO_ACCOUNT": "Ще не маєте облікового запису?",
+    "SIGN_UP": "Зареєструватися",
+    "ALREADY_HAVE_ACCOUNT": "Вже маєте обліковий запис?",
+    "LOG_IN": "Увійти",
+    "LOG_IN_GOOGLE": "Увійти через Google",
+    "LOG_IN_APPLE": "Увійти через Apple",
+    "NAME_LABEL": "Ім'я",
+    "PHONE_NUMBER_LABEL": "Номер телефону",
+    "LOGOUT_SUCCESS": "Вихід успішний"
   }
 }

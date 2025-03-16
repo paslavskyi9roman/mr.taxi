@@ -1,0 +1,80 @@
+{
+  "HOME": {
+    "TITLE": "Komfortable Fahrten, faire Preise",
+    "SUBTITLE": "Entdecken Sie ein Fahrerlebnis, das auf Ihre Bedürfnisse zugeschnitten ist, mit fairen Preisen und vertrauenswürdigen Fahrern."
+  },
+  "TAXI_ORDER_FORM": {
+    "TITLE": "Wohin möchten Sie fahren?",
+    "FROM_PLACEHOLDER": "Von",
+    "ADD_STOP": "Einen Stopp hinzufügen",
+    "ADDITIONAL_STOP_PLACEHOLDER": "Zusätzlicher Stopp",
+    "TO_PLACEHOLDER": "Nach",
+    "PASSENGER_NAME_LABEL": "Name des Passagiers:",
+    "PASSENGER_NAME_PLACEHOLDER": "Name eingeben",
+    "NUMBER_OF_PASSENGERS_LABEL": "Anzahl der Passagiere",
+    "PASSENGER_PHONE_NUMBER_LABEL": "Telefonnummer des Passagiers",
+    "PASSENGER_PHONE_NUMBER_PLACEHOLDER": "+49 00-000-0000",
+    "COMMENT_LABEL": "Kommentar hinzufügen (optional):",
+    "BOOK_RIDE_BUTTON": "Fahrt buchen",
+    "CANCEL_BUTTON": "Abbrechen",
+    "REMOVE_STOP": "Entfernen",
+    "ADDITIONAL_INFO": "Zusätzliche Informationen",
+    "COMMENT_PLACEHOLDER": "Kommentar eingeben"
+  },
+  "ADDITIONAL_INFO_FORM": {
+    "LUGGAGE": {
+      "TITLE": "Ich habe Gepäck",
+      "SMALL_LUGGAGE": "Kleines Gepäck",
+      "MEDIUM_LUGGAGE": "Mittleres Gepäck",
+      "LARGE_LUGGAGE": "Großes Gepäck"
+    },
+    "SCHEDULE_RIDE": {
+      "TITLE": "Fahrt planen",
+      "DATE_LABEL": "Datum:",
+      "TIME_LABEL": "Zeit:"
+    },
+    "FLIGHT_NUMBER": {
+      "TITLE": "Flugnummer hinzufügen",
+      "PLACEHOLDER": "Flugnummer:"
+    },
+    "SAVE_BUTTON": "Speichern"
+  },
+  "AUTH": {
+    "SIGN_IN_TITLE": "Anmelden",
+    "LOG_IN_TITLE": "Einloggen",
+    "EMAIL_LABEL": "E-Mail",
+    "PASSWORD_LABEL": "Passwort",
+    "SIGN_IN_BUTTON": "Anmelden",
+    "LOG_IN_BUTTON": "Einloggen",
+    "NO_ACCOUNT": "Noch kein Konto?",
+    "SIGN_UP": "Registrieren",
+    "ALREADY_HAVE_ACCOUNT": "Bereits ein Konto?",
+    "LOG_IN": "Einloggen",
+    "LOG_IN_GOOGLE": "Mit Google einloggen",
+    "LOG_IN_APPLE": "Mit Apple einloggen",
+    "NAME_LABEL": "Name",
+    "PHONE_NUMBER_LABEL": "Telefonnummer",
+    "LOGOUT_SUCCESS": "Erfolgreich ausgeloggt"
+  },
+  "TARIFFS_PAGE": {
+    "TITLE": "Tarifseite",
+    "SEARCH_LABEL": "Städte suchen",
+    "SEARCH_PLACEHOLDER": "Zum Suchen tippen...",
+    "ADD_ROUTE_BUTTON": "Neue Route hinzufügen",
+    "FROM_LABEL": "Von",
+    "TO_LABEL": "Nach",
+    "PRICE_LABEL": "Preis",
+    "FROM_PLACEHOLDER": "Startstadt eingeben",
+    "TO_PLACEHOLDER": "Zielstadt eingeben",
+    "PRICE_PLACEHOLDER": "Preis eingeben",
+    "CANCEL_BUTTON": "Abbrechen",
+    "SAVE_BUTTON": "Speichern",
+    "NO_TARIFFS": "Keine Tarife verfügbar.",
+    "ADD_NEW_TARIFF": "Neuen Tarif hinzufügen",
+    "EDIT_TARIFF": "Tarif bearbeiten",
+    "NO_SEARCH_RESULTS": "Keine Ergebnisse für Suchkriterien.",
+    "TARIFF_ADDED": "Tarif erfolgreich hinzugefügt",
+    "TARIFF_DELETED": "Tarif erfolgreich gelöscht",
+    "DELETE_CONFIRMATION": "Sind Sie sicher, dass Sie diesen Tarif löschen möchten?"
+  }
+}

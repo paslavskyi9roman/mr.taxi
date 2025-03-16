@@ -47,3 +47,38 @@ mat-dialog-actions {
   flex-direction: row;
   justify-content: end;
 }
+
+.additional-stop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.additional-stop button {
+  color: var(--system-red);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.save-button {
+  margin-top: 12px;
+  align-self: flex-end;
+}
