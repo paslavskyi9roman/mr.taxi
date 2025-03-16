@@ -81,7 +81,10 @@ export class TariffsComponent implements OnInit {
   }
 
   private filterCities(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    if (!this.filteredCities) {
+      return [];
+    }
+    const filterValue = value?.toLowerCase() || '';
     return this.filteredCities.filter((city) => city.toLowerCase().includes(filterValue));
   }
 
