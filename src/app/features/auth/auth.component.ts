@@ -8,14 +8,26 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AuthService } from '../../core/services/auth.service';
+import { MatRadioButton } from '@angular/material/radio';
+import { MtLinkButtonComponent } from '../../shared/components/mt-link-button/mt-link-button.component';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  imports: [ReactiveFormsModule, CommonModule, TranslatePipe, MtButtonComponent],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    TranslatePipe,
+    MtButtonComponent,
+    MatRadioButton,
+    MtLinkButtonComponent
+  ],
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
+  onForgotPassword() {
+    throw new Error('Method not implemented.');
+  }
   public signInForm: FormGroup;
   public logInForm: FormGroup;
   public signInError: string | null = null;
@@ -36,7 +48,8 @@ export class AuthComponent {
 
     this.logInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      rememberMe: [false]
     });
   }
 
@@ -63,7 +76,8 @@ export class AuthComponent {
 
   public onLogIn(): void {
     if (this.logInForm.valid) {
-      this.authService.logIn(this.logInForm.value.email, this.logInForm.value.password).subscribe({
+      const { email, password, rememberMe } = this.logInForm.value;
+      this.authService.logIn(email, password, rememberMe).subscribe({
         next: (result) => {
           this.router.navigate(['/home']);
         },

@@ -9,7 +9,9 @@ import {
   signOut,
   onAuthStateChanged,
   UserCredential,
-  updateProfile
+  updateProfile,
+  browserLocalPersistence,
+  browserSessionPersistence
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
@@ -20,8 +22,17 @@ import { switchMap, map } from 'rxjs/operators';
 export class AuthService {
   constructor(private auth: Auth) {}
 
-  public logIn(email: string, password: string): Observable<UserCredential> {
-    return from(signInWithEmailAndPassword(this.auth, email, password));
+  public logIn(email: string, password: string, rememberMe: boolean): Observable<UserCredential> {
+    return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
+      switchMap((userCredential) => {
+        if (rememberMe) {
+          this.auth.setPersistence(browserLocalPersistence);
+        } else {
+          this.auth.setPersistence(browserSessionPersistence);
+        }
+        return from(Promise.resolve(userCredential));
+      })
+    );
   }
 
   public signUp(

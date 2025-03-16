@@ -54,7 +54,9 @@
     "LOG_IN_APPLE": "Mit Apple einloggen",
     "NAME_LABEL": "Name",
     "PHONE_NUMBER_LABEL": "Telefonnummer",
-    "LOGOUT_SUCCESS": "Erfolgreich ausgeloggt"
+    "LOGOUT_SUCCESS": "Erfolgreich ausgeloggt",
+    "REMEMBER_ME": "Angemeldet bleiben",
+    "FORGOT_PASSWORD": "Passwort vergessen?"
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarifseite",

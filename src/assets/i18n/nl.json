@@ -54,7 +54,9 @@
     "LOG_IN_APPLE": "Inloggen met Apple",
     "NAME_LABEL": "Naam",
     "PHONE_NUMBER_LABEL": "Telefoonnummer",
-    "LOGOUT_SUCCESS": "Uitloggen succesvol"
+    "LOGOUT_SUCCESS": "Uitloggen succesvol",
+    "REMEMBER_ME": "Onthoud mij",
+    "FORGOT_PASSWORD": "Wachtwoord vergeten?"
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarievenpagina",

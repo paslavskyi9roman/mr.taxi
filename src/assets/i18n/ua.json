@@ -75,6 +75,8 @@
     "LOG_IN_APPLE": "Увійти через Apple",
     "NAME_LABEL": "Ім'я",
     "PHONE_NUMBER_LABEL": "Номер телефону",
-    "LOGOUT_SUCCESS": "Вихід успішний"
+    "LOGOUT_SUCCESS": "Вихід успішний",
+    "REMEMBER_ME": "Запам'ятати мене",
+    "FORGOT_PASSWORD": "Забули пароль?"
   }
 }

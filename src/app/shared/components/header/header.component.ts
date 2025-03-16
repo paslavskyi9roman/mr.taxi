@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
   public onLogOut(): void {
     this.authService.logOut().subscribe({
       next: () => {
-        this.snackBar.open(this.translate.instant('LOGOUT_SUCCESS'), '', {
+        this.snackBar.open(this.translate.instant('AUTH.LOGOUT_SUCCESS'), '', {
           duration: 3000,
           panelClass: ['centered-snackbar']
         });
