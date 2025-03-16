@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.component';
 import { AuthService } from '../../core/services/auth.service';
@@ -31,7 +32,9 @@ export class AuthComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {
     this.signInForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -164,15 +167,21 @@ export class AuthComponent {
     if (email) {
       this.authService.forgotPassword(email).subscribe({
         next: () => {
-          alert('Password reset email sent. Please check your inbox.');
+          this.snackBar.open(this.translate.instant('AUTH.PASSWORD_RESET_EMAIL_SENT'), '', {
+            duration: 5000
+          });
         },
         error: (error) => {
           console.error('Forgot Password Error', error);
-          alert('An error occurred while sending the password reset email. Please try again.');
+          this.snackBar.open(this.translate.instant('AUTH.PASSWORD_RESET_EMAIL_ERROR'), '', {
+            duration: 5000
+          });
         }
       });
     } else {
-      alert('Please enter your email address.');
+      this.snackBar.open(this.translate.instant('AUTH.ENTER_EMAIL_ADDRESS'), '', {
+        duration: 5000
+      });
     }
   }
 }
