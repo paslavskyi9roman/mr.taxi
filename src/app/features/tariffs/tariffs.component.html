@@ -14,7 +14,7 @@
       <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel">
         @for (city of filteredCities | slice: 0 : 5; track city) {
           <mat-option [value]="city">{{ city }}</mat-option>
-        }UserRole
+        }
       </mat-autocomplete>
     </mat-form-field>
     <ng-container *ngIf="authService.userRole === UserRole.Admin">

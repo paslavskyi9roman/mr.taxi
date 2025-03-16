@@ -10,6 +10,9 @@ import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.c
 import { AuthService } from '../../core/services/auth.service';
 import { MtLinkButtonComponent } from '../../shared/components/mt-link-button/mt-link-button.component';
 
+type AuthProvider = 'google' | 'apple';
+type AuthMode = 'signIn' | 'logIn';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -52,37 +55,63 @@ export class AuthComponent {
 
   public onSignUp(): void {
     if (this.signInForm.valid) {
+      const { email, password, name, phoneNumber } = this.signInForm.value;
       this.authService
-        .signUp(
-          this.signInForm.value.email,
-          this.signInForm.value.password,
-          this.signInForm.value.name,
-          this.signInForm.value.phoneNumber
-        )
-        .subscribe({
-          next: (userCredential) => {
-            this.router.navigate(['/home']);
-          },
-          error: (error) => {
-            console.error('Sign-In Error', error);
-            this.signInError = this.getErrorMessage(error.code);
-          }
-        });
+        .signUp(email, password, name, phoneNumber)
+        .subscribe(this.createAuthObserver('signIn'));
     }
   }
 
   public onLogIn(): void {
     if (this.logInForm.valid) {
       const { email, password, rememberMe } = this.logInForm.value;
-      this.authService.logIn(email, password, rememberMe).subscribe({
-        next: (result) => {
-          this.router.navigate(['/home']);
-        },
-        error: (error) => {
-          this.logInError = this.getErrorMessage(error.code);
-        }
-      });
+      this.authService
+        .logIn(email, password, rememberMe)
+        .subscribe(this.createAuthObserver('logIn'));
     }
+  }
+
+  public authenticateWithProvider(provider: AuthProvider, mode: AuthMode): void {
+    const method = provider === 'google' ? 'signInWithGoogle' : 'signInWithApple';
+
+    this.authService[method]().subscribe(
+      this.createAuthObserver(
+        mode,
+        `${mode} with ${provider.charAt(0).toUpperCase() + provider.slice(1)}`
+      )
+    );
+  }
+
+  public onSignInWithGoogle(): void {
+    this.authenticateWithProvider('google', 'signIn');
+  }
+
+  public onSignInWithApple(): void {
+    this.authenticateWithProvider('apple', 'signIn');
+  }
+
+  public onLogInWithGoogle(): void {
+    this.authenticateWithProvider('google', 'logIn');
+  }
+
+  public onLogInWithApple(): void {
+    this.authenticateWithProvider('apple', 'logIn');
+  }
+
+  private createAuthObserver(mode: AuthMode, operationName: string = mode) {
+    const errorProperty = mode === 'signIn' ? 'signInError' : 'logInError';
+
+    return {
+      next: () => this.navigateToHome(),
+      error: (error: any) => {
+        console.error(`${operationName} Error`, error);
+        this[errorProperty] = this.getErrorMessage(error.code);
+      }
+    };
+  }
+
+  private navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 
   private getErrorMessage(errorCode: string): string {
@@ -102,54 +131,6 @@ export class AuthComponent {
     }
   }
 
-  public onSignInWithGoogle(): void {
-    this.authService.signInWithGoogle().subscribe({
-      next: (result) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Sign-In with Google Error', error);
-        this.signInError = this.getErrorMessage(error.code);
-      }
-    });
-  }
-
-  public onSignInWithApple(): void {
-    this.authService.signInWithApple().subscribe({
-      next: (result) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Sign-In with Apple Error', error);
-        this.signInError = this.getErrorMessage(error.code);
-      }
-    });
-  }
-
-  public onLogInWithGoogle(): void {
-    this.authService.signInWithGoogle().subscribe({
-      next: (result) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Log-In with Google Error', error);
-        this.logInError = this.getErrorMessage(error.code);
-      }
-    });
-  }
-
-  public onLogInWithApple(): void {
-    this.authService.signInWithApple().subscribe({
-      next: (result) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Log-In with Apple Error', error);
-        this.logInError = this.getErrorMessage(error.code);
-      }
-    });
-  }
-
   public clearSignInError(): void {
     this.signInError = null;
   }
@@ -167,21 +148,21 @@ export class AuthComponent {
     if (email) {
       this.authService.forgotPassword(email).subscribe({
         next: () => {
-          this.snackBar.open(this.translate.instant('AUTH.PASSWORD_RESET_EMAIL_SENT'), '', {
-            duration: 5000
-          });
+          this.showSnackBar('AUTH.PASSWORD_RESET_EMAIL_SENT');
         },
         error: (error) => {
           console.error('Forgot Password Error', error);
-          this.snackBar.open(this.translate.instant('AUTH.PASSWORD_RESET_EMAIL_ERROR'), '', {
-            duration: 5000
-          });
+          this.showSnackBar('AUTH.PASSWORD_RESET_EMAIL_ERROR');
         }
       });
     } else {
-      this.snackBar.open(this.translate.instant('AUTH.ENTER_EMAIL_ADDRESS'), '', {
-        duration: 5000
-      });
+      this.showSnackBar('AUTH.ENTER_EMAIL_ADDRESS');
     }
+  }
+
+  private showSnackBar(messageKey: string): void {
+    this.snackBar.open(this.translate.instant(messageKey), '', {
+      duration: 5000
+    });
   }
 }

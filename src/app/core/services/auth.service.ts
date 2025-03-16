@@ -29,12 +29,16 @@ export class AuthService {
     private auth: Auth,
     private firestore: Firestore
   ) {
+    this.initializeUserRole();
+  }
+
+  private initializeUserRole(): void {
     this.authState().subscribe((user) => {
       if (user) {
         const userDocRef = doc(this.firestore, `users/${user.uid}`);
         getDoc(userDocRef).then((docSnapshot) => {
           if (docSnapshot.exists()) {
-            this.userRole = docSnapshot.data().role as UserRole;
+            this.userRole = docSnapshot.data()['role'] as UserRole;
           }
         });
       }
@@ -81,27 +85,17 @@ export class AuthService {
 
   public signInWithGoogle(): Observable<UserCredential> {
     const provider = new GoogleAuthProvider();
-    return from(signInWithPopup(this.auth, provider)).pipe(
-      switchMap((userCredential) => {
-        const userDocRef = doc(this.firestore, `users/${userCredential.user.uid}`);
-        return from(
-          setDoc(
-            userDocRef,
-            {
-              role: UserRole.User,
-              name: userCredential.user.displayName,
-              email: userCredential.user.email,
-              phoneNumber: userCredential.user.phoneNumber
-            },
-            { merge: true }
-          )
-        ).pipe(map(() => userCredential));
-      })
-    );
+    return this.signInWithProvider(provider);
   }
 
   public signInWithApple(): Observable<UserCredential> {
     const provider = new OAuthProvider('apple.com');
+    return this.signInWithProvider(provider);
+  }
+
+  private signInWithProvider(
+    provider: GoogleAuthProvider | OAuthProvider
+  ): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, provider)).pipe(
       switchMap((userCredential) => {
         const userDocRef = doc(this.firestore, `users/${userCredential.user.uid}`);
