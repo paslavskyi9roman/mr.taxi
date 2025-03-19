@@ -54,7 +54,12 @@
     "LOG_IN_APPLE": "Mit Apple einloggen",
     "NAME_LABEL": "Name",
     "PHONE_NUMBER_LABEL": "Telefonnummer",
-    "LOGOUT_SUCCESS": "Erfolgreich ausgeloggt"
+    "LOGOUT_SUCCESS": "Erfolgreich ausgeloggt",
+    "REMEMBER_ME": "Angemeldet bleiben",
+    "FORGOT_PASSWORD": "Passwort vergessen?",
+    "PASSWORD_RESET_EMAIL_SENT": "Passwort-Zurücksetzungs-E-Mail gesendet. Bitte überprüfen Sie Ihren Posteingang.",
+    "PASSWORD_RESET_EMAIL_ERROR": "Beim Senden der Passwort-Zurücksetzungs-E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "ENTER_EMAIL_ADDRESS": "Bitte geben Sie Ihre E-Mail-Adresse ein."
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarifseite",

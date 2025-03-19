@@ -23,6 +23,18 @@
             (input)="clearLogInError()"
           />
         </div>
+
+        <div class="auth-options">
+          <label>
+            <input type="checkbox" formControlName="rememberMe" />
+            {{ 'AUTH.REMEMBER_ME' | translate }}
+          </label>
+          <mt-link-button
+            label="{{ 'AUTH.FORGOT_PASSWORD' | translate }}"
+            (click)="onForgotPassword()"
+          ></mt-link-button>
+        </div>
+
         <div *ngIf="logInError" class="error-message">{{ logInError }}</div>
         <mt-button
           label="{{ 'AUTH.LOG_IN_BUTTON' | translate }}"

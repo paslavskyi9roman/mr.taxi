@@ -17,11 +17,13 @@
         }
       </mat-autocomplete>
     </mat-form-field>
-    <mt-button
-      label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
-      type="primary"
-      (click)="addTariff()"
-    ></mt-button>
+    @if (authService.userRole === UserRole.Admin) {
+      <mt-button
+        label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
+        type="primary"
+        (click)="addTariff()"
+      ></mt-button>
+    }
   </div>
 
   @if (tariffs$ | async) {
@@ -46,13 +48,15 @@
             <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
             {{ tariff.route.from }}
           </div>
-          <div
-            class="tariff-options"
-            [matMenuTriggerFor]="optionsMenu"
-            (click)="setSelectedTariff(tariff)"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </div>
+          @if (authService.userRole === UserRole.Admin) {
+            <div
+              class="tariff-options"
+              [matMenuTriggerFor]="optionsMenu"
+              (click)="setSelectedTariff(tariff)"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </div>
+          }
           <div class="tariff-to">
             <p>{{ 'TARIFFS_PAGE.TO_LABEL' | translate }}</p>
             {{ tariff.route.to }}

@@ -3,7 +3,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { TranslateService } from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   private translate: TranslateService = inject(TranslateService);
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
+  private router: Router = inject(Router);
 
   constructor(private authService: AuthService) {}
 
@@ -67,7 +68,9 @@ export class HeaderComponent implements OnInit {
   public onLogOut(): void {
     this.authService.logOut().subscribe({
       next: () => {
-        this.snackBar.open(this.translate.instant('LOGOUT_SUCCESS'), '', {
+        this.router.navigate(['/home']);
+
+        this.snackBar.open(this.translate.instant('AUTH.LOGOUT_SUCCESS'), '', {
           duration: 3000,
           panelClass: ['centered-snackbar']
         });

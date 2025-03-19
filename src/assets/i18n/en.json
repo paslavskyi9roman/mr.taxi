@@ -54,7 +54,12 @@
     "LOG_IN_APPLE": "Log in with Apple",
     "NAME_LABEL": "Name",
     "PHONE_NUMBER_LABEL": "Phone Number",
-    "LOGOUT_SUCCESS": "Logout successful"
+    "LOGOUT_SUCCESS": "Logout successful",
+    "REMEMBER_ME": "Remember Me",
+    "FORGOT_PASSWORD": "Forgot Password?",
+    "PASSWORD_RESET_EMAIL_SENT": "Password reset email sent. Please check your inbox.",
+    "PASSWORD_RESET_EMAIL_ERROR": "An error occurred while sending the password reset email. Please try again.",
+    "ENTER_EMAIL_ADDRESS": "Please enter your email address."
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tariffs Page",

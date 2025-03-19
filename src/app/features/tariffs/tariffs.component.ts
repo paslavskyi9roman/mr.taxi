@@ -17,6 +17,8 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormatAdditionalStopsPipe } from '../../shared/pipes/format-additional-stops.pipe';
+import { AuthService } from '../../core/services/auth.service';
+import { UserRole } from '../../core/models/user.enum';
 
 @Component({
   selector: 'app-tariffs',
@@ -45,12 +47,14 @@ export class TariffsComponent implements OnInit {
   private dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
   private translate: TranslateService = inject(TranslateService);
+  public authService: AuthService = inject(AuthService);
 
   public tariffs$: Observable<Tariff[]> = this.tariffService.getTariffs();
   public filteredTariffs: Tariff[] = [];
   public cityControl = new FormControl();
   public filteredCities: string[] = [];
   public selectedTariff: Tariff | null = null;
+  protected readonly UserRole = UserRole;
 
   ngOnInit(): void {
     this.initializeTariffs();
@@ -77,7 +81,10 @@ export class TariffsComponent implements OnInit {
   }
 
   private filterCities(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    if (!this.filteredCities) {
+      return [];
+    }
+    const filterValue = value?.toLowerCase() || '';
     return this.filteredCities.filter((city) => city.toLowerCase().includes(filterValue));
   }
 
@@ -98,6 +105,10 @@ export class TariffsComponent implements OnInit {
   }
 
   public addTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
+
     const dialogRef = this.dialog.open(AddTariffDialogComponent, {
       width: '353px'
     });
@@ -120,6 +131,10 @@ export class TariffsComponent implements OnInit {
   }
 
   public editTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
+
     if (!this.selectedTariff) {
       console.error('No tariff selected');
       return;
@@ -137,6 +152,9 @@ export class TariffsComponent implements OnInit {
   }
 
   public deleteTariff(): void {
+    if (this.authService.userRole !== UserRole.Admin) {
+      return;
+    }
     if (!this.selectedTariff?.id) {
       console.error('No tariff selected');
       return;

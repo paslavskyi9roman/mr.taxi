@@ -54,7 +54,12 @@
     "LOG_IN_APPLE": "Inloggen met Apple",
     "NAME_LABEL": "Naam",
     "PHONE_NUMBER_LABEL": "Telefoonnummer",
-    "LOGOUT_SUCCESS": "Uitloggen succesvol"
+    "LOGOUT_SUCCESS": "Uitloggen succesvol",
+    "REMEMBER_ME": "Onthoud mij",
+    "FORGOT_PASSWORD": "Wachtwoord vergeten?",
+    "PASSWORD_RESET_EMAIL_SENT": "Wachtwoord reset e-mail verzonden. Controleer uw inbox.",
+    "PASSWORD_RESET_EMAIL_ERROR": "Er is een fout opgetreden bij het verzenden van de wachtwoord reset e-mail. Probeer het opnieuw.",
+    "ENTER_EMAIL_ADDRESS": "Voer uw e-mailadres in."
   },
   "TARIFFS_PAGE": {
     "TITLE": "Tarievenpagina",
