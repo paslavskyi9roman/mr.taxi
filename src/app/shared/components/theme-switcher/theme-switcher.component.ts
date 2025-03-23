@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 
 import { ThemeService } from '../../../core/services/theme.service';
 import { ThemeEnum } from '../../../core/models/theme.enum';
 
 @Component({
   selector: 'mt-theme-switcher',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeSwitcherComponent {
   private themeService = inject(ThemeService);
+  @Input() isMobile!: boolean;
 
   public get themeIconPath(): string {
     return this.themeService.theme === ThemeEnum.Light

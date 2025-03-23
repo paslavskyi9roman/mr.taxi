@@ -1,34 +1,49 @@
 <header>
   <div class="logo" routerLink="/home">
     <div class="icon">
-      <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
-      <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
+        <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
+        <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
+      </div>
       <p>Haaglanden</p>
-    </div>
   </div>
   <div class="right">
-    <div class="language-select">
-      <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
-      <app-dropdown-menu
-        [items]="languages"
-        [placeholder]="selectedLanguage"
-        (selectionChange)="onLanguageChange($event)"
-      ></app-dropdown-menu>
-    </div>
-    <mt-theme-switcher></mt-theme-switcher>
+    @if (!isMobile) {
+      <div class="language-select">
+        <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+        <app-dropdown-menu
+          [items]="languages"
+          [placeholder]="selectedLanguage"
+          (selectionChange)="onLanguageChange($event)"
+        ></app-dropdown-menu>
+      </div>
+      <mt-theme-switcher></mt-theme-switcher>
+    }
     <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
+      @if (isMobile) {
+        <div class="language-select">
+          <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+          <app-dropdown-menu
+            [items]="languages"
+            [placeholder]="selectedLanguage"
+            (selectionChange)="onLanguageChange($event)"
+          ></app-dropdown-menu>
+        </div>
+        <mt-theme-switcher [isMobile]="isMobile"></mt-theme-switcher>
+      }
       <button mat-menu-item routerLink="/tariffs">
         <span>Tariffs</span>
       </button>
       @if (isLoggedIn) {
         <button mat-menu-item (click)="onLogOut()">
+          <mat-icon>exit_to_app</mat-icon>
           <span>Log out</span>
         </button>
       } @else {
         <button mat-menu-item routerLink="/auth">
+          <mat-icon>person</mat-icon>
           <span>Sign up</span>
         </button>
       }

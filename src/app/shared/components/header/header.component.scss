@@ -88,3 +88,28 @@ header {
     white-space: pre-line;
   }
 }
+
+@media (max-width: 600px) {
+  .right {
+    .language-select,
+    mt-theme-switcher {
+      display: none;
+    }
+  }
+
+  .custom-menu {
+    .mat-mdc-menu-content {
+      .language-select,
+      mt-theme-switcher {
+        display: flex;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 390px) {
+  .logo p {
+    display: none;
+  }
+}

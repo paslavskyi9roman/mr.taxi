@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { LanguageEnum } from '../../../core/models/language.enum';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ import { LanguageEnum } from '../../../core/models/language.enum';
     DropdownMenuComponent,
     RouterLink,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatButton
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
@@ -31,6 +33,13 @@ export class HeaderComponent implements OnInit {
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
   private router: Router = inject(Router);
+
+  public isMobile = window.innerWidth < 600;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.isMobile = (event.target as Window).innerWidth < 600;
+  }
 
   constructor(private authService: AuthService) {}
 

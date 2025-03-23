@@ -1,4 +1,7 @@
 <button class="theme-toggle" (click)="toggleTheme()">
   <img [src]="themeIconPath" alt="Theme toggle icon" class="theme-icon">
+  @if (isMobile) {
+    <span>Switch theme</span>
+  }
 </button>
 
