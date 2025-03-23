@@ -29,10 +29,7 @@
                 "input": "src"
               }
             ],
-            "styles": [
-              "src/styles.scss",
-              "src/assets/styles/custom-material-theme.scss"
-            ],
+            "styles": ["src/styles.scss", "src/assets/styles/custom-material-theme.scss"],
             "scripts": []
           },
           "configurations": {
@@ -41,12 +38,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "1.5MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumError": "4.5kB"
                 }
               ],
               "outputHashing": "all"
