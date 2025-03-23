@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  gap: 8px;
   &:hover {
     background-color: var(--grey-hover);
   }
@@ -23,4 +23,10 @@
   width: 24px;
   height: 24px;
   filter: var(--icon-filter);
+}
+
+@media screen and (min-width: 600px) {
+  .theme-toggle {
+    width: 40px;
+  }
 }

@@ -1,20 +1,34 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { LanguageEnum } from '../../../core/models/language.enum';
-import { MtButtonComponent } from '../mt-button/mt-button.component';
-import { NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ThemeSwitcherComponent, DropdownMenuComponent, MtButtonComponent, RouterLink, NgIf],
+  imports: [
+    CommonModule,
+    ThemeSwitcherComponent,
+    DropdownMenuComponent,
+    RouterLink,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatExpansionModule,
+    TranslatePipe
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -25,6 +39,13 @@ export class HeaderComponent implements OnInit {
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
   private router: Router = inject(Router);
+
+  public isMobile = window.innerWidth < 600;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.isMobile = (event.target as Window).innerWidth < 600;
+  }
 
   constructor(private authService: AuthService) {}
 
@@ -57,12 +78,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public onLanguageChange(language: LanguageEnum): void {
+  public selectLanguage(language: string): void {
     const selectedItem = this.languages.find((item) => item.value === language);
-    this.selectedLanguage = selectedItem?.value || LanguageEnum.English;
-    this.selectedFlag = selectedItem?.icon || 'assets/styles/icons/flags/gb-flag.svg';
-    this.translate.use(selectedItem!.label);
-    localStorage.setItem('selectedLanguage', selectedItem!.label);
+    if (selectedItem) {
+      this.selectedLanguage = selectedItem.value;
+      this.selectedFlag = selectedItem.icon;
+      this.translate.use(selectedItem.label);
+      localStorage.setItem('selectedLanguage', selectedItem.label);
+    }
   }
 
   public onLogOut(): void {

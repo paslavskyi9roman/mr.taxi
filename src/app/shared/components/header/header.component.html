@@ -2,26 +2,64 @@
   <div class="logo" routerLink="/home">
     <div class="icon">
       <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
-        <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
-        <p>Haaglanden</p>
+      <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
     </div>
+    <p>Haaglanden</p>
   </div>
   <div class="right">
-    <div class="language-select">
-      <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
-      <app-dropdown-menu
-        [items]="languages"
-        [placeholder]="selectedLanguage"
-        (selectionChange)="onLanguageChange($event)"
-      ></app-dropdown-menu>
-    </div>
-    <mt-theme-switcher></mt-theme-switcher>
-    <mt-button routerLink="/tariffs" label="Tariffs" type="add" size="medium"></mt-button>
-    <ng-container *ngIf="isLoggedIn; else loggedOut">
-      <mt-button (click)="onLogOut()" label="Log out" type="add" size="medium"></mt-button>
-    </ng-container>
-    <ng-template #loggedOut>
-      <mt-button routerLink="/auth" label="Sign up" type="add" size="medium"></mt-button>
-    </ng-template>
+    @if (!isMobile) {
+      <div class="language-select">
+        <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+        <app-dropdown-menu
+          [items]="languages"
+          [placeholder]="selectedLanguage"
+          (selectionChange)="selectLanguage($event)"
+        ></app-dropdown-menu>
+      </div>
+      <mt-theme-switcher></mt-theme-switcher>
+    }
+    <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
 </header>
+
+<mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
+  @if (!isLoggedIn) {
+    <button mat-menu-item routerLink="/auth">
+      <mat-icon>person</mat-icon>
+      <span>{{ 'MENU.SIGN_UP' | translate }}</span>
+    </button>
+  }
+  <button mat-menu-item routerLink="/tariffs">
+    <mat-icon>local_atm</mat-icon>
+    <span>{{ 'MENU.TARIFFS' | translate }}</span>
+  </button>
+  @if (isMobile) {
+    <mt-theme-switcher [isMobile]="isMobile"></mt-theme-switcher>
+    <button mat-menu-item [matMenuTriggerFor]="languageMenu">
+      <div class="menu-item-with-flag">
+        <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+        <span>{{ 'MENU.LANGUAGE' | translate }}</span>
+      </div>
+    </button>
+  }
+
+  @if (isLoggedIn) {
+    <button mat-menu-item (click)="onLogOut()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>{{ 'MENU.LOG_OUT' | translate }}</span>
+    </button>
+  }
+</mat-menu>
+
+<mat-menu #languageMenu="matMenu">
+  @for (lang of languages; track lang.value) {
+    <button mat-menu-item (click)="selectLanguage(lang.value)">
+      <div class="menu-item-with-flag">
+        <div class="flag-icon" [style.background-image]="'url(' + lang.icon + ')'"></div>
+        <span>{{ lang.value }}</span>
+      </div>
+    </button>
+  }
+</mat-menu>
