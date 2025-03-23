@@ -3,25 +3,31 @@ import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { LanguageEnum } from '../../../core/models/language.enum';
-import { MatButton } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
+    CommonModule,
     ThemeSwitcherComponent,
     DropdownMenuComponent,
     RouterLink,
     MatMenuModule,
     MatIconModule,
-    MatButton
+    MatButtonModule,
+    MatExpansionModule,
+    TranslatePipe
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
@@ -72,12 +78,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public onLanguageChange(language: LanguageEnum): void {
+  public selectLanguage(language: string): void {
     const selectedItem = this.languages.find((item) => item.value === language);
-    this.selectedLanguage = selectedItem?.value || LanguageEnum.English;
-    this.selectedFlag = selectedItem?.icon || 'assets/styles/icons/flags/gb-flag.svg';
-    this.translate.use(selectedItem!.label);
-    localStorage.setItem('selectedLanguage', selectedItem!.label);
+    if (selectedItem) {
+      this.selectedLanguage = selectedItem.value;
+      this.selectedFlag = selectedItem.icon;
+      this.translate.use(selectedItem.label);
+      localStorage.setItem('selectedLanguage', selectedItem.label);
+    }
   }
 
   public onLogOut(): void {

@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core
 
 import { ThemeService } from '../../../core/services/theme.service';
 import { ThemeEnum } from '../../../core/models/theme.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'mt-theme-switcher',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

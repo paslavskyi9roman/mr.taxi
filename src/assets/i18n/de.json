@@ -81,5 +81,13 @@
     "TARIFF_ADDED": "Tarif erfolgreich hinzugefügt",
     "TARIFF_DELETED": "Tarif erfolgreich gelöscht",
     "DELETE_CONFIRMATION": "Sind Sie sicher, dass Sie diesen Tarif löschen möchten?"
+  },
+  "MENU": {
+    "LANGUAGE": "Sprache",
+    "TARIFFS": "Tarife",
+    "LOG_OUT": "Abmelden",
+    "SIGN_UP": "Registrieren",
+    "SWITCH_LANGUAGE": "Sprache wechseln",
+    "THEME_SWITCH": "Thema wechseln"
   }
 }

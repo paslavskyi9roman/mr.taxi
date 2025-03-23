@@ -50,6 +50,13 @@ header {
 .language-select {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.menu-item-with-flag {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .icon {
@@ -86,6 +93,22 @@ header {
     font-size: 14px;
     line-height: 1.5;
     white-space: pre-line;
+  }
+
+  .mat-mdc-menu-panel .mat-menu-below .mat-menu-before {
+    background-color: var(--background-color);
+  }
+
+  .mat-mdc-menu-content {
+    padding: 8px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid var(--divider-color);
+    color: var(--primary-color);
+  }
+
+  .mat-mdc-menu-submenu-icon {
+    display: none;
   }
 }
 

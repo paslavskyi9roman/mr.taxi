@@ -81,5 +81,13 @@
     "TARIFF_ADDED": "Tarief succesvol toegevoegd",
     "TARIFF_DELETED": "Tarief succesvol verwijderd",
     "DELETE_CONFIRMATION": "Weet u zeker dat u dit tarief wilt verwijderen?"
+  },
+  "MENU": {
+    "LANGUAGE": "Taal",
+    "TARIFFS": "Tarieven",
+    "LOG_OUT": "Uitloggen",
+    "SIGN_UP": "Aanmelden",
+    "SWITCH_LANGUAGE": "Taal wisselen",
+    "THEME_SWITCH": "Thema wisselen"
   }
 }

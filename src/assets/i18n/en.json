@@ -81,5 +81,13 @@
     "TARIFF_ADDED": "Tariff added successfully",
     "TARIFF_DELETED": "Tariff deleted successfully",
     "DELETE_CONFIRMATION": "Are you sure you want to delete this tariff?"
+  },
+  "MENU": {
+    "LANGUAGE": "Language",
+    "TARIFFS": "Tariffs",
+    "LOG_OUT": "Log out",
+    "SIGN_UP": "Sign up",
+    "SWITCH_LANGUAGE": "Switch Language",
+    "THEME_SWITCH": "Switch Theme"
   }
 }
