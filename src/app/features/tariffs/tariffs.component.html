@@ -17,7 +17,7 @@
         }
       </mat-autocomplete>
     </mat-form-field>
-    @if (authService.userRole === UserRole.Admin) {
+    @if ((authService.userRole$ | async) === UserRole.Admin) {
       <mt-button
         label="{{ 'TARIFFS_PAGE.ADD_ROUTE_BUTTON' | translate }}"
         type="primary"
@@ -48,7 +48,7 @@
             <p>{{ 'TARIFFS_PAGE.FROM_LABEL' | translate }}</p>
             {{ tariff.route.from }}
           </div>
-          @if (authService.userRole === UserRole.Admin) {
+          @if ((authService.userRole$ | async) === UserRole.Admin) {
             <div
               class="tariff-options"
               [matMenuTriggerFor]="optionsMenu"
