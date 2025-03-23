@@ -10,7 +10,7 @@ import { MtButtonComponent } from '../../shared/components/mt-button/mt-button.c
 import { EditTariffDialogComponent } from './edit-tariff-dialog/edit-tariff-dialog.component';
 import { TariffService } from './tariff.service';
 import { Tariff } from './tariff.model';
-import { Observable, startWith, map } from 'rxjs';
+import { Observable, startWith, map, take } from 'rxjs';
 import { AddTariffDialogComponent } from './add-tariff-dialog/add-tariff-dialog.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
@@ -105,24 +105,26 @@ export class TariffsComponent implements OnInit {
   }
 
   public addTariff(): void {
-    if (this.authService.userRole !== UserRole.Admin) {
-      return;
-    }
-
-    const dialogRef = this.dialog.open(AddTariffDialogComponent, {
-      width: '353px'
-    });
-
-    dialogRef.afterClosed().subscribe((result): void => {
-      if (result) {
-        this.tariffService.addTariff(result).subscribe(() => {
-          this.initializeTariffs();
-          this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_ADDED'), '', {
-            duration: 3000,
-            panelClass: ['centered-snackbar']
-          });
-        });
+    this.authService.userRole$.pipe(take(1)).subscribe((role) => {
+      if (role !== UserRole.Admin) {
+        return;
       }
+
+      const dialogRef = this.dialog.open(AddTariffDialogComponent, {
+        width: '353px'
+      });
+
+      dialogRef.afterClosed().subscribe((result): void => {
+        if (result) {
+          this.tariffService.addTariff(result).subscribe(() => {
+            this.initializeTariffs();
+            this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_ADDED'), '', {
+              duration: 3000,
+              panelClass: ['centered-snackbar']
+            });
+          });
+        }
+      });
     });
   }
 
@@ -131,44 +133,48 @@ export class TariffsComponent implements OnInit {
   }
 
   public editTariff(): void {
-    if (this.authService.userRole !== UserRole.Admin) {
-      return;
-    }
-
-    if (!this.selectedTariff) {
-      console.error('No tariff selected');
-      return;
-    }
-    const dialogRef = this.dialog.open(EditTariffDialogComponent, {
-      width: '353px',
-      data: this.selectedTariff
-    });
-
-    dialogRef.afterClosed().subscribe((result): void => {
-      if (result) {
-        this.tariffService.updateTariff(result);
+    this.authService.userRole$.pipe(take(1)).subscribe((role) => {
+      if (role !== UserRole.Admin) {
+        return;
       }
+
+      if (!this.selectedTariff) {
+        console.error('No tariff selected');
+        return;
+      }
+      const dialogRef = this.dialog.open(EditTariffDialogComponent, {
+        width: '353px',
+        data: this.selectedTariff
+      });
+
+      dialogRef.afterClosed().subscribe((result): void => {
+        if (result) {
+          this.tariffService.updateTariff(result);
+        }
+      });
     });
   }
 
   public deleteTariff(): void {
-    if (this.authService.userRole !== UserRole.Admin) {
-      return;
-    }
-    if (!this.selectedTariff?.id) {
-      console.error('No tariff selected');
-      return;
-    }
+    this.authService.userRole$.pipe(take(1)).subscribe((role) => {
+      if (role !== UserRole.Admin) {
+        return;
+      }
+      if (!this.selectedTariff?.id) {
+        console.error('No tariff selected');
+        return;
+      }
 
-    const confirmed = confirm(this.translate.instant('TARIFFS_PAGE.DELETE_CONFIRMATION'));
-    if (confirmed) {
-      this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
-        this.initializeTariffs();
-        this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_DELETED'), '', {
-          duration: 3000,
-          panelClass: ['centered-snackbar']
+      const confirmed = confirm(this.translate.instant('TARIFFS_PAGE.DELETE_CONFIRMATION'));
+      if (confirmed) {
+        this.tariffService.deleteTariff(this.selectedTariff.id).subscribe(() => {
+          this.initializeTariffs();
+          this.snackBar.open(this.translate.instant('TARIFFS_PAGE.TARIFF_DELETED'), '', {
+            duration: 3000,
+            panelClass: ['centered-snackbar']
+          });
         });
-      });
-    }
+      }
+    });
   }
 }
