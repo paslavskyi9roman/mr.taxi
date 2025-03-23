@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
@@ -8,13 +10,17 @@ import { Router, RouterLink } from '@angular/router';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { LanguageEnum } from '../../../core/models/language.enum';
-import { MtButtonComponent } from '../mt-button/mt-button.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ThemeSwitcherComponent, DropdownMenuComponent, MtButtonComponent, RouterLink, NgIf],
+  imports: [
+    ThemeSwitcherComponent,
+    DropdownMenuComponent,
+    RouterLink,
+    MatMenuModule,
+    MatIconModule
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

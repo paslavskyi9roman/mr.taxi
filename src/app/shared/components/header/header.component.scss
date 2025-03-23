@@ -7,8 +7,22 @@ header {
 
   .right {
     display: flex;
-    align-items: center;
+    align-items: normal;
     gap: 12px;
+    margin-right: 16px;
+
+    .menu-button {
+      min-width: 40px;
+      padding: 0 8px;
+
+      .mat-icon {
+        color: var(--secondary-color);
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+      }
+    }
   }
 
   .logo {
@@ -41,4 +55,36 @@ header {
 .icon {
   display: flex;
   align-items: center;
+}
+
+::ng-deep {
+  .custom-menu {
+    .mat-mdc-menu-content {
+      padding: 8px;
+      background-color: var(--background-color);
+      border-radius: 8px;
+      border: 1px solid var(--divider-color);
+    }
+
+    .mat-mdc-menu-item {
+      width: 150px;
+      color: var(--primary-color);
+    }
+
+    .mat-mdc-menu-item:not([disabled]):hover {
+      border-radius: 6px;
+      background-color: var(--grey-hover);
+    }
+  }
+
+  .mat-mdc-tooltip {
+    background-color: var(--card-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    border: 1px solid var(--divider-color);
+    padding: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-line;
+  }
 }

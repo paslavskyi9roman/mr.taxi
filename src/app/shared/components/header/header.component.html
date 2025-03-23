@@ -2,8 +2,8 @@
   <div class="logo" routerLink="/home">
     <div class="icon">
       <img src="assets/styles/icons/car-logo.svg" alt="Logo" />
-        <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
-        <p>Haaglanden</p>
+      <img src="assets/styles/icons/logo-text.svg" alt="Logo" class="logo-text" />
+      <p>Haaglanden</p>
     </div>
   </div>
   <div class="right">
@@ -16,12 +16,22 @@
       ></app-dropdown-menu>
     </div>
     <mt-theme-switcher></mt-theme-switcher>
-    <mt-button routerLink="/tariffs" label="Tariffs" type="add" size="medium"></mt-button>
-    <ng-container *ngIf="isLoggedIn; else loggedOut">
-      <mt-button (click)="onLogOut()" label="Log out" type="add" size="medium"></mt-button>
-    </ng-container>
-    <ng-template #loggedOut>
-      <mt-button routerLink="/auth" label="Sign up" type="add" size="medium"></mt-button>
-    </ng-template>
+    <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
+      <button mat-menu-item routerLink="/tariffs">
+        <span>Tariffs</span>
+      </button>
+      @if (isLoggedIn) {
+        <button mat-menu-item (click)="onLogOut()">
+          <span>Log out</span>
+        </button>
+      } @else {
+        <button mat-menu-item routerLink="/auth">
+          <span>Sign up</span>
+        </button>
+      }
+    </mat-menu>
   </div>
 </header>
