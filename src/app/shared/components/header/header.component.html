@@ -21,43 +21,45 @@
     <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
-      @if (isMobile) {
-        <button mat-menu-item [matMenuTriggerFor]="languageMenu">
-          <div class="menu-item-with-flag">
-            <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
-            <span>{{ 'MENU.LANGUAGE' | translate }}</span>
-          </div>
-        </button>
-        <mat-menu #languageMenu="matMenu">
-          @for (lang of languages; track lang.value) {
-            <button mat-menu-item (click)="selectLanguage(lang.value)">
-              <div class="menu-item-with-flag">
-                <div class="flag-icon" [style.background-image]="'url(' + lang.icon + ')'"></div>
-                <span>{{ lang.value }}</span>
-              </div>
-            </button>
-          }
-        </mat-menu>
-      }
-      @if (isMobile) {
-        <mt-theme-switcher [isMobile]="isMobile"></mt-theme-switcher>
-      }
-      <button mat-menu-item routerLink="/tariffs">
-        <mat-icon>local_atm</mat-icon>
-        <span>{{ 'MENU.TARIFFS' | translate }}</span>
-      </button>
-      @if (isLoggedIn) {
-        <button mat-menu-item (click)="onLogOut()">
-          <mat-icon>exit_to_app</mat-icon>
-          <span>{{ 'MENU.LOG_OUT' | translate }}</span>
-        </button>
-      } @else {
-        <button mat-menu-item routerLink="/auth">
-          <mat-icon>person</mat-icon>
-          <span>{{ 'MENU.SIGN_UP' | translate }}</span>
-        </button>
-      }
-    </mat-menu>
   </div>
 </header>
+
+<mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
+  @if (!isLoggedIn) {
+    <button mat-menu-item routerLink="/auth">
+      <mat-icon>person</mat-icon>
+      <span>{{ 'MENU.SIGN_UP' | translate }}</span>
+    </button>
+  }
+  <button mat-menu-item routerLink="/tariffs">
+    <mat-icon>local_atm</mat-icon>
+    <span>{{ 'MENU.TARIFFS' | translate }}</span>
+  </button>
+  @if (isMobile) {
+    <mt-theme-switcher [isMobile]="isMobile"></mt-theme-switcher>
+    <button mat-menu-item [matMenuTriggerFor]="languageMenu">
+      <div class="menu-item-with-flag">
+        <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
+        <span>{{ 'MENU.LANGUAGE' | translate }}</span>
+      </div>
+    </button>
+  }
+
+  @if (isLoggedIn) {
+    <button mat-menu-item (click)="onLogOut()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>{{ 'MENU.LOG_OUT' | translate }}</span>
+    </button>
+  }
+</mat-menu>
+
+<mat-menu #languageMenu="matMenu">
+  @for (lang of languages; track lang.value) {
+    <button mat-menu-item (click)="selectLanguage(lang.value)">
+      <div class="menu-item-with-flag">
+        <div class="flag-icon" [style.background-image]="'url(' + lang.icon + ')'"></div>
+        <span>{{ lang.value }}</span>
+      </div>
+    </button>
+  }
+</mat-menu>
