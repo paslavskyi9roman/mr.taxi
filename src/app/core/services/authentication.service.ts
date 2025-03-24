@@ -39,7 +39,13 @@ export class AuthenticationService {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
       switchMap((userCredential) =>
         from(updateProfile(userCredential.user, { displayName: name })).pipe(
-          switchMap(() => this.userRoleService.setUserRole(userCredential.user.uid)),
+          switchMap(() => this.userRoleService.getUserRole(userCredential.user.uid)),
+          switchMap((role) => {
+            if (!role) {
+              return this.userRoleService.setUserRole(userCredential.user.uid);
+            }
+            return Promise.resolve();
+          }),
           switchMap(() => Promise.resolve(userCredential))
         )
       )
@@ -60,7 +66,16 @@ export class AuthenticationService {
     provider: GoogleAuthProvider | OAuthProvider
   ): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, provider)).pipe(
-      tap((credential) => this.userRoleService.setUserRole(credential.user.uid))
+      switchMap((credential) =>
+        from(this.userRoleService.getUserRole(credential.user.uid)).pipe(
+          switchMap((role) => {
+            if (!role) {
+              return this.userRoleService.setUserRole(credential.user.uid);
+            }
+            return Promise.resolve();
+          }),
+          switchMap(() => Promise.resolve(credential))
+        )      )
     );
   }
 

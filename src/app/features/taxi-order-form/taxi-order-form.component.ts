@@ -20,6 +20,8 @@ import { TariffService } from '../tariffs/tariff.service';
 import { startWith, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AdditionalInfo } from '../../core/models/additional-info.model';
+import { AuthService } from '../../core/services/auth.service';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-taxi-order-form',
@@ -47,6 +49,7 @@ export class TaxiOrderFormComponent implements OnInit {
 
   private taxiOrderService = inject(TaxiOrderService);
   private tariffService = inject(TariffService);
+  private authService = inject(AuthService);
   private readonly formBuilder: FormBuilder;
 
   constructor(formBuilder: FormBuilder) {
@@ -69,6 +72,7 @@ export class TaxiOrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeCityFilter();
+    this.patchUserData();
   }
 
   private initializeCityFilter(): void {
@@ -86,6 +90,17 @@ export class TaxiOrderFormComponent implements OnInit {
   private filterCities(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.filteredCities.filter((city) => city.toLowerCase().includes(filterValue));
+  }
+
+  private patchUserData(): void {
+    this.authService.authState().subscribe((user: User | null) => {
+      if (user) {
+        this.taxiOrderForm.patchValue({
+          passengerName: user.displayName || '',
+          passengerPhoneNumber: user.phoneNumber || ''
+        });
+      }
+    });
   }
 
   public onSubmit(): void {
