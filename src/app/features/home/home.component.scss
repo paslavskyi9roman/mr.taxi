@@ -1,13 +1,13 @@
 .home-container {
   display: flex;
-  gap: 20px;
+  gap: 160px;
   align-items: center;
   justify-content: center;
-  position: relative;
   min-height: 89vh;
   padding: 20px;
   z-index: 1;
   @media screen and (max-width: 1080px) {
+    gap: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -22,8 +22,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(/assets/styles/img/taxi-bg.png) no-repeat center -180px;
+    background: url(/assets/styles/img/taxi-bg2.webp) ;
     background-size: cover;
+    background-position: top  ;
+    background-position-x: -330px;
     filter: brightness(0.5);
     z-index: -1;
   }
@@ -37,7 +39,7 @@
 
   h1 {
     align-self: stretch;
-    color: var(--primary-color, #f6f8f9);
+    color: #f6f8f9;
     font-size: 64px;
     font-style: normal;
     font-weight: 700;
