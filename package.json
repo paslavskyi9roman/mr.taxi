@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "npx @biomejs/biome format --write ./src"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +36,7 @@
     "@angular-eslint/template-parser": "^19.0.2",
     "@angular/cli": "^19.0.6",
     "@angular/compiler-cli": "^19.0.5",
+    "@biomejs/biome": "1.9.4",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
