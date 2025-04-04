@@ -75,7 +75,8 @@ export class AuthenticationService {
             return Promise.resolve();
           }),
           switchMap(() => Promise.resolve(credential))
-        )      )
+        )
+      )
     );
   }
 

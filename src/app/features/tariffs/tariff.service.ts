@@ -20,7 +20,9 @@ export class TariffService {
   private listOfCities: Set<string> = new Set();
 
   public getTariffs(): Observable<Tariff[]> {
-    return collectionData(this.tariffsCollection, { idField: 'id' }) as Observable<Tariff[]>;
+    return collectionData(this.tariffsCollection, {
+      idField: 'id'
+    }) as Observable<Tariff[]>;
   }
 
   public addTariff(tariff: Tariff): Observable<any> {

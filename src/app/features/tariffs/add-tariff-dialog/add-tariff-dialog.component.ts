@@ -38,7 +38,10 @@ export class AddTariffDialogComponent {
       const tariff: Partial<Tariff> = {
         price: formValue.price,
         route: { from: formValue.from, to: formValue.to },
-        additionalStops: formValue.additionalStops.map((stop: string) => ({ from: stop, to: stop }))
+        additionalStops: formValue.additionalStops.map((stop: string) => ({
+          from: stop,
+          to: stop
+        }))
       };
       this.dialogRef.close(tariff);
     }

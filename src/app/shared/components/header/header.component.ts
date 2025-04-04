@@ -33,8 +33,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public selectedLanguage: string =
-    localStorage.getItem('selectedLanguage') || LanguageEnum.Dutch;
+  public selectedLanguage: string = localStorage.getItem('selectedLanguage') || LanguageEnum.Dutch;
   private translate: TranslateService = inject(TranslateService);
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
@@ -55,7 +54,11 @@ export class HeaderComponent implements OnInit {
       label: LanguageEnum.English,
       icon: 'assets/styles/icons/flags/gb-flag.svg'
     },
-    { value: 'Dutch', label: LanguageEnum.Dutch, icon: 'assets/styles/icons/flags/nl-flag.svg' },
+    {
+      value: 'Dutch',
+      label: LanguageEnum.Dutch,
+      icon: 'assets/styles/icons/flags/nl-flag.svg'
+    },
     {
       value: 'Ukrainian',
       label: LanguageEnum.Ukrainian,
