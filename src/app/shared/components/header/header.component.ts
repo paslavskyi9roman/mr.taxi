@@ -34,7 +34,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   public selectedLanguage: string =
-    localStorage.getItem('selectedLanguage') || LanguageEnum.English;
+    localStorage.getItem('selectedLanguage') || LanguageEnum.Dutch;
   private translate: TranslateService = inject(TranslateService);
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
