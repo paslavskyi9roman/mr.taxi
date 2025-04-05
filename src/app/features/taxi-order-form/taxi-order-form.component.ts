@@ -60,7 +60,7 @@ export class TaxiOrderFormComponent implements OnInit {
       to: ['', Validators.required],
       passengerName: ['', Validators.required],
       numberOfPassengers: [1, Validators.required],
-      passengerPhoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}$/)]],
+      passengerPhoneNumber: ['', [Validators.required]],
       comment: [''],
       luggage: [''],
       rideDate: [''],
