@@ -29,7 +29,7 @@ export class AuthService {
     name: string,
     phoneNumber: string
   ): Observable<UserCredential> {
-    return this.authenticationService.signUp(email, password, name);
+    return this.authenticationService.signUp(email, password, name, phoneNumber);
   }
 
   public signInWithGoogle(): Observable<UserCredential> {

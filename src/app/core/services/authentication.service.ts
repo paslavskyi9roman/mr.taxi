@@ -17,6 +17,7 @@ import { from, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { PersistenceService } from './persistence.service';
 import { UserRoleService } from './user-role.service';
+import { UserRole } from '../models/user.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +36,22 @@ export class AuthenticationService {
     );
   }
 
-  public signUp(email: string, password: string, name: string): Observable<UserCredential> {
+  public signUp(
+    email: string,
+    password: string,
+    name: string,
+    phoneNumber: string
+  ): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
       switchMap((userCredential) =>
         from(updateProfile(userCredential.user, { displayName: name })).pipe(
-          switchMap(() => this.userRoleService.getUserRole(userCredential.user.uid)),
-          switchMap((role) => {
-            if (!role) {
-              return this.userRoleService.setUserRole(userCredential.user.uid);
-            }
-            return Promise.resolve();
+          switchMap(() => {
+            return this.userRoleService.setUserData(userCredential.user.uid, {
+              role: UserRole.User,
+              name: name,
+              email: email,
+              phoneNumber: phoneNumber
+            });
           }),
           switchMap(() => Promise.resolve(userCredential))
         )
@@ -75,7 +82,8 @@ export class AuthenticationService {
             return Promise.resolve();
           }),
           switchMap(() => Promise.resolve(credential))
-        )      )
+        )
+      )
     );
   }
 
