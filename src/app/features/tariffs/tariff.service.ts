@@ -8,7 +8,7 @@ import {
   Firestore,
   updateDoc
 } from '@angular/fire/firestore';
-import { from, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
 import { Tariff } from './tariff.model';
 
 @Injectable({
@@ -18,9 +18,17 @@ export class TariffService {
   private firestore: Firestore = inject(Firestore);
   private tariffsCollection = collection(this.firestore, 'tariffs');
   private listOfCities: Set<string> = new Set();
+  private tariffsSubject = new BehaviorSubject<Tariff[]>([]);
+  private tariffs$ = this.tariffsSubject.asObservable();
+
+  constructor() {
+    (collectionData(this.tariffsCollection, { idField: 'id' }) as Observable<Tariff[]>).subscribe(
+      (data) => this.tariffsSubject.next(data)
+    );
+  }
 
   public getTariffs(): Observable<Tariff[]> {
-    return collectionData(this.tariffsCollection, { idField: 'id' }) as Observable<Tariff[]>;
+    return this.tariffs$;
   }
 
   public addTariff(tariff: Tariff): Observable<any> {
@@ -54,7 +62,7 @@ export class TariffService {
             this.listOfCities.add(stop.to);
           });
         });
-        observer.next();
+        observer.next(Array.from(this.listOfCities));
         observer.complete();
       });
     });

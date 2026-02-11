@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import {
   Auth,
+  user,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   OAuthProvider,
   signOut,
-  onAuthStateChanged,
   UserCredential,
   updateProfile,
   sendPasswordResetEmail,
   User
 } from '@angular/fire/auth';
-import { from, Observable } from 'rxjs';
+import { from, Observable, ReplaySubject } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { PersistenceService } from './persistence.service';
 import { UserRoleService } from './user-role.service';
@@ -23,11 +23,27 @@ import { UserRole } from '../models/user.enum';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  private authState$: Observable<User | null>;
+
   constructor(
     private auth: Auth,
     private persistenceService: PersistenceService,
     private userRoleService: UserRoleService
-  ) {}
+  ) {
+    // Call user() inside the constructor (injection context) to avoid
+    // AngularFire "outside injection context" warnings.
+    const userSubject = new ReplaySubject<User | null>(1);
+    user(this.auth).pipe(
+      tap((u) => {
+        if (u) {
+          this.userRoleService.getUserRole(u.uid);
+        } else {
+          this.userRoleService.clearUserRole();
+        }
+      })
+    ).subscribe(userSubject);
+    this.authState$ = userSubject.asObservable();
+  }
 
   public logIn(email: string, password: string, rememberMe: boolean): Observable<UserCredential> {
     return from(this.persistenceService.setPersistence(rememberMe)).pipe(
@@ -92,16 +108,7 @@ export class AuthenticationService {
   }
 
   public authState(): Observable<User | null> {
-    return new Observable((observer) => {
-      return onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          this.userRoleService.getUserRole(user.uid);
-        } else {
-          this.userRoleService.clearUserRole();
-        }
-        observer.next(user);
-      });
-    });
+    return this.authState$;
   }
 
   public forgotPassword(email: string): Observable<void> {

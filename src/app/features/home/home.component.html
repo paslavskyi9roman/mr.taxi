@@ -1,7 +1,307 @@
 <section class="home-container">
+  <!-- Hero Section with Booking Form -->
+  <div class="hero-section" #bookingForm>
   <div class="welcome-text">
     <h1>{{ 'HOME.TITLE' | translate }}</h1>
     <p>{{ 'HOME.SUBTITLE' | translate }}</p>
   </div>
-  <app-taxi-order-form></app-taxi-order-form>
+    <app-taxi-order-form #bookingFormComponent></app-taxi-order-form>
+  </div>
+
+  <!-- Price Calculator Section -->
+  <div class="price-calculator-section">
+    <app-price-calculator></app-price-calculator>
+  </div>
+
+  <!-- Airport Price Cards Section -->
+  <div class="airport-prices-section">
+    <h2 class="section-title">{{ 'HOME.AIRPORT_PRICES_TITLE' | translate }}</h2>
+    <div class="price-cards-container">
+      @if (airportTariffs.length > 0) {
+        @for (tariff of airportTariffs.slice(0, 2); track tariff.id) {
+          <div class="price-card">
+            <div class="price-header">
+              <h3 class="price">€{{ tariff.price }}</h3>
+              <p class="route">{{ tariff.route.from }} - {{ tariff.route.to }}</p>
+            </div>
+            <ul class="features-list">
+              <li>
+                <mat-icon>check_circle</mat-icon>
+                <span>{{ 'HOME.PRIVATE_TAXI' | translate }}</span>
+              </li>
+              <li>
+                <mat-icon>check_circle</mat-icon>
+                <span>{{ 'HOME.ONLINE_BOOKING' | translate }}</span>
+              </li>
+              <li>
+                <mat-icon>check_circle</mat-icon>
+                <span>{{ 'HOME.CONFIRMATION' | translate }}</span>
+              </li>
+              <li>
+                <mat-icon>check_circle</mat-icon>
+                <span>{{ 'HOME.PAYMENT_OPTIONS' | translate }}</span>
+              </li>
+            </ul>
+            <a (click)="scrollToBookingForm(tariff.route.to, $event)" class="book-button">{{ 'HOME.BOOK_NOW' | translate }}</a>
+          </div>
+        }
+      } @else {
+        <!-- Default airport prices if no tariffs in database -->
+        <div class="price-card">
+          <div class="price-header">
+            <h3 class="price">€65</h3>
+            <p class="route">{{ 'HOME.SCHIPHOL_ROUTE' | translate }}</p>
+          </div>
+          <ul class="features-list">
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.PRIVATE_TAXI' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.ONLINE_BOOKING' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.CONFIRMATION' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.PAYMENT_OPTIONS' | translate }}</span>
+            </li>
+          </ul>
+          <a (click)="scrollToBookingForm('Schiphol', $event)" class="book-button">{{ 'HOME.BOOK_NOW' | translate }}</a>
+        </div>
+        <div class="price-card">
+          <div class="price-header">
+            <h3 class="price">€45</h3>
+            <p class="route">{{ 'HOME.ROTTERDAM_ROUTE' | translate }}</p>
+          </div>
+          <ul class="features-list">
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.PRIVATE_TAXI' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.ONLINE_BOOKING' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.CONFIRMATION' | translate }}</span>
+            </li>
+            <li>
+              <mat-icon>check_circle</mat-icon>
+              <span>{{ 'HOME.PAYMENT_OPTIONS' | translate }}</span>
+            </li>
+          </ul>
+          <a (click)="scrollToBookingForm('Rotterdam Airport', $event)" class="book-button">{{ 'HOME.BOOK_NOW' | translate }}</a>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Airport Services Section -->
+  <div class="airport-services-section">
+    <h2 class="section-title">{{ 'HOME.AIRPORT_SERVICES_TITLE' | translate }}</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>{{ 'HOME.SCHIPHOL_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.SCHIPHOL_DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="service-card">
+        <h3>{{ 'HOME.ROTTERDAM_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.ROTTERDAM_DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="service-card">
+        <h3>{{ 'HOME.EINDHOVEN_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.EINDHOVEN_DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="cta-section">
+    <h3>{{ 'HOME.CTA_TITLE' | translate }}</h3>
+    <a href="tel:{{ phoneNumber }}" class="cta-button">
+      <mat-icon>phone</mat-icon>
+      {{ 'HOME.CALL_NOW' | translate }}
+    </a>
+  </div>
+
+  <!-- Google Reviews Section (slider) -->
+  <div class="reviews-section">
+    <h2 class="section-title">{{ 'HOME.REVIEWS_TITLE' | translate }}</h2>
+
+    <div class="reviews-header">
+      <div class="rating-display">
+        <span class="rating-number">{{ reviewsRating | number:'1.1-1' }}</span>
+        <div class="stars">
+          @for (star of [1,2,3,4,5]; track star) {
+            <mat-icon>star</mat-icon>
+          }
+        </div>
+        <p class="review-count">{{ reviewsTotal }} {{ 'HOME.REVIEWS_TOTAL_SUFFIX' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="reviews-slider">
+      <button type="button" class="slider-btn slider-btn-prev" aria-label="Previous review" (click)="goPrevReview()" [disabled]="displayReviews.length <= 1">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <div class="reviews-slider-viewport">
+        <div class="reviews-track" [class.reviews-track-no-transition]="skipTrackTransition" [style.transform]="'translateX(-' + currentReviewIndex * 100 + '%)'">
+          @if (displayReviews.length > 0) {
+            @for (review of displayReviews; track review.author_name + review.time) {
+              <div class="review-card review-card-slide">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    @if (review.profile_photo_url) {
+                      <img
+                        [src]="review.profile_photo_url"
+                        alt="{{ review.author_name }}"
+                        class="avatar-image"
+                        referrerpolicy="no-referrer"
+                        loading="lazy"
+                        (error)="onReviewImageError(review)"
+                      />
+                    }
+                    @if (!review.profile_photo_url) {
+                      <mat-icon class="avatar-icon">account_circle</mat-icon>
+                    }
+                    <div>
+                      <h4 class="reviewer-name">{{ review.author_name }}</h4>
+                      <div class="review-meta">
+                        <div class="review-stars">
+                          @for (star of [1,2,3,4,5]; track star) {
+                            <mat-icon [class.filled]="star <= review.rating">star</mat-icon>
+                          }
+                        </div>
+                        @if (review.relative_time_description) {
+                          <span class="review-time">{{ review.relative_time_description }}</span>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="review-text">{{ review.text }}</p>
+              </div>
+            }
+          } @else {
+            <div class="review-card review-card-slide">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <mat-icon class="avatar-icon">account_circle</mat-icon>
+                  <div>
+                    <h4 class="reviewer-name">{{ 'HOME.REVIEW_1_NAME' | translate }}</h4>
+                    <div class="review-stars">
+                      @for (star of [1,2,3,4,5]; track star) { <mat-icon>star</mat-icon> }
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="review-text">{{ 'HOME.REVIEW_1_TEXT' | translate }}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+      <button type="button" class="slider-btn slider-btn-next" aria-label="Next review" (click)="goNextReview()" [disabled]="displayReviews.length <= 1">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+
+    @if (displayReviews.length > 1) {
+      <div class="slider-dots">
+        @for (review of displayReviews; track review.author_name + review.time; let i = $index) {
+          <button type="button" class="slider-dot" [class.active]="i === currentReviewIndex" [attr.aria-label]="'Review ' + (i + 1)" (click)="goToReview(i)"></button>
+        }
+      </div>
+    }
+
+    <a
+      href="https://www.google.com/maps/place/Meneer+Taxi/@51.9186842,4.4819635,17z/data=!4m8!3m7!1s0x47c5cf0622ce6bd5:0xd7d10d8ff8e273d!8m2!3d51.9186842!4d4.4819635!9m1!1b1!16s%2Fg%2F11x5f0hkk9?entry=ttu"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="google-reviews-link"
+    >
+      <mat-icon>open_in_new</mat-icon>
+      {{ 'HOME.VIEW_GOOGLE_REVIEWS' | translate }}
+    </a>
+  </div>
+
+  <!-- Payment Methods Section -->
+  <div class="payment-methods-section">
+    <h2 class="section-title">{{ 'HOME.PAYMENT_METHODS_TITLE' | translate }}</h2>
+    <p class="section-subtitle">{{ 'HOME.PAYMENT_METHODS_SUBTITLE' | translate }}</p>
+    
+    <div class="payment-cards-grid">
+      <div class="payment-card">
+        <div class="payment-icon-wrapper visa">
+          <mat-icon>credit_card</mat-icon>
+        </div>
+        <h4>Visa</h4>
+      </div>
+
+      <div class="payment-card">
+        <div class="payment-icon-wrapper mastercard">
+          <mat-icon>credit_card</mat-icon>
+        </div>
+        <h4>Mastercard</h4>
+      </div>
+
+      <div class="payment-card">
+        <div class="payment-icon-wrapper ideal">
+          <mat-icon>account_balance</mat-icon>
+        </div>
+        <h4>iDeal</h4>
+      </div>
+
+      <div class="payment-card">
+        <div class="payment-icon-wrapper pin">
+          <mat-icon>pin</mat-icon>
+        </div>
+        <h4>PIN</h4>
+      </div>
+
+      <div class="payment-card featured">
+        <div class="discount-ribbon">
+          <span>{{ 'HOME.CASH_DISCOUNT' | translate }}</span>
+        </div>
+        <div class="payment-icon-wrapper cash">
+          <mat-icon>payments</mat-icon>
+        </div>
+        <h4>{{ 'HOME.PAYMENT_CASH' | translate }}</h4>
+        <p class="cash-benefit">{{ 'HOME.CASH_BENEFIT' | translate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Company Information Section -->
+  <div class="company-info-section">
+    <div class="info-grid">
+      <div class="info-card">
+        <mat-icon class="info-icon">person</mat-icon>
+        <h3>{{ 'HOME.QUALIFIED_DRIVERS_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.QUALIFIED_DRIVERS_DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="info-card">
+        <mat-icon class="info-icon">payment</mat-icon>
+        <h3>{{ 'HOME.PAYMENT_METHODS_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.PAYMENT_METHODS_DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="info-card">
+        <mat-icon class="info-icon">euro</mat-icon>
+        <h3>{{ 'HOME.BEST_PRICES_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.BEST_PRICES_DESCRIPTION' | translate }}</p>
+        <a routerLink="/tariffs" class="info-link">{{ 'HOME.VIEW_TARIFFS' | translate }}</a>
+      </div>
+      <div class="info-card">
+        <mat-icon class="info-icon">computer</mat-icon>
+        <h3>{{ 'HOME.ONLINE_BOOKING_TITLE' | translate }}</h3>
+        <p>{{ 'HOME.ONLINE_BOOKING_DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+  </div>
 </section>
