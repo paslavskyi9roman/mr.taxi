@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { TaxiBookingData } from '../models/taxi-booking-data.model';
-import { environment } from '../../../environment/environemnt';
+import { environment } from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'

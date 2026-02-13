@@ -1,0 +1,108 @@
+<div class="price-calculator">
+  <div class="calculator-header">
+    <mat-icon class="calculator-icon">local_taxi</mat-icon>
+    <h3>{{ 'CALCULATOR.TITLE' | translate }}</h3>
+    <p>{{ 'CALCULATOR.SUBTITLE' | translate }}</p>
+  </div>
+
+  <form [formGroup]="calculatorForm" class="calculator-form" (ngSubmit)="calculatePrice()">
+    <div class="form-field">
+      <label>
+        <mat-icon>trip_origin</mat-icon>
+        {{ 'CALCULATOR.FROM_LABEL' | translate }}
+      </label>
+      <div #fromContainer class="autocomplete-container"></div>
+    </div>
+
+    <div class="route-arrow">
+      <mat-icon>arrow_downward</mat-icon>
+    </div>
+
+    <div class="form-field">
+      <label>
+        <mat-icon>location_on</mat-icon>
+        {{ 'CALCULATOR.TO_LABEL' | translate }}
+      </label>
+      <div #toContainer class="autocomplete-container"></div>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-message">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+    }
+
+    <button
+      type="submit"
+      class="calculate-button"
+      [disabled]="!canCalculate"
+    >
+      @if (isCalculating) {
+        <mat-icon class="spinning">sync</mat-icon>
+        {{ 'CALCULATOR.CALCULATING' | translate }}
+      } @else {
+        <mat-icon>calculate</mat-icon>
+        {{ 'CALCULATOR.CALCULATE_BUTTON' | translate }}
+      }
+    </button>
+  </form>
+
+  @if (meterPrice !== null && fixedPrice !== null) {
+    <div class="result-section">
+      <div class="route-info">
+        <div class="info-item">
+          <mat-icon>straighten</mat-icon>
+          <span>{{ distance }} km</span>
+        </div>
+        <div class="info-item">
+          <mat-icon>schedule</mat-icon>
+          <span>{{ duration }} min</span>
+        </div>
+      </div>
+
+      <!-- Price Comparison: Always show METER vs FIXED -->
+      <div class="price-comparison">
+        <div class="result-card meter-price">
+          <div class="result-label">{{ 'CALCULATOR.OTHER_TAXIS' | translate }}</div>
+          <div class="result-value">€{{ meterPrice.toFixed(2) }}</div>
+          <p class="result-description">{{ 'CALCULATOR.METER_DESCRIPTION' | translate }}</p>
+        </div>
+
+        <div class="vs-divider">VS</div>
+        
+        <div class="result-card fixed-price">
+          <div class="result-label">{{ 'CALCULATOR.OUR_PRICE' | translate }}</div>
+          <div class="result-value">€{{ fixedPrice.toFixed(2) }}</div>
+          <div class="savings-badge">
+            <mat-icon>savings</mat-icon>
+            <span>{{ 'CALCULATOR.SAVE' | translate }} €{{ savings!.toFixed(2) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Options -->
+      <div class="contact-options">
+        <p class="contact-heading">{{ 'CALCULATOR.BOOK_NOW' | translate }}</p>
+        
+        <div class="cta-buttons">
+          <a [href]="getWhatsAppLink()" target="_blank" class="cta-button whatsapp">
+            <mat-icon>chat</mat-icon>
+            <span>{{ 'CALCULATOR.WHATSAPP' | translate }}</span>
+          </a>
+          
+          <a [href]="'tel:' + phoneNumber" class="cta-button phone">
+            <mat-icon>phone</mat-icon>
+            <span>{{ 'CALCULATOR.CALL' | translate }}</span>
+          </a>
+          
+          <a [href]="getEmailLink()" class="cta-button email">
+            <mat-icon>email</mat-icon>
+            <span>{{ 'CALCULATOR.EMAIL' | translate }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+

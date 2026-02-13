@@ -6,9 +6,23 @@
     </div>
     <p>Haaglanden</p>
   </div>
+  <nav class="main-nav">
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      {{ 'MENU.HOME' | translate }}
+    </a>
+    <a routerLink="/tariffs" routerLinkActive="active">{{ 'MENU.TARIFFS' | translate }}</a>
+    @if (!isLoggedIn) {
+      <a routerLink="/auth" routerLinkActive="active">{{ 'MENU.SIGN_UP' | translate }}</a>
+    }
+  </nav>
+  <div class="phone-number desktop-only">
+    <a href="tel:+31620709779" class="phone-link">
+      <mat-icon>phone</mat-icon>
+      <span>+31 62 070 97 79</span>
+    </a>
+  </div>
   <div class="right">
-    @if (!isMobile) {
-      <div class="language-select">
+    <div class="language-select desktop-only">
         <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
         <app-dropdown-menu
           [items]="languages"
@@ -16,34 +30,46 @@
           (selectionChange)="selectLanguage($event)"
         ></app-dropdown-menu>
       </div>
-      <mt-theme-switcher></mt-theme-switcher>
-    }
-    <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
+    <mt-theme-switcher class="desktop-only"></mt-theme-switcher>
+    <button mat-button class="menu-button mobile-only" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
 </header>
 
+<!-- Mobile Phone Banner -->
+<div class="mobile-phone-banner mobile-only">
+  <a href="tel:+31620709779" class="mobile-phone-link">
+    <mat-icon>phone</mat-icon>
+    <span>+31 62 070 97 79</span>
+  </a>
+</div>
+
 <mat-menu #menu="matMenu" class="custom-menu" [overlapTrigger]="true">
+  <button mat-menu-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>home</mat-icon>
+    <span>{{ 'MENU.HOME' | translate }}</span>
+  </button>
+  <button mat-menu-item routerLink="/tariffs" routerLinkActive="active">
+    <mat-icon>local_atm</mat-icon>
+    <span>{{ 'MENU.TARIFFS' | translate }}</span>
+  </button>
   @if (!isLoggedIn) {
-    <button mat-menu-item routerLink="/auth">
+    <button mat-menu-item routerLink="/auth" routerLinkActive="active">
       <mat-icon>person</mat-icon>
       <span>{{ 'MENU.SIGN_UP' | translate }}</span>
     </button>
   }
-  <button mat-menu-item routerLink="/tariffs">
-    <mat-icon>local_atm</mat-icon>
-    <span>{{ 'MENU.TARIFFS' | translate }}</span>
+  <button mat-menu-item (click)="toggleTheme()" class="theme-menu-item">
+    <mat-icon>{{ getThemeIcon() }}</mat-icon>
+    <span>{{ 'MENU.THEME_SWITCH' | translate }}</span>
   </button>
-  @if (isMobile) {
-    <mt-theme-switcher [isMobile]="isMobile"></mt-theme-switcher>
     <button mat-menu-item [matMenuTriggerFor]="languageMenu">
       <div class="menu-item-with-flag">
         <div class="flag-icon" [style.background-image]="'url(' + selectedFlag + ')'"></div>
         <span>{{ 'MENU.LANGUAGE' | translate }}</span>
       </div>
     </button>
-  }
 
   @if (isLoggedIn) {
     <button mat-menu-item (click)="onLogOut()">

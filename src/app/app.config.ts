@@ -8,7 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
-import { environment } from '../environment/environemnt';
+import { environment } from '../environment/environment';
 import { routes } from './app.routes';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

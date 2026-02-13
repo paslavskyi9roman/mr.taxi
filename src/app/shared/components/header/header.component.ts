@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { TranslateService } from '@ngx-translate/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
@@ -14,6 +14,8 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
 import { LanguageEnum } from '../../../core/models/language.enum';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../../core/services/theme.service';
+import { ThemeEnum } from '../../../core/models/theme.enum';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +25,7 @@ import { CommonModule } from '@angular/common';
     ThemeSwitcherComponent,
     DropdownMenuComponent,
     RouterLink,
+    RouterLinkActive,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
@@ -36,6 +39,7 @@ export class HeaderComponent implements OnInit {
   public selectedLanguage: string =
     localStorage.getItem('selectedLanguage') || LanguageEnum.Dutch;
   private translate: TranslateService = inject(TranslateService);
+  private themeService: ThemeService = inject(ThemeService);
   public isLoggedIn = false;
   private snackBar: MatSnackBar = inject(MatSnackBar);
   private router: Router = inject(Router);
@@ -100,5 +104,13 @@ export class HeaderComponent implements OnInit {
       },
       error: (error) => console.error('Log out error', error)
     });
+  }
+
+  public toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  public getThemeIcon(): string {
+    return this.themeService.theme === ThemeEnum.Light ? 'dark_mode' : 'light_mode';
   }
 }
